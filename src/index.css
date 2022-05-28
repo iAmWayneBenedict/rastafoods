@@ -394,6 +394,39 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
 }
+.container{
+  width: 100%;
+}
+@media (min-width: 640px){
+
+  .container{
+    max-width: 640px;
+  }
+}
+@media (min-width: 768px){
+
+  .container{
+    max-width: 768px;
+  }
+}
+@media (min-width: 1024px){
+
+  .container{
+    max-width: 1024px;
+  }
+}
+@media (min-width: 1280px){
+
+  .container{
+    max-width: 1280px;
+  }
+}
+@media (min-width: 1536px){
+
+  .container{
+    max-width: 1536px;
+  }
+}
 .line{
   height: 2px;
   width: 50%;
@@ -1277,11 +1310,6 @@ html {
   .\32xl\:mx-\[10rem\]{
     margin-left: 10rem;
     margin-right: 10rem;
-  }
-
-  .\32xl\:mx-\[5rem\]{
-    margin-left: 5rem;
-    margin-right: 5rem;
   }
 
   .\32xl\:mt-32{

@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 
 const NavBar = ({ hasScrolled }) => {
+	const button = useRef();
 	// toggle hamburger
 	const navBarBtn = (event) => {
-		const button = document.querySelector("button");
-		button.classList.toggle("rotate-90");
-		button.children[0].classList.toggle("active");
-		button.children[1].classList.toggle("opacity-0");
-		button.children[2].classList.toggle("active");
-		button.children[0].classList.toggle("active-line1");
-		button.children[2].classList.toggle("active-line2");
+		button.current.classList.toggle("rotate-90");
+		button.current.children[0].classList.toggle("active");
+		button.current.children[1].classList.toggle("opacity-0");
+		button.current.children[2].classList.toggle("active");
+		button.current.children[0].classList.toggle("active-line1");
+		button.current.children[2].classList.toggle("active-line2");
 	};
 
 	// if scrolled to a specific range then set a shadow string that will be used dynamically in the nav bar
@@ -21,6 +22,7 @@ const NavBar = ({ hasScrolled }) => {
 		>
 			<div className="flex justify-between items-center py-4">
 				<button
+					ref={button}
 					className="flex md:hidden w-[25px] h-[15px] flex-col justify-between transition-all duration-300 ease-in-out"
 					onClick={navBarBtn}
 				>
@@ -28,38 +30,21 @@ const NavBar = ({ hasScrolled }) => {
 					<span className="mid-line"></span>
 					<span className="line left-line"></span>
 				</button>
-				<h1 className="font-bold text-primary md:text-2xl text-lg">
-					RastaFoods
-				</h1>
+				<h1 className="font-bold text-primary md:text-2xl text-lg">RastaFoods</h1>
 				<div className="center-element w-fit hidden md:flex">
-					<Link
-						to={"/"}
-						className="px-2 lg:px-4 font-medium text-sm md:text-base text"
-					>
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base text">
 						Home
 					</Link>
-					<Link
-						to={"/"}
-						className="px-2 lg:px-4 font-medium text-sm md:text-base"
-					>
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
 						Stores
 					</Link>
-					<Link
-						to={"/"}
-						className="px-2 lg:px-4 font-medium text-sm md:text-base"
-					>
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
 						Delivery
 					</Link>
-					<Link
-						to={"/"}
-						className="px-2 lg:px-4 font-medium text-sm md:text-base"
-					>
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
 						Contact
 					</Link>
-					<Link
-						to={"/"}
-						className="px-2 lg:px-4 font-medium text-sm md:text-base"
-					>
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
 						About
 					</Link>
 				</div>
