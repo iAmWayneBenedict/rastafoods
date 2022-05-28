@@ -1,4 +1,6 @@
 import Card from "../home_components/discover_foods_components/Card.component";
+import { Link } from "react-router-dom";
+import useWindowSize from "./custom_hooks/useWindowSize";
 
 const DiscoverFoods = () => {
 	const cardData = {
@@ -27,10 +29,10 @@ const DiscoverFoods = () => {
 			src: "img/halo halo.png",
 		},
 	};
-
+	const windowSize = useWindowSize();
+	let itr = 0;
 	return (
 		<div className="current flex flex-col mt-[8rem] py-10 relative">
-			<span className="absolute top-0 left-0 w-screen h-full z-[-1]"></span>
 			<div className="title flex flex-col items-center">
 				<h1 className="font-semibold xl:text-4xl text-4xl leading-snug text-center mb-5">
 					Discover Foods
@@ -41,8 +43,17 @@ const DiscoverFoods = () => {
 			</div>
 			<div className="flex items-center md:justify-center mt-20 flex-col md:flex-row flex-wrap">
 				{Object.entries(cardData).map(([key, value]) => {
-					return <Card data={value} key={key} />;
+					itr += 1;
+					if (windowSize >= 768) return <Card data={value} key={key} />;
+					else if (windowSize < 768 && itr <= 3) return <Card data={value} key={key} />;
+					return "";
 				})}
+			</div>
+			<div className="find-out-more flex text-primary justify-center mt-10">
+				<Link to={"/"} className="flex">
+					<h2 className="mr-3">Find out more</h2>
+					<i className="bi bi-arrow-right"></i>
+				</Link>
 			</div>
 		</div>
 	);

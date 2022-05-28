@@ -68,7 +68,7 @@ const HowItWorks = () => {
 					ipsum saepe odio?
 				</p>
 			</div>
-			<div className="flex items-center md:justify-center mt-20 flex-col md:flex-row">
+			<div className="flex items-center justify-center mt-20 flex-wrap">
 				{Object.entries(cardData).map(([key, value]) => {
 					return <Card data={value} key={key} />;
 				})}
