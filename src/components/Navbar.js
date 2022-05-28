@@ -30,9 +30,14 @@ const NavBar = ({ hasScrolled }) => {
 					<span className="mid-line"></span>
 					<span className="line left-line"></span>
 				</button>
-				<h1 className="font-bold text-primary md:text-2xl text-lg">RastaFoods</h1>
+				<Link
+					to={"/"}
+					className="font-bold text-primary md:text-2xl text-lg cursor-pointer"
+				>
+					RastaFoods
+				</Link>
 				<div className="center-element w-fit hidden md:flex">
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base text">
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
 						Home
 					</Link>
 					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">

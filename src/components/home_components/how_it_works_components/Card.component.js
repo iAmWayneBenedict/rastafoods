@@ -1,7 +1,7 @@
 const Card = ({ data }) => {
 	const { icon, step, title, description } = data;
 	return (
-		<div className="max-w-[19rem] w-full flex flex-col m-5 group hover:bg-primary transition-all duration-100 ease-in cursor-default rounded-lg p-5">
+		<div className="max-w-[15rem] xl:max-w-[19rem] w-full flex flex-col m-3 md:m-5 group hover:bg-primary transition-all duration-100 ease-in cursor-default rounded-lg p-4 md:p-5">
 			<i
 				className={`${icon} text-primary text-5xl group-hover:text-white transition-all duration-100 ease-in`}
 			></i>
