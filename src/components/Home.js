@@ -16,7 +16,7 @@ const Home = () => {
 	let { scrolledOverHundred, scrolledOverTen } = useScroll();
 
 	return (
-		<div className="">
+		<div>
 			{/* Navigation bar */}
 			<NavBar hasScrolled={scrolledOverTen} />
 			{/* Scroll To Top */}
@@ -32,11 +32,16 @@ const Home = () => {
 			<div className="2xl:mx-[10rem] lg:mx-[2rem]">
 				{/* Row Menu Component */}
 				<RowMenu />
+				{/* Discover Foods Component */}
 				<DiscoverFoods />
+				{/* Business Section Component */}
 				<Business />
+				{/* Rider Section Component */}
 				<Rider />
+				{/* Get In Touch Section Component */}
 				<GetInTouch />
 			</div>
+			{/* Footer */}
 			<Footer />
 		</div>
 	);
