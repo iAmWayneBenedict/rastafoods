@@ -5,7 +5,7 @@ const Business = () => {
 		<div className="flex md:items-center justify-between mb-40 mt-32 flex-col md:flex-row">
 			<div className="left pr-5 max-w-sm xl:max-w-lg order-2 md:order-1 mt-10 md:mt-0">
 				<h1 className="title text-4xl font-semibold">RastaFoods for Business</h1>
-				<p className="mt-4 mb-10">
+				<p className="mt-4 mb-10 leading-7">
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dolorum commodi
 					minus tempora facilis earum, consectetur aliquid voluptatum fugit perferendis?
 				</p>

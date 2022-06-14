@@ -2,22 +2,29 @@ import NavBar from "./components/Navbar";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import ScrollToTop from "./components/ScrollToTop";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 
 const App = () => {
 	const [scrolledOverHundred, setScrolledOverHundred] = useState(false);
 	const [scrolledOverTen, setScrolledOverTen] = useState(false);
-	window.onscroll = () => {
+	const navScrollStatus = () => {
 		let scrollTop = document.documentElement.scrollTop;
 		if (scrollTop > 100) {
 			setScrolledOverHundred(true);
-		} else if (scrollTop > 50) {
-			setScrolledOverTen(true);
 		} else {
 			setScrolledOverHundred(false);
+		}
+		if (scrollTop > 50) {
+			setScrolledOverTen(true);
+		} else {
 			setScrolledOverTen(false);
 		}
 	};
+	useLayoutEffect(() => {
+		navScrollStatus();
+		window.addEventListener("scroll", navScrollStatus);
+		return () => window.removeEventListener("scroll", navScrollStatus);
+	}, []);
 
 	return (
 		<Router>

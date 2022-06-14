@@ -5,7 +5,7 @@ const Rider = () => {
 		<div className="flex md:items-center justify-between mt-56 mb-32 flex-col md:flex-row">
 			<div className="left max-w-sm xl:max-w-xl order-2 mt-10 md:mt-0 pr-14">
 				<h1 className="title text-4xl font-semibold">RastaFoods for Riders</h1>
-				<p className="mt-4 mb-10">
+				<p className="mt-4 mb-10 leading-7">
 					Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime dolorum commodi
 					minus tempora facilis earum, consectetur aliquid voluptatum fugit perferendis?
 				</p>

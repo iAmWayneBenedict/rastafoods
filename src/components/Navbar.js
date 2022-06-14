@@ -15,7 +15,6 @@ const NavBar = ({ hasScrolled }) => {
 
 	// if scrolled to a specific range then set a shadow string that will be used dynamically in the nav bar
 	const shadow = hasScrolled ? "shadow-md" : "";
-
 	return (
 		<nav
 			className={`fixed top-0 ${shadow} left-0 w-full 2xl:px-[14rem] lg:px-[5rem] px-5 z-50 bg-white transition-all duration-300`}
