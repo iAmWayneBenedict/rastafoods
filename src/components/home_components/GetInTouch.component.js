@@ -1,7 +1,7 @@
 const GetInTouch = () => {
 	return (
-		<div className="flex py-28 justify-between">
-			<div className="left max-w-lg flex flex-col">
+		<div className="flex py-28 justify-between gap-10 flex-col md:flex-row items-center">
+			<div className="left w-full md:w-1/2 sm:w-3/4 flex flex-col">
 				<div className="section-title mb-8">
 					<h1 className="font-semibold text-4xl">Get In Touch</h1>
 				</div>
@@ -14,20 +14,20 @@ const GetInTouch = () => {
 				</div>
 				<div className="contacts flex flex-col ml-10 gap-5">
 					<span className="flex">
-						<i className="icon">o</i>
+						<i className="icon text-primary">o</i>
 						<span className="ml-8">example@example.com</span>
 					</span>
 					<span className="flex">
-						<i className="icon">o</i>
+						<i className="icon text-primary">o</i>
 						<span className="ml-8">+63 912 3456 789</span>
 					</span>
 					<span className="flex">
-						<i className="icon">o</i>
+						<i className="icon text-primary">o</i>
 						<span className="ml-8">Magallano Highway, San Francisco, Philippines</span>
 					</span>
 				</div>
 			</div>
-			<div className="right w-[35rem] rounded-xl shadow-lg">
+			<div className="right w-full md:w-1/2 sm:w-3/4 rounded-xl shadow-lg">
 				<div className="say-something-con m-12">
 					<div className="title mb-10">
 						<h1 className="font-semibold text-3xl">Say Something</h1>

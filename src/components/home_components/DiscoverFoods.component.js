@@ -41,11 +41,11 @@ const DiscoverFoods = () => {
 					Lorem ipsum dolor sit amet consectetur adipisicing elit.
 				</p>
 			</div>
-			<div className="flex items-center md:justify-center mt-20 flex-col md:flex-row flex-wrap">
+			<div className="flex items-center sm:justify-center mt-20 flex-col sm:flex-row flex-wrap">
 				{Object.entries(cardData).map(([key, value]) => {
 					itr += 1;
-					if (windowSize >= 768) return <Card data={value} key={key} />;
-					else if (windowSize < 768 && itr <= 3) return <Card data={value} key={key} />;
+					if (windowSize >= 638) return <Card data={value} key={key} />;
+					else if (windowSize < 638 && itr <= 3) return <Card data={value} key={key} />;
 					return "";
 				})}
 			</div>
