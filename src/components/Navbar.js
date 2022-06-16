@@ -19,7 +19,7 @@ const NavBar = ({ hasScrolled }) => {
 		<nav
 			className={`fixed top-0 ${shadow} left-0 w-full 2xl:px-[14rem] lg:px-[5rem] px-5 z-50 bg-white transition-all duration-300`}
 		>
-			<div className="flex justify-between items-center py-4">
+			<div className="flex justify-between items-center py-2 2xl:py-4">
 				<button
 					ref={button}
 					className="flex md:hidden w-[25px] h-[15px] flex-col justify-between transition-all duration-300 ease-in-out"
@@ -31,24 +31,24 @@ const NavBar = ({ hasScrolled }) => {
 				</button>
 				<Link
 					to={"/"}
-					className="font-bold text-primary md:text-2xl text-lg cursor-pointer"
+					className="font-bold text-primary 2xl:text-2xl md:text-xl text-lg cursor-pointer"
 				>
 					RastaFoods
 				</Link>
 				<div className="center-element w-fit hidden md:flex">
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						Home
 					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						Stores
 					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						Delivery
 					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						Contact
 					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm md:text-base">
+					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						About
 					</Link>
 				</div>
@@ -58,7 +58,7 @@ const NavBar = ({ hasScrolled }) => {
 					</Link>
 					<Link
 						to={"/"}
-						className="bg-primary text-white ml-5 md:ml-8 px-4 md:px-5 py-1.5 md:py-2 rounded-[.35rem] font-medium text-sm md:text-base"
+						className="bg-primary text-white ml-5 md:ml-8 px-3 md:px-4 py-1 md:py-[.35rem] rounded-[.35rem] font-medium text-sm 2xl:text-base"
 					>
 						Signin
 					</Link>

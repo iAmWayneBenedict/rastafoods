@@ -21,7 +21,7 @@ const Home = () => {
 			<NavBar hasScrolled={scrolledOverTen} />
 			{/* Scroll To Top */}
 			<ScrollToTop hasScrolled={scrolledOverHundred} />
-			<div className="2xl:mx-[10%] lg:mx-[2rem]">
+			<div className="2xl:mx-[10rem] lg:mx-[2rem]">
 				{/*  Banner component */}
 				<Banner />
 				{/* About component */}
@@ -29,7 +29,7 @@ const Home = () => {
 			</div>
 			{/* How It Works component */}
 			<HowItWorks />
-			<div className="2xl:mx-[10%] lg:mx-[2rem]">
+			<div className="2xl:mx-[10rem] lg:mx-[2rem]">
 				{/* Row Menu Component */}
 				<RowMenu />
 				{/* Discover Foods Component */}
