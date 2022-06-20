@@ -747,6 +747,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-2{
   margin-bottom: 0.5rem;
 }
+.mt-\[2px\]{
+  margin-top: 2px;
+}
 .mt-\[5rem\]{
   margin-top: 5rem;
 }
@@ -829,6 +832,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-h-\[25rem\]{
   max-height: 25rem;
 }
+.min-h-\[14\.25rem\]{
+  min-height: 14.25rem;
+}
 .w-1\/2{
   width: 50%;
 }
@@ -896,8 +902,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[55\%\]{
   width: 55%;
 }
-.min-w-\[10rem\]{
-  min-width: 10rem;
+.min-w-\[9rem\]{
+  min-width: 9rem;
 }
 .max-w-full{
   max-width: 100%;
@@ -926,11 +932,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-w-\[20rem\]{
   max-width: 20rem;
 }
-.max-w-\[15rem\]{
-  max-width: 15rem;
+.max-w-\[9\.15rem\]{
+  max-width: 9.15rem;
 }
 .max-w-\[70\%\]{
   max-width: 70%;
+}
+.max-w-\[15rem\]{
+  max-width: 15rem;
 }
 .flex-1{
   flex: 1 1 0%;
@@ -1641,8 +1650,12 @@ html {
     width: 66.666667%;
   }
 
-  .sm\:min-w-\[15rem\]{
-    min-width: 15rem;
+  .sm\:min-w-\[9\.15rem\]{
+    min-width: 9.15rem;
+  }
+
+  .sm\:max-w-\[12rem\]{
+    max-width: 12rem;
   }
 
   .sm\:max-w-\[50\%\]{
@@ -1724,6 +1737,11 @@ html {
     margin-right: 0px;
   }
 
+  .md\:mx-10{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
+  }
+
   .md\:ml-8{
     margin-left: 2rem;
   }
@@ -1762,6 +1780,10 @@ html {
 
   .md\:w-auto{
     width: auto;
+  }
+
+  .md\:min-w-\[10rem\]{
+    min-width: 10rem;
   }
 
   .md\:max-w-\[15rem\]{

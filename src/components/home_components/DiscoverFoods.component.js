@@ -51,7 +51,7 @@ const DiscoverFoods = () => {
 			</div>
 			<div className="find-out-more flex text-primary justify-center mt-10">
 				<Link to={"/"} className="flex">
-					<h2 className="mr-3">Find out more</h2>
+					<h2 className="mr-3 text-xs sm:text-base flex items-center">Find out more</h2>
 					<i className="bi bi-arrow-right"></i>
 				</Link>
 			</div>
