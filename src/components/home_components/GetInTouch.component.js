@@ -12,23 +12,25 @@ const GetInTouch = () => {
 						Doloremque maiores temporibus tempore veritatis commodi.
 					</p>
 				</div>
-				<div className="contacts flex flex-col ml-10 gap-5">
+				<div className="contacts flex flex-col ml-7 sm:ml-10 gap-5">
 					<span className="flex">
-						<i className="icon text-primary">o</i>
-						<span className="ml-8">example@example.com</span>
+						<i className="icon text-xl text-primary bi bi-envelope"></i>
+						<span className="ml-8 text-sm md:text-base">example@example.com</span>
 					</span>
 					<span className="flex">
-						<i className="icon text-primary">o</i>
-						<span className="ml-8">+63 912 3456 789</span>
+						<i className="icon text-xl text-primary bi bi-telephone"></i>
+						<span className="ml-8 text-sm md:text-base">+63 912 3456 789</span>
 					</span>
 					<span className="flex">
-						<i className="icon text-primary">o</i>
-						<span className="ml-8">Magallano Highway, San Francisco, Philippines</span>
+						<i className="icon text-xl text-primary bi bi-geo-alt"></i>
+						<span className="ml-8 text-sm md:text-base">
+							Magallano Highway, San Francisco, Philippines
+						</span>
 					</span>
 				</div>
 			</div>
-			<div className="right w-full md:w-1/2 sm:w-3/4 rounded-xl shadow-lg">
-				<div className="say-something-con m-12">
+			<div className="right w-full md:w-1/2 sm:w-3/4 sm:rounded-xl sm:shadow-lg mt-10 sm:mt-0">
+				<div className="say-something-con sm:m-12">
 					<div className="title mb-10">
 						<h1 className="font-semibold text-3xl">Say Something</h1>
 					</div>
@@ -36,24 +38,24 @@ const GetInTouch = () => {
 						<form action="" className="flex flex-col gap-7">
 							<input
 								type="text"
-								className="border-2 border-red-300 py-2 px-5 outline-none rounded-lg font-semibold"
+								className="border-2 border-red-300 py-2 px-5 outline-none rounded-lg text-sm md:text-base font-semibold"
 								placeholder="Your Name"
 							/>
 							<input
 								type="email"
-								className="border-2 border-red-300 py-2 px-5 outline-none rounded-lg font-semibold"
+								className="border-2 border-red-300 py-2 px-5 outline-none rounded-lg text-sm md:text-base font-semibold"
 								placeholder="Your Email"
 							/>
 							<textarea
 								name=""
 								id=""
 								rows="7"
-								className="border-2 border-red-300 py-2 px-5 outline-none rounded-lg font-semibold"
+								className="border-2 border-red-300 py-2 px-5 outline-none rounded-lg text-sm md:text-base font-semibold"
 								placeholder="Your Message"
 							></textarea>
 							<button
 								type="submit"
-								className="bg-primary rounded-lg text-slate-50 font-semibold text-lg py-2"
+								className="bg-primary rounded-lg text-base text-slate-50 font-semibold sm:text-lg py-2"
 							>
 								Send
 							</button>

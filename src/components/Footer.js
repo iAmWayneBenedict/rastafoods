@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
 	return (
-		<div className="flex flex-col px-10 mb-10 mt-20">
+		<div className="flex flex-col sm:px-10 mb-10 mt-20">
 			<div className="flex md:flex-row flex-col gap-10 justify-between">
 				<div className="left max-w-[30rem]">
 					<div className="footer-title mb-5">
@@ -14,17 +14,17 @@ const Footer = () => {
 						doloremque omnis at?
 					</div>
 					<div className="footer-socials flex gap-5 mt-5 bg">
-						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-5 py-3">
-							<i className="facebook">o</i>
+						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-4 py-2">
+							<i className="bi bi-facebook"></i>
 						</Link>
-						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-5 py-3">
-							<i className="facebook">o</i>
+						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-4 py-2">
+							<i className="bi bi-twitter"></i>
 						</Link>
-						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-5 py-3">
-							<i className="facebook">o</i>
+						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-4 py-2">
+							<i className="bi bi-google"></i>
 						</Link>
-						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-5 py-3">
-							<i className="facebook">o</i>
+						<Link to={"/"} className="bg-zinc-700 text-slate-50 px-4 py-2">
+							<i className="bi bi-instagram"></i>
 						</Link>
 					</div>
 				</div>
@@ -46,7 +46,9 @@ const Footer = () => {
 				</div>
 			</div>
 			<div className="bottom flex self-center mt-24">
-				<span className="text-center">All Rights Reserved by RastaFoods 2021</span>
+				<span className="text-center text-xs sm:text-base">
+					All Rights Reserved by RastaFoods 2021
+				</span>
 			</div>
 		</div>
 	);

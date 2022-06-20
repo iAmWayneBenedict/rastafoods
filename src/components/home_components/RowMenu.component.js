@@ -14,7 +14,7 @@ const RowMenu = () => {
 					Learn more <i className="bi bi-arrow-right-short"></i>
 				</Link>
 			</div>
-			<div className="flex md:ml-10 px-5 overflow-x-scroll w-full pb-5">
+			<div className="flex md:ml-10 px-5 overflow-x-scroll w-full pb-5 gap-3">
 				<StoreCard />
 				<StoreCard />
 				<StoreCard />
