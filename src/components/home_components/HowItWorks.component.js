@@ -1,9 +1,12 @@
 import Card from "./how_it_works_components/Card.component";
 import { useEffect, useRef } from "react";
 const HowItWorks = () => {
-	const current = useRef();
+	const current = useRef(null);
+
 	// changes the position of the hwo it works background
 	const backgroundPosition = () => {
+		if (current.current === null) return;
+
 		const app = document.querySelector(".App");
 
 		// gets the styles of the app element

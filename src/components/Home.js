@@ -9,7 +9,7 @@ import NavBar from "./Navbar";
 import Rider from "./home_components/RIder.component";
 import RowMenu from "./home_components/RowMenu.component";
 import ScrollToTop from "./ScrollToTop";
-import useScroll from "./home_components/custom_hooks/useScroll";
+import useScroll from "./custom_hooks/useScroll";
 
 const Home = () => {
 	// custom hook useScroll
