@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 
 const NavBar = ({ hasScrolled }) => {
 	const button = useRef();
@@ -39,7 +39,7 @@ const NavBar = ({ hasScrolled }) => {
 					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						Home
 					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
+					<Link to={"/stores"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
 						Stores
 					</Link>
 					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">

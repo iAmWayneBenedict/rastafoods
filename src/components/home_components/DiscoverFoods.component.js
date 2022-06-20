@@ -1,6 +1,6 @@
 import Card from "../home_components/discover_foods_components/Card.component";
 import { Link } from "react-router-dom";
-import useWindowSize from "./custom_hooks/useWindowSize";
+import useWindowSize from "../custom_hooks/useWindowSize";
 
 const DiscoverFoods = () => {
 	const cardData = {
