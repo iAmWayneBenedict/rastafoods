@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 
 const NavBar = ({ hasScrolled }) => {
 	const button = useRef();

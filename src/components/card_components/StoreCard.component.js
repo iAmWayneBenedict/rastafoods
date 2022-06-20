@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const StoreCard = () => {
 	return (
-		<div className="max-w-[15rem] min-w-[10rem] w-full sm:min-w-[15rem] p-3 sm:p-5 rounded-lg border border-gray-300">
+		<div className="sm:max-w-[12rem] sm:min-w-[9.15rem] md:max-w-[15rem] md:min-w-[10rem] min-w-[9rem] max-w-[9.15rem] p-3 sm:p-5 rounded-lg border border-gray-300 min-h-[14.25rem]">
 			<img
 				src="/img/1200px-McDonald's_Golden_Arches.svg.png"
 				alt=""

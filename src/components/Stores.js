@@ -6,13 +6,18 @@ import SectionContainer from "./section_components/SectionContainer";
 
 const Stores = () => {
 	const { scrolledOverHundred, scrolledOverTen } = useScroll();
-	const data = "";
+	const data = [
+		{ title: "Free Deliveries" },
+		{ title: "Hot Deals Up to 40% Off" },
+		{ title: "New Restaurants Near You" },
+		{ title: "Popular Restaurants" },
+	];
 	return (
 		<div>
 			<NavBar hasScrolled={scrolledOverTen} />
 			<ScrollToTop hasScrolled={scrolledOverHundred} />
 
-			<div className="mx-10 mt-28">
+			<div className="md:mx-10 mt-28">
 				<div className="banner w-full h-[5rem] bg-gray-400 flex items-center justify-center mb-20">
 					<p className="text-sm">Banner</p>
 				</div>
@@ -31,13 +36,17 @@ const Stores = () => {
 							Submit
 						</button>
 					</div>
-					<button className="filter flex gap-1 align-middle">
-						<h6 className="font-semibold text-primary underline">Filter</h6>
-						<i className="bi bi-chevron-down text-primary font-semibold"></i>
+					<button className="filter inline-flex gap-1 align-middle">
+						<h6 className="font-semibold text-primary underline sm:text-base text-xs flex items-center">
+							Filter
+						</h6>
+						<i className="bi bi-chevron-down text-primary font-semibold sm:text-base text-xs flex items-center mt-[2px]"></i>
 					</button>
 				</div>
 				<div className="shops">
-					<SectionContainer data={data} />
+					{data.map((value, key) => {
+						return <SectionContainer data={value} key={key} />;
+					})}
 				</div>
 				<div className="cuisines"></div>
 				<div className="foods"></div>
