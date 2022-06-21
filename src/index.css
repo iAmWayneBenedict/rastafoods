@@ -643,6 +643,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 14rem;
   margin-right: 14rem;
 }
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
 .ml-5{
   margin-left: 1.25rem;
 }
@@ -766,6 +770,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-2{
   margin-bottom: 0.5rem;
 }
+.mr-auto{
+  margin-right: auto;
+}
+.ml-auto{
+  margin-left: auto;
+}
 .mt-\[2px\]{
   margin-top: 2px;
 }
@@ -838,6 +848,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .h-8{
   height: 2rem;
+}
+.h-6{
+  height: 1.5rem;
+}
+.h-7{
+  height: 1.75rem;
 }
 .h-\[15px\]{
   height: 15px;
@@ -912,6 +928,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-44{
   width: 11rem;
 }
+.w-6{
+  width: 1.5rem;
+}
+.w-7{
+  width: 1.75rem;
+}
 .w-\[25px\]{
   width: 25px;
 }
@@ -923,6 +945,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .w-\[55\%\]{
   width: 55%;
+}
+.min-w-fit{
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 .min-w-\[9rem\]{
   min-width: 9rem;
@@ -1029,6 +1055,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .flex-wrap{
   flex-wrap: wrap;
+}
+.content-end{
+  align-content: flex-end;
 }
 .items-center{
   align-items: center;
@@ -1138,6 +1167,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-gray-500{
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+.border-slate-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
+}
+.border-gray-400{
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 .bg-gray-600{
   --tw-bg-opacity: 1;
@@ -1653,8 +1690,8 @@ html {
     margin: 3rem;
   }
 
-  .sm\:mb-10{
-    margin-bottom: 2.5rem;
+  .sm\:mb-4{
+    margin-bottom: 1rem;
   }
 
   .sm\:mb-5{
@@ -1731,6 +1768,10 @@ html {
     justify-content: center;
   }
 
+  .sm\:gap-5{
+    gap: 1.25rem;
+  }
+
   .sm\:rounded-xl{
     border-radius: 0.75rem;
   }
@@ -1746,6 +1787,11 @@ html {
   .sm\:px-10{
     padding-left: 2.5rem;
     padding-right: 2.5rem;
+  }
+
+  .sm\:py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
   }
 
   .sm\:px-5{
