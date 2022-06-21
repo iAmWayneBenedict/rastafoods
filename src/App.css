@@ -49,4 +49,25 @@ html {
 	.active-line2 {
 		@apply rotate-[-45deg];
 	}
+	.open .event {
+		@apply bg-primary;
+	}
+	.closed .event {
+		@apply bg-gray-400;
+	}
+	.closed {
+		@apply pointer-events-none;
+	}
+}
+
+.closed {
+	opacity: 0.5;
+}
+
+.open {
+	opacity: 1;
+}
+
+.bi-suit-heart::before {
+	font-weight: bold !important;
 }
