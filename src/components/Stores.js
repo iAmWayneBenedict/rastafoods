@@ -6,12 +6,16 @@ import SectionContainer from "./section_components/SectionContainer";
 
 const Stores = () => {
 	const { scrolledOverHundred, scrolledOverTen } = useScroll();
-	const data = [
-		{ title: "Free Deliveries" },
-		{ title: "Hot Deals Up to 40% Off" },
-		{ title: "New Restaurants Near You" },
-		{ title: "Popular Restaurants" },
-	];
+	const data = {
+		shops: [
+			{ title: "Free Deliveries" },
+			{ title: "Hot Deals Up to 40% Off" },
+			{ title: "New Restaurants Near You" },
+			{ title: "Popular Restaurants" },
+		],
+		cuisines: [{ title: "Discover Interesting Cuisines" }],
+		foods: [{ title: "Discover New Foods" }, { title: "Popular Foods" }],
+	};
 	return (
 		<div>
 			<NavBar hasScrolled={scrolledOverTen} />
@@ -44,12 +48,29 @@ const Stores = () => {
 					</button>
 				</div>
 				<div className="shops">
-					{data.map((value, key) => {
-						return <SectionContainer data={value} key={key} />;
+					{data.shops.map(({ title }, key) => {
+						return (
+							<SectionContainer data={{ title, key, section: "shops" }} key={key} />
+						);
 					})}
 				</div>
-				<div className="cuisines"></div>
-				<div className="foods"></div>
+				<div className="cuisines">
+					{data.cuisines.map(({ title }, key) => {
+						return (
+							<SectionContainer
+								data={{ title, key, section: "cuisines" }}
+								key={key}
+							/>
+						);
+					})}
+				</div>
+				<div className="foods">
+					{data.foods.map(({ title }, key) => {
+						return (
+							<SectionContainer data={{ title, key, section: "foods" }} key={key} />
+						);
+					})}
+				</div>
 			</div>
 
 			<Footer />

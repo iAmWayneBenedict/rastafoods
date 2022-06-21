@@ -31,17 +31,33 @@ const Footer = () => {
 				<div className="right flex max-w-[55rem] w-full">
 					<div className="left max-w-[20rem] w-full flex flex-col gap-3">
 						<h1 className="font-bold text-zinc-700 text-lg">Products</h1>
-						<Link to={"/"}>Burger</Link>
-						<Link to={"/"}>Drinks</Link>
-						<Link to={"/"}>Fried Chicken</Link>
-						<Link to={"/"}>Combo Meals</Link>
+						<Link to={"/"} className="w-fit">
+							Burger
+						</Link>
+						<Link to={"/"} className="w-fit">
+							Drinks
+						</Link>
+						<Link to={"/"} className="w-fit">
+							Fried Chicken
+						</Link>
+						<Link to={"/"} className="w-fit">
+							Combo Meals
+						</Link>
 					</div>
 					<div className="right max-w-[20rem] w-full flex flex-col gap-3">
 						<h1 className="font-bold text-gray-700 text-lg">Useful Links</h1>
-						<Link to={"/"}>Menu</Link>
-						<Link to={"/"}>Delivery</Link>
-						<Link to={"/"}>Contact</Link>
-						<Link to={"/"}>About</Link>
+						<Link to={"/"} className="w-fit">
+							Menu
+						</Link>
+						<Link to={"/"} className="w-fit">
+							Delivery
+						</Link>
+						<Link to={"/"} className="w-fit">
+							Contact
+						</Link>
+						<Link to={"/"} className="w-fit">
+							About
+						</Link>
 					</div>
 				</div>
 			</div>
