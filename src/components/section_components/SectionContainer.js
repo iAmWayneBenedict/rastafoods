@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import CuisineCard from "../card_components/CuisineCard.component";
+import FoodCard from "../card_components/FoodCard.component";
 import StoreCard from "../card_components/StoreCard.component";
 
 const SectionContainer = ({ data }) => {
@@ -60,6 +61,12 @@ const SectionContainer = ({ data }) => {
 						})}
 					</div>
 				)}
+
+				{isFoods &&
+					[...Array(10)].map((k, val) => {
+						if (val < 8) return <FoodCard key={val} />;
+						return <FoodCard key={val} />;
+					})}
 			</div>
 		</div>
 	);

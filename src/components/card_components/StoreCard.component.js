@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import EventCard from "./EventCard.component";
 
 const StoreCard = ({ event }) => {
 	const [isClosed, setIsClosed] = useState(event);
@@ -21,9 +22,7 @@ const StoreCard = ({ event }) => {
 			className={`${closeClass} sm:max-w-[12rem] sm:min-w-[9.15rem] md:max-w-[15rem] md:min-w-[13rem] min-w-[9rem] max-w-[9.15rem] w-full p-3 sm:p-5 rounded-lg border border-gray-300 min-h-[14.25rem] relative`}
 		>
 			{/* can implement storeEvent && element */}
-			<div className="event absolute top-10 right-0 min-w-[40%] max-w-[50%] p-1 px-2">
-				<h3 className="text-white text-center font-semibold text-xs sm:text-sm">20% off</h3>
-			</div>
+			<EventCard data="20% off" />
 			<img
 				src="/img/1200px-McDonald's_Golden_Arches.svg.png"
 				alt=""
