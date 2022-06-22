@@ -643,6 +643,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   margin-left: 14rem;
   margin-right: 14rem;
 }
+.mx-auto{
+  margin-left: auto;
+  margin-right: auto;
+}
 .ml-5{
   margin-left: 1.25rem;
 }
@@ -766,6 +770,24 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mb-2{
   margin-bottom: 0.5rem;
 }
+.mr-auto{
+  margin-right: auto;
+}
+.ml-auto{
+  margin-left: auto;
+}
+.mr-1{
+  margin-right: 0.25rem;
+}
+.mr-0{
+  margin-right: 0px;
+}
+.ml-2{
+  margin-left: 0.5rem;
+}
+.mb-7{
+  margin-bottom: 1.75rem;
+}
 .mt-\[2px\]{
   margin-top: 2px;
 }
@@ -839,11 +861,23 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-8{
   height: 2rem;
 }
+.h-6{
+  height: 1.5rem;
+}
+.h-7{
+  height: 1.75rem;
+}
 .h-\[15px\]{
   height: 15px;
 }
 .h-\[5rem\]{
   height: 5rem;
+}
+.h-\[2\.5rem\]{
+  height: 2.5rem;
+}
+.h-1\/2{
+  height: 50%;
 }
 .h-\[3rem\]{
   height: 3rem;
@@ -912,6 +946,21 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-44{
   width: 11rem;
 }
+.w-6{
+  width: 1.5rem;
+}
+.w-7{
+  width: 1.75rem;
+}
+.w-4{
+  width: 1rem;
+}
+.w-2{
+  width: 0.5rem;
+}
+.w-3{
+  width: 0.75rem;
+}
 .w-\[25px\]{
   width: 25px;
 }
@@ -924,11 +973,15 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[55\%\]{
   width: 55%;
 }
-.min-w-\[9rem\]{
-  min-width: 9rem;
+.min-w-fit{
+  min-width: -moz-fit-content;
+  min-width: fit-content;
 }
 .min-w-\[40\%\]{
   min-width: 40%;
+}
+.min-w-\[9rem\]{
+  min-width: 9rem;
 }
 .max-w-full{
   max-width: 100%;
@@ -957,11 +1010,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .max-w-\[20rem\]{
   max-width: 20rem;
 }
-.max-w-\[9\.15rem\]{
-  max-width: 9.15rem;
-}
 .max-w-\[50\%\]{
   max-width: 50%;
+}
+.max-w-\[9\.15rem\]{
+  max-width: 9.15rem;
 }
 .max-w-\[70\%\]{
   max-width: 70%;
@@ -1030,8 +1083,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .flex-wrap{
   flex-wrap: wrap;
 }
+.content-end{
+  align-content: flex-end;
+}
 .items-center{
   align-items: center;
+}
+.justify-end{
+  justify-content: flex-end;
 }
 .justify-center{
   justify-content: center;
@@ -1102,8 +1161,17 @@ Ensure the default browser behavior of the `hidden` attribute.
 .rounded-sm{
   border-radius: 0.125rem;
 }
+.rounded{
+  border-radius: 0.25rem;
+}
 .rounded-\[\.35rem\]{
   border-radius: .35rem;
+}
+.rounded-tl-lg{
+  border-top-left-radius: 0.5rem;
+}
+.rounded-tr-lg{
+  border-top-right-radius: 0.5rem;
 }
 .border{
   border-width: 1px;
@@ -1138,6 +1206,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border-gray-500{
   --tw-border-opacity: 1;
   border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+.border-slate-500{
+  --tw-border-opacity: 1;
+  border-color: rgb(100 116 139 / var(--tw-border-opacity));
+}
+.border-gray-400{
+  --tw-border-opacity: 1;
+  border-color: rgb(156 163 175 / var(--tw-border-opacity));
 }
 .bg-gray-600{
   --tw-bg-opacity: 1;
@@ -1206,6 +1282,26 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-blue-700{
   --tw-bg-opacity: 1;
   background-color: rgb(29 78 216 / var(--tw-bg-opacity));
+}
+.bg-red-400{
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 113 113 / var(--tw-bg-opacity));
+}
+.bg-red-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
+}
+.bg-blue-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(147 197 253 / var(--tw-bg-opacity));
+}
+.bg-green-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(134 239 172 / var(--tw-bg-opacity));
+}
+.bg-green-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
 }
 .object-contain{
   object-fit: contain;
@@ -1447,8 +1543,19 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-text-opacity: 1;
   color: rgb(17 24 39 / var(--tw-text-opacity));
 }
+.text-yellow-500{
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
+}
+.text-black{
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
 .underline{
   text-decoration-line: underline;
+}
+.line-through{
+  text-decoration-line: line-through;
 }
 .decoration-2{
   text-decoration-thickness: 2px;
@@ -1653,8 +1760,8 @@ html {
     margin: 3rem;
   }
 
-  .sm\:mb-10{
-    margin-bottom: 2.5rem;
+  .sm\:mb-4{
+    margin-bottom: 1rem;
   }
 
   .sm\:mb-5{
@@ -1729,6 +1836,10 @@ html {
 
   .sm\:justify-center{
     justify-content: center;
+  }
+
+  .sm\:gap-5{
+    gap: 1.25rem;
   }
 
   .sm\:rounded-xl{
@@ -1808,6 +1919,10 @@ html {
     margin-left: 2rem;
   }
 
+  .md\:mr-1{
+    margin-right: 0.25rem;
+  }
+
   .md\:mt-0{
     margin-top: 0px;
   }
@@ -1828,12 +1943,20 @@ html {
     display: none;
   }
 
+  .md\:h-2\/3{
+    height: 66.666667%;
+  }
+
   .md\:h-\[15rem\]{
     height: 15rem;
   }
 
   .md\:w-1\/2{
     width: 50%;
+  }
+
+  .md\:w-4{
+    width: 1rem;
   }
 
   .md\:w-\[17rem\]{
@@ -1862,6 +1985,10 @@ html {
 
   .md\:items-center{
     align-items: center;
+  }
+
+  .md\:justify-between{
+    justify-content: space-between;
   }
 
   .md\:p-5{
@@ -1945,6 +2072,16 @@ html {
     max-width: 19rem;
   }
 
+  .xl\:py-2{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .xl\:px-5{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
   .xl\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -1965,6 +2102,10 @@ html {
 
   .\32xl\:mt-32{
     margin-top: 8rem;
+  }
+
+  .\32xl\:h-\[3rem\]{
+    height: 3rem;
   }
 
   .\32xl\:px-\[14rem\]{
