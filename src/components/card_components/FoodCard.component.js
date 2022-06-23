@@ -2,7 +2,7 @@ import Rating from "../rating/Rating.component";
 
 const FoodCard = () => {
 	return (
-		<div className="sm:max-w-[12rem] sm:min-w-[9.15rem] md:max-w-[15rem] md:min-w-[13rem] min-w-[9rem] max-w-[9.15rem] w-full p-1 rounded-lg min-h-[14.25rem] relative mb-7">
+		<div className="sm:max-w-[12rem] sm:min-w-[9.15rem] lg:max-w-[13rem] lg:min-w-[13rem] xl:max-w-[14rem] min-w-[9.15rem] w-[45%] lg:w-full p-1 rounded-lg min-h-[14.25rem] relative mb-7">
 			<div className="top h-1/2 md:h-2/3 w-full">
 				<img
 					src="/img/eggs-breakfast-avocado-1296x728-header.webp"

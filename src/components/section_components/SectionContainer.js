@@ -47,7 +47,7 @@ const SectionContainer = ({ data }) => {
 	return (
 		<div className="my-20">
 			<h1 className="font-bold text-xl my-10">{title}</h1>
-			<div className="flex flex-wrap gap-5">
+			<div className="flex flex-wrap gap-3 sm:gap-5">
 				{isShops &&
 					[...Array(10)].map((k, val) => {
 						if (val < 8) return <StoreCard event={false} key={val} />;
