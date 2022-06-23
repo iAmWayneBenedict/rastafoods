@@ -26,18 +26,18 @@ const Stores = () => {
 					<p className="text-sm">Banner</p>
 				</div>
 				<div className="filter flex flex-col gap-10">
-					<div className="inline-flex gap-3">
+					<div className="inline-flex gap-1 sm:gap-3">
 						<input
 							type="email"
 							id="email"
-							className="border border-gray-500 text-gray-900 text-sm rounded-lg block w-[20rem] p-2.5 focus:outline-none"
+							className="border border-gray-500 text-gray-900 text-sm rounded-lg block w-full sm:w-[20rem] p-2.5 focus:outline-none"
 							placeholder="Search"
 						/>
 						<button
 							type="submit"
-							className="text-white bg-primary focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center"
+							className="text-white bg-primary focus:outline-none font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center"
 						>
-							Submit
+							Search
 						</button>
 					</div>
 					<button className="filter inline-flex gap-1 align-middle">
