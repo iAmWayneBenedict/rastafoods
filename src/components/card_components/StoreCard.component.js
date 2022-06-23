@@ -19,7 +19,7 @@ const StoreCard = ({ event }) => {
 
 	return (
 		<div
-			className={`${closeClass} sm:max-w-[12rem] sm:min-w-[9.15rem] lg:max-w-[13rem] lg:min-w-[13rem] xl:max-w-[14rem] min-w-[9.15rem] w-[45%] lg:w-full p-3 md:p-5 rounded-lg border border-gray-300 min-h-[14.25rem] relative`}
+			className={`${closeClass} sm:max-w-[12rem] md:min-w-[12rem] 2xl:max-w-[14rem] min-w-[9.15rem] w-[45%] lg:w-full p-3 md:p-5 rounded-lg border border-gray-300 min-h-[14.25rem] relative`}
 		>
 			{/* can implement storeEvent && element */}
 			<EventCard data="20% off" />

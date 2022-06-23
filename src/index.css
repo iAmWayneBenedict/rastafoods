@@ -1939,28 +1939,16 @@ html {
     display: none;
   }
 
-  .md\:h-2\/3{
-    height: 66.666667%;
-  }
-
-  .md\:h-\[15rem\]{
-    height: 15rem;
-  }
-
   .md\:w-1\/2{
     width: 50%;
   }
 
-  .md\:w-4{
-    width: 1rem;
-  }
-
-  .md\:w-\[17rem\]{
-    width: 17rem;
-  }
-
   .md\:w-auto{
     width: auto;
+  }
+
+  .md\:min-w-\[12rem\]{
+    min-width: 12rem;
   }
 
   .md\:max-w-\[15rem\]{
@@ -2038,16 +2026,16 @@ html {
     margin-right: 2rem;
   }
 
+  .lg\:h-\[13rem\]{
+    height: 13rem;
+  }
+
   .lg\:w-full{
     width: 100%;
   }
 
-  .lg\:min-w-\[13rem\]{
-    min-width: 13rem;
-  }
-
-  .lg\:max-w-\[13rem\]{
-    max-width: 13rem;
+  .lg\:w-\[15rem\]{
+    width: 15rem;
   }
 
   .lg\:px-\[5rem\]{
@@ -2070,10 +2058,6 @@ html {
 
   .xl\:mt-28{
     margin-top: 7rem;
-  }
-
-  .xl\:max-w-\[14rem\]{
-    max-width: 14rem;
   }
 
   .xl\:max-w-\[19rem\]{
@@ -2114,6 +2098,18 @@ html {
 
   .\32xl\:h-\[3rem\]{
     height: 3rem;
+  }
+
+  .\32xl\:h-\[15rem\]{
+    height: 15rem;
+  }
+
+  .\32xl\:w-\[17rem\]{
+    width: 17rem;
+  }
+
+  .\32xl\:max-w-\[14rem\]{
+    max-width: 14rem;
   }
 
   .\32xl\:px-\[14rem\]{
