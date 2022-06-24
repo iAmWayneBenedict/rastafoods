@@ -1,21 +1,32 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../rating/Rating.component";
 import AddOnSection from "../shop_components/AddOnSection.component";
 
 const ItemCard = ({ data }) => {
+	const [conHeight, setConHeight] = useState(0);
 	const heartBtn = (event) => {
 		console.log(event.target);
 	};
+
+	const itemCard = useRef();
+
+	useEffect(() => {
+		setConHeight(itemCard.current.clientHeight - 100);
+	}, []);
+	window.onresize = () => {
+		setConHeight(itemCard.current.clientHeight - 100);
+	};
 	return (
 		<div
-			className="fixed bottom-0 left-[50%] translate-x-[-50%] z-50 cursor-auto w-[50rem] p-10 bg-white shadow-xl rounded-tl-2xl rounded-tr-2xl"
-			onClick={(event) => console.log(event.target)}
+			ref={itemCard}
+			className="fixed max-h-[80%] h-full bottom-0 left-[50%] translate-x-[-50%] z-50 cursor-auto w-[50rem] p-10 pb-5 bg-white shadow-xl rounded-tl-2xl rounded-tr-2xl"
 		>
-			<div className="relative p-10">
-				<Link to={"/stores"} className="close-btn absolute top-0 right-0">
+			<div className="relative p-10 pb-0 h-full">
+				<Link to={"/stores"} className="close-btn fixed top-10 right-10">
 					X
 				</Link>
-				<div className="">
+				<div className="con overflow-y-scroll" style={{ height: conHeight + "px" }}>
 					<div className="details">
 						<div className="top w-full h-[10rem] flex gap-10">
 							<div className="left h-full max-w-[13rem] flex-1">

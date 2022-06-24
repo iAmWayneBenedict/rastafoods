@@ -681,6 +681,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 .top-5{
   top: 1.25rem;
 }
+.top-7{
+  top: 1.75rem;
+}
+.right-7{
+  right: 1.75rem;
+}
 .right-\[5\%\]{
   right: 5%;
 }
@@ -1040,6 +1046,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-24{
   height: 6rem;
 }
+.h-min{
+  height: min-content;
+}
 .h-\[15px\]{
   height: 15px;
 }
@@ -1060,6 +1069,12 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-h-48{
   max-height: 12rem;
+}
+.max-h-full{
+  max-height: 100%;
+}
+.max-h-\[80\%\]{
+  max-height: 80%;
 }
 .max-h-\[25rem\]{
   max-height: 25rem;
@@ -1648,6 +1663,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .pr-10{
   padding-right: 2.5rem;
+}
+.pb-0{
+  padding-bottom: 0px;
 }
 .text-center{
   text-align: center;
