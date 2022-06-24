@@ -1,11 +1,11 @@
-import useScroll from "./custom_hooks/useScroll";
-import ScrollToTop from "./ScrollToTop";
-import NavBar from "./Navbar";
-import Footer from "./Footer";
 import SectionContainer from "./section_components/SectionContainer";
+import { useEffect, useState } from "react";
+import ItemCard from "./card_components/ItemCard.component";
+import { useParams } from "react-router-dom";
 
 const Stores = () => {
-	const { scrolledOverHundred, scrolledOverTen } = useScroll();
+	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
+	const params = useParams();
 	const data = {
 		shops: [
 			{ title: "Free Deliveries" },
@@ -16,11 +16,16 @@ const Stores = () => {
 		cuisines: [{ title: "Discover Interesting Cuisines" }],
 		foods: [{ title: "Discover New Foods" }, { title: "Popular Foods" }],
 	};
+	useEffect(() => {
+		let paramsLen = Object.keys(params).length;
+		if (!!paramsLen) {
+			setItemPopUpStatus(true);
+		} else {
+			setItemPopUpStatus(false);
+		}
+	}, [params]);
 	return (
 		<div>
-			<NavBar hasScrolled={scrolledOverTen} />
-			<ScrollToTop hasScrolled={scrolledOverHundred} />
-
 			<div className="md:mx-10 mt-28">
 				<div className="banner w-full h-[5rem] bg-gray-400 flex items-center justify-center mb-20">
 					<p className="text-sm">Banner</p>
@@ -72,8 +77,7 @@ const Stores = () => {
 					})}
 				</div>
 			</div>
-
-			<Footer />
+			{itemPopUpStatus && <ItemCard />}
 		</div>
 	);
 };

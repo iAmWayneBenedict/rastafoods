@@ -20,27 +20,27 @@ const SectionContainer = ({ data }) => {
 	const cardData = {
 		burger: {
 			name: "Burgers",
-			src: "img/t-mcdonalds-qpc-deluxe-burger 1.png",
+			src: "/img/t-mcdonalds-qpc-deluxe-burger 1.png",
 		},
 		drinks: {
 			name: "Drinks",
-			src: "img/Rectangle 15.png",
+			src: "/img/Rectangle 15.png",
 		},
 		fried_chicken: {
 			name: "Fried Chicken",
-			src: "img/Fried Chicken.png",
+			src: "/img/Fried Chicken.png",
 		},
 		sisig: {
 			name: "Sisig",
-			src: "img/Sisig.png",
+			src: "/img/Sisig.png",
 		},
 		bundle_meals: {
 			name: "Bundle Meals",
-			src: "img/Inasal.png",
+			src: "/img/Inasal.png",
 		},
 		halohalo: {
 			name: "Halo Halo",
-			src: "img/halo halo.png",
+			src: "/img/halo halo.png",
 		},
 	};
 

@@ -1,6 +1,7 @@
-const Rating = () => {
+const Rating = ({ size = "w-3" }) => {
+	let sizeClass = size;
 	return (
-		<div className="rating">
+		<div className="rating flex items-center">
 			<ul className="flex">
 				<li>
 					<svg
@@ -8,7 +9,7 @@ const Rating = () => {
 						focusable="false"
 						data-prefix="fas"
 						data-icon="star"
-						className="w-3 text-primary mr-1"
+						className={`${sizeClass} text-primary mr-1`}
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 576 512"
@@ -25,7 +26,7 @@ const Rating = () => {
 						focusable="false"
 						data-prefix="fas"
 						data-icon="star"
-						className="w-3 text-primary mr-1"
+						className={`${sizeClass} text-primary mr-1`}
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 576 512"
@@ -42,7 +43,7 @@ const Rating = () => {
 						focusable="false"
 						data-prefix="fas"
 						data-icon="star"
-						className="w-3 text-primary mr-1"
+						className={`${sizeClass} text-primary mr-1`}
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 576 512"
@@ -59,7 +60,7 @@ const Rating = () => {
 						focusable="false"
 						data-prefix="far"
 						data-icon="star"
-						className="w-3 text-primary mr-1"
+						className={`${sizeClass} text-primary mr-1`}
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 576 512"
@@ -76,7 +77,7 @@ const Rating = () => {
 						focusable="false"
 						data-prefix="far"
 						data-icon="star"
-						className="w-3 text-primary"
+						className={`${sizeClass} text-primary mr-1`}
 						role="img"
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 576 512"
@@ -88,6 +89,8 @@ const Rating = () => {
 					</svg>
 				</li>
 			</ul>
+			<span className="font-semibold text-xs mx-2">5.0</span>
+			<span className="text-xs text-slate-500">(123)</span>
 		</div>
 	);
 };
