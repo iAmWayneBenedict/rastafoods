@@ -560,7 +560,6 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .food-card-container{
   position: relative;
-  margin: 0.25rem;
   margin-bottom: 1.75rem;
   min-height: 14.25rem;
   width: 45%;
@@ -571,11 +570,13 @@ Ensure the default browser behavior of the `hidden` attribute.
 @media (min-width: 640px){
 
   .food-card-container{
-    min-width: 9.15rem;
+    max-width: 12rem;
   }
+}
+@media (min-width: 768px){
 
   .food-card-container{
-    max-width: 12rem;
+    min-width: 12rem;
   }
 }
 @media (min-width: 1024px){
@@ -954,6 +955,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mr-20{
   margin-right: 5rem;
 }
+.mr-10{
+  margin-right: 2.5rem;
+}
 .mt-\[2px\]{
   margin-top: 2px;
 }
@@ -1048,8 +1052,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .h-1\/2{
   height: 50%;
 }
-.h-\[15rem\]{
-  height: 15rem;
+.h-\[10rem\]{
+  height: 10rem;
 }
 .h-\[3rem\]{
   height: 3rem;
@@ -1142,8 +1146,8 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[25px\]{
   width: 25px;
 }
-.w-2\/5{
-  width: 40%;
+.w-\[50rem\]{
+  width: 50rem;
 }
 .w-\[3rem\]{
   width: 3rem;
@@ -1190,6 +1194,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 .max-w-\[50\%\]{
   max-width: 50%;
+}
+.max-w-\[13rem\]{
+  max-width: 13rem;
 }
 .max-w-\[70\%\]{
   max-width: 70%;
@@ -2087,10 +2094,6 @@ html {
 
   .sm\:w-2\/3{
     width: 66.666667%;
-  }
-
-  .sm\:min-w-\[9\.15rem\]{
-    min-width: 9.15rem;
   }
 
   .sm\:max-w-\[12rem\]{

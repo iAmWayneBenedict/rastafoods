@@ -17,7 +17,7 @@ const NavBar = ({ hasScrolled }) => {
 	const shadow = hasScrolled ? "shadow-md" : "";
 	return (
 		<nav
-			className={`fixed top-0 ${shadow} left-0 w-full 2xl:px-[14rem] lg:px-[5rem] px-5 z-50 bg-white transition-all duration-300 z-[100]`}
+			className={`fixed top-0 ${shadow} left-0 w-full 2xl:px-[14rem] lg:px-[5rem] px-5 bg-white transition-all duration-300 z-[100]`}
 		>
 			<div className="flex justify-between items-center py-2 2xl:py-4">
 				<button

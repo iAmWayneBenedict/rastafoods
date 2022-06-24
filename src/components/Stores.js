@@ -24,6 +24,37 @@ const Stores = () => {
 			setItemPopUpStatus(false);
 		}
 	}, [params]);
+
+	const addOnData = [
+		{
+			title: "Add On",
+			required: false,
+			data: [
+				{ name: "Checkbox 1", additionalPrice: 150 },
+				{ name: "Checkbox 2", additionalPrice: 150 },
+				{ name: "Checkbox 3", additionalPrice: 150 },
+			],
+		},
+		{
+			title: "Additional Add On",
+			required: false,
+			data: [
+				{ name: "Checkbox 1", additionalPrice: 150 },
+				{ name: "Checkbox 2", additionalPrice: 150 },
+				{ name: "Checkbox 3", additionalPrice: 150 },
+			],
+		},
+		{
+			title: "Free Add On",
+			required: true,
+			data: [
+				{ name: "Checkbox 1", additionalPrice: 150 },
+				{ name: "Checkbox 2", additionalPrice: 150 },
+				{ name: "Checkbox 3", additionalPrice: 150 },
+			],
+		},
+	];
+
 	return (
 		<div>
 			<div className="md:mx-10 mt-28">
@@ -77,7 +108,7 @@ const Stores = () => {
 					})}
 				</div>
 			</div>
-			{itemPopUpStatus && <ItemCard />}
+			{itemPopUpStatus && <ItemCard data={addOnData} />}
 		</div>
 	);
 };
