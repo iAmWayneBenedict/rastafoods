@@ -1,6 +1,6 @@
 import Card from "../home_components/discover_foods_components/Card.component";
 import { Link } from "react-router-dom";
-import useWindowSize from "../custom_hooks/useWindowSize";
+import useWindowWidthSize from "../custom_hooks/useWindowWidthSize";
 
 const DiscoverFoods = () => {
 	const cardData = {
@@ -29,7 +29,7 @@ const DiscoverFoods = () => {
 			src: "img/halo halo.png",
 		},
 	};
-	const windowSize = useWindowSize();
+	const windowSize = useWindowWidthSize();
 	let itr = 0;
 	return (
 		<div className="current flex flex-col mt-[8rem] py-10 relative">

@@ -1,15 +1,28 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Stores from "./components/Stores";
+import ScrollToTop from "./components/ScrollToTop";
+import useScroll from "./components/custom_hooks/useScroll";
+import NavBar from "./components/Navbar";
+import Footer from "./components/Footer";
 
 const App = () => {
+	// custom hook useScroll
+	let { scrolledOverHundred, scrolledOverTen } = useScroll();
 	return (
 		<div className="App font-sans 2xl:mx-[10rem] lg:mx-[5rem] md:mx-0 px-5 relative">
 			<Router>
+				{/* Navigation bar */}
+				<NavBar hasScrolled={scrolledOverTen} />
+				{/* Scroll To Top */}
+				<ScrollToTop hasScrolled={scrolledOverHundred} />
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/stores" element={<Stores />} />
+					<Route path="/stores/:store/:food" element={<Stores />} />
 				</Routes>
+				{/* Footer */}
+				<Footer />
 			</Router>
 		</div>
 	);
