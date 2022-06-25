@@ -10,7 +10,6 @@ const ItemCard = ({ data }) => {
 	};
 
 	const itemCard = useRef();
-
 	useEffect(() => {
 		setConHeight(itemCard.current.clientHeight - 100);
 	}, []);
@@ -23,9 +22,12 @@ const ItemCard = ({ data }) => {
 			className="fixed max-h-[80%] h-full bottom-0 left-[50%] translate-x-[-50%] z-50 cursor-auto w-[50rem] p-10 pb-5 bg-white shadow-xl rounded-tl-2xl rounded-tr-2xl"
 		>
 			<div className="relative p-10 pb-0 h-full">
-				<Link to={"/stores"} className="close-btn fixed top-10 right-10">
+				<div
+					onClick={() => window.history.back()}
+					className="close-btn fixed top-10 right-10 cursor-pointer"
+				>
 					X
-				</Link>
+				</div>
 				<div className="con overflow-y-scroll" style={{ height: conHeight + "px" }}>
 					<div className="details">
 						<div className="top w-full h-[10rem] flex gap-10">
