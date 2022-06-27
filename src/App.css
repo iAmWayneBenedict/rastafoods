@@ -28,6 +28,9 @@ html {
 .text-primary {
 	color: rgb(255, 37, 37);
 }
+.accent-primary {
+	accent-color: rgb(255, 37, 37);
+}
 .decoration-primary {
 	text-decoration-color: rgb(255, 37, 37);
 }
