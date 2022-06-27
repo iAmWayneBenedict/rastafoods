@@ -5,8 +5,8 @@ const AddOnSection = (values) => {
 	return (
 		<div className=" mt-10">
 			<div className="flex items-center">
-				<h3 className="title mr-5 font-bold">{title}</h3>
-				<span className="text-sm">({required ? "required" : "optional"})</span>
+				<h3 className="title mr-5 font-bold text-sm md:text-base">{title}</h3>
+				<span className="text-xs md:text-sm">({required ? "required" : "optional"})</span>
 			</div>
 			{Object.entries(data).map(([key, value]) => {
 				return <AddOnCheckbox data={value} key={key} />;

@@ -30,32 +30,32 @@ const Footer = () => {
 				</div>
 				<div className="right flex max-w-[55rem] w-full">
 					<div className="left max-w-[20rem] w-full flex flex-col gap-3">
-						<h1 className="font-bold text-zinc-700 text-lg">Products</h1>
-						<Link to={"/"} className="w-fit">
+						<h1 className="font-bold text-zinc-700 md:text-lg">Products</h1>
+						<Link to={"/"} className="w-fit text-sm">
 							Burger
 						</Link>
-						<Link to={"/"} className="w-fit">
+						<Link to={"/"} className="w-fit text-sm">
 							Drinks
 						</Link>
-						<Link to={"/"} className="w-fit">
+						<Link to={"/"} className="w-fit text-sm">
 							Fried Chicken
 						</Link>
-						<Link to={"/"} className="w-fit">
+						<Link to={"/"} className="w-fit text-sm">
 							Combo Meals
 						</Link>
 					</div>
 					<div className="right max-w-[20rem] w-full flex flex-col gap-3">
-						<h1 className="font-bold text-gray-700 text-lg">Useful Links</h1>
-						<Link to={"/"} className="w-fit">
+						<h1 className="font-bold text-gray-700 md:text-lg">Useful Links</h1>
+						<Link to={"/"} className="w-fit text-sm">
 							Menu
 						</Link>
-						<Link to={"/"} className="w-fit">
+						<Link to={"/"} className="w-fit text-sm">
 							Delivery
 						</Link>
-						<Link to={"/"} className="w-fit">
+						<Link to={"/"} className="w-fit text-sm">
 							Contact
 						</Link>
-						<Link to={"/"} className="w-fit">
+						<Link to={"/"} className="w-fit text-sm">
 							About
 						</Link>
 					</div>

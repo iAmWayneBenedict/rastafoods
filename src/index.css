@@ -826,6 +826,10 @@ button:focus, input:focus{
   margin-top: 3.5rem;
   margin-bottom: 3.5rem;
 }
+.mx-3{
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
+}
 .mr-0{
   margin-right: 0px;
 }
@@ -1061,6 +1065,9 @@ button:focus, input:focus{
 .h-min{
   height: min-content;
 }
+.h-4{
+  height: 1rem;
+}
 .h-\[15px\]{
   height: 15px;
 }
@@ -1073,8 +1080,8 @@ button:focus, input:focus{
 .h-1\/2{
   height: 50%;
 }
-.h-\[10rem\]{
-  height: 10rem;
+.h-\[7rem\]{
+  height: 7rem;
 }
 .h-\[3rem\]{
   height: 3rem;
@@ -1085,8 +1092,8 @@ button:focus, input:focus{
 .max-h-full{
   max-height: 100%;
 }
-.max-h-\[80\%\]{
-  max-height: 80%;
+.max-h-\[95\%\]{
+  max-height: 95%;
 }
 .max-h-\[25rem\]{
   max-height: 25rem;
@@ -1173,12 +1180,6 @@ button:focus, input:focus{
 .w-\[25px\]{
   width: 25px;
 }
-.w-\[50rem\]{
-  width: 50rem;
-}
-.w-\[1rem\]{
-  width: 1rem;
-}
 .w-\[3rem\]{
   width: 3rem;
 }
@@ -1225,8 +1226,8 @@ button:focus, input:focus{
 .max-w-\[50\%\]{
   max-width: 50%;
 }
-.max-w-\[13rem\]{
-  max-width: 13rem;
+.max-w-\[7rem\]{
+  max-width: 7rem;
 }
 .max-w-\[70\%\]{
   max-width: 70%;
@@ -1819,6 +1820,10 @@ button:focus, input:focus{
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
 }
+.text-red-600{
+  --tw-text-opacity: 1;
+  color: rgb(220 38 38 / var(--tw-text-opacity));
+}
 .underline{
   text-decoration-line: underline;
 }
@@ -1995,6 +2000,17 @@ html {
 }
 .decoration-primary {
 	text-decoration-color: rgb(255, 37, 37);
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
 }
 .item-counter i,
 .close-btn i {
@@ -2225,6 +2241,14 @@ html {
 
 @media (min-width: 768px){
 
+  .md\:top-10{
+    top: 2.5rem;
+  }
+
+  .md\:right-10{
+    right: 2.5rem;
+  }
+
   .md\:order-1{
     order: 1;
   }
@@ -2271,6 +2295,22 @@ html {
     display: none;
   }
 
+  .md\:h-\[10rem\]{
+    height: 10rem;
+  }
+
+  .md\:max-h-\[90\%\]{
+    max-height: 90%;
+  }
+
+  .md\:w-\[50rem\]{
+    width: 50rem;
+  }
+
+  .md\:w-4{
+    width: 1rem;
+  }
+
   .md\:w-1\/2{
     width: 50%;
   }
@@ -2281,6 +2321,10 @@ html {
 
   .md\:min-w-\[12rem\]{
     min-width: 12rem;
+  }
+
+  .md\:max-w-\[13rem\]{
+    max-width: 13rem;
   }
 
   .md\:max-w-\[15rem\]{
@@ -2301,6 +2345,14 @@ html {
 
   .md\:justify-between{
     justify-content: space-between;
+  }
+
+  .md\:gap-10{
+    gap: 2.5rem;
+  }
+
+  .md\:p-10{
+    padding: 2.5rem;
   }
 
   .md\:p-5{
@@ -2330,14 +2382,19 @@ html {
     line-height: 1.25rem;
   }
 
+  .md\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
   .md\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
   }
 
-  .md\:text-lg{
-    font-size: 1.125rem;
-    line-height: 1.75rem;
+  .md\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .md\:text-base{
@@ -2390,6 +2447,10 @@ html {
 
   .xl\:mt-28{
     margin-top: 7rem;
+  }
+
+  .xl\:max-h-\[80\%\]{
+    max-height: 80%;
   }
 
   .xl\:max-w-\[19rem\]{
