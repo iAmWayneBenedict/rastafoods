@@ -1839,6 +1839,9 @@ button:focus, input:focus{
 .underline-offset-2{
   text-underline-offset: 2px;
 }
+.accent-black{
+  accent-color: #000;
+}
 .opacity-100{
   opacity: 1;
 }
@@ -1997,6 +2000,9 @@ html {
 
 .text-primary {
 	color: rgb(255, 37, 37);
+}
+.accent-primary {
+	accent-color: rgb(255, 37, 37);
 }
 .decoration-primary {
 	text-decoration-color: rgb(255, 37, 37);
@@ -2447,10 +2453,6 @@ input[type="number"] {
 
   .xl\:mt-28{
     margin-top: 7rem;
-  }
-
-  .xl\:max-h-\[80\%\]{
-    max-height: 80%;
   }
 
   .xl\:max-w-\[19rem\]{

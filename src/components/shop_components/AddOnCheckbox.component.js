@@ -7,7 +7,7 @@ const AddOnCheckbox = ({ data }) => {
 					{name}
 				</label>
 				<input
-					className="order-1 mr-2 text-primary"
+					className="order-1 mr-2 accent-primary"
 					type="checkbox"
 					name="name1"
 					id="name1"

@@ -16,16 +16,16 @@ const ItemCard = ({ data }) => {
 	}, [itemCounter]);
 	const itemCard = useRef();
 	useEffect(() => {
-		setConHeight(itemCard.current.clientHeight - 100);
+		setConHeight(itemCard.current.clientHeight - 120);
 	}, []);
 	window.onresize = () => {
-		setConHeight(itemCard.current.clientHeight - 100);
+		setConHeight(itemCard.current.clientHeight - 120);
 	};
 
 	return (
 		<div
 			ref={itemCard}
-			className="fixed max-h-[95%] md:max-h-[90%]  xl:max-h-[80%] h-full bottom-0 left-[50%] translate-x-[-50%] z-50 cursor-auto w-full md:w-[50rem] p-3 py-10 md:p-10 pb-5 bg-white shadow-xl rounded-tl-2xl rounded-tr-2xl"
+			className="fixed max-h-[95%] md:max-h-[90%] h-full bottom-0 left-[50%] translate-x-[-50%] z-50 cursor-auto w-full md:w-[50rem] p-3 py-10 md:p-10 pb-5 bg-white shadow-xl rounded-tl-2xl rounded-tr-2xl"
 		>
 			<div className="relative p-3 py-5 md:p-10 pb-0 h-full">
 				<Link
