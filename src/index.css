@@ -624,6 +624,10 @@ Ensure the default browser behavior of the `hidden` attribute.
     justify-content: space-between;
   }
 }
+button:focus, input:focus{
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+}
 .visible{
   visibility: visible;
 }
@@ -813,6 +817,14 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mx-auto{
   margin-left: auto;
   margin-right: auto;
+}
+.my-5{
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+.my-14{
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
 }
 .mr-0{
   margin-right: 0px;
@@ -1164,6 +1176,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .w-\[50rem\]{
   width: 50rem;
 }
+.w-\[1rem\]{
+  width: 1rem;
+}
 .w-\[3rem\]{
   width: 3rem;
 }
@@ -1396,6 +1411,9 @@ Ensure the default browser behavior of the `hidden` attribute.
 .border{
   border-width: 1px;
 }
+.border-0{
+  border-width: 0px;
+}
 .border-2{
   border-width: 2px;
 }
@@ -1526,6 +1544,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 .bg-green-200{
   --tw-bg-opacity: 1;
   background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+}
+.bg-gray-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(209 213 219 / var(--tw-bg-opacity));
 }
 .bg-opacity-\[\.75\]{
   --tw-bg-opacity: .75;
@@ -1974,6 +1996,10 @@ html {
 .decoration-primary {
 	text-decoration-color: rgb(255, 37, 37);
 }
+.item-counter i,
+.close-btn i {
+	-webkit-text-stroke: 1px;
+}
 .link-animator {
 	position: relative;
 	overflow-x: hidden !important;
@@ -2016,6 +2042,10 @@ html {
 
 .bi-suit-heart::before {
 	font-weight: bold !important;
+}
+
+.focus\:border:focus{
+  border-width: 1px;
 }
 
 .focus\:outline-none:focus{

@@ -26,9 +26,9 @@ const ItemCard = ({ data }) => {
 					onClick={() => window.history.back()}
 					className="close-btn fixed top-10 right-10 cursor-pointer"
 				>
-					X
+					<i class="bi bi-x-lg text-xl"></i>
 				</div>
-				<div className="con overflow-y-scroll" style={{ height: conHeight + "px" }}>
+				<div className="con overflow-y-scroll px-2" style={{ height: conHeight + "px" }}>
 					<div className="details">
 						<div className="top w-full h-[10rem] flex gap-10">
 							<div className="left h-full max-w-[13rem] flex-1">
@@ -70,7 +70,27 @@ const ItemCard = ({ data }) => {
 								return <AddOnSection data={value} key={key} />;
 							})}
 						</div>
-						<div className="item-counter"></div>
+						<div className="item-counter flex my-14">
+							<button type="button" className="w-8 h-8 bg-gray-300 rounded">
+								<i className="bi bi-dash-lg"></i>
+							</button>
+							<input
+								type="text"
+								name=""
+								id=""
+								value="1"
+								className="w-[1rem] text-center mx-5 font-bold text-lg"
+							/>
+							<button type="button" className="w-8 h-8 bg-primary text-white rounded">
+								<i className="bi bi-plus-lg font-bold"></i>
+							</button>
+						</div>
+						<button
+							type="submit"
+							className="mb-10 font-semibold text-center w-full bg-primary text-white py-2 rounded-md"
+						>
+							Add to Cart
+						</button>
 					</form>
 				</div>
 			</div>

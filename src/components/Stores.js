@@ -66,7 +66,7 @@ const Stores = () => {
 						<input
 							type="email"
 							id="email"
-							className="border border-gray-500 text-gray-900 text-sm rounded-lg block w-full sm:w-[20rem] p-2.5 focus:outline-none"
+							className="border border-gray-500 text-gray-900 text-sm rounded-lg block w-full sm:w-[20rem] p-2.5 focus:outline-none focus:border"
 							placeholder="Search"
 						/>
 						<button

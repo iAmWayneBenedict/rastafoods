@@ -82,6 +82,15 @@ html {
 	.food-name-con {
 		@apply flex flex-col md:flex-row md:justify-between md:items-center;
 	}
+
+	button,
+	input {
+		@apply focus:outline-none;
+	}
+}
+.item-counter i,
+.close-btn i {
+	-webkit-text-stroke: 1px;
 }
 .link-animator {
 	position: relative;
