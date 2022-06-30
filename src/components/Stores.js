@@ -2,6 +2,7 @@ import SectionContainer from "./section_components/SectionContainer";
 import { useEffect, useState } from "react";
 import ItemCard from "./card_components/ItemCard.component";
 import { useParams } from "react-router-dom";
+import CartSection from "./card_components/CartSection.component";
 
 const Stores = () => {
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
@@ -109,6 +110,7 @@ const Stores = () => {
 				</div>
 			</div>
 			{itemPopUpStatus && <ItemCard data={addOnData} />}
+			<CartSection />
 		</div>
 	);
 };
