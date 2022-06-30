@@ -110,7 +110,6 @@ const Stores = () => {
 				</div>
 			</div>
 			{itemPopUpStatus && <ItemCard data={addOnData} />}
-			<CartSection />
 		</div>
 	);
 };

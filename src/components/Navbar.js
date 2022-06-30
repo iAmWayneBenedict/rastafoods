@@ -53,7 +53,7 @@ const NavBar = ({ hasScrolled }) => {
 					</Link>
 				</div>
 				<div className="">
-					<Link to={"/"}>
+					<Link to={"/cart"}>
 						<i className="bi bi-bag text-base md:text-lg"></i>
 					</Link>
 					<Link

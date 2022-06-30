@@ -1,23 +1,25 @@
 import CartCard from "./CartCard.component";
 
 const CartSection = () => {
+	const pull_data = (data) => {
+		console.log(data);
+	};
 	return (
-		<div className="fixed bottom-0 right-[10%] lg:w-[20rem] xl:w-[23rem] 2xl:w-[28rem] bg-white shadow-2xl rounded-lg flex flex-col lg:p-6 xl:p-12 z-50 sm:z-0">
-			<div className="relative">
-				<h1 className="title font-semibold text-lg xl:text-xl mb-5">Your Cart</h1>
-				<button
-					type="button"
-					className="close-btn absolute top-0 xl:top-[-5%] right-0 cursor-pointer"
-				>
-					<i className="bi bi-chevron-down"></i>
-				</button>
+		<div className="flex mt-20 gap-10 items-stretch">
+			<div className="left w-[65%]">
+				<h1 className="title font-semibold text-lg xl:text-2xl mb-5">Your Cart</h1>
 				<main>
 					<h4 className="text-sm font-semibold my-2">2 items</h4>
-					<div className="border-y border-gray-500">
-						<CartCard />
+					<div className="border-y border-gray-500 flex flex-col gap-2">
+						<CartCard callback={pull_data} />
+						<CartCard callback={pull_data} />
+						<CartCard callback={pull_data} />
+						<CartCard callback={pull_data} />
 					</div>
 				</main>
-				<div className="payment flex flex-col">
+			</div>
+			<div className="right mt-20 w-[35%] flex flex-col justify-between">
+				<div className="payment flex flex-col mt-3">
 					<div className="subtotal flex justify-between my-1">
 						<div className="title font-semibold text-xs 2xl:text-sm text-gray-600">
 							Subtotal

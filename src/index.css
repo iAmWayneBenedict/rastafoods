@@ -698,9 +698,6 @@ button:focus, input:focus{
 .bottom-\[3rem\]{
   bottom: 3rem;
 }
-.right-\[10\%\]{
-  right: 10%;
-}
 .left-\[50\%\]{
   left: 50%;
 }
@@ -1208,6 +1205,12 @@ button:focus, input:focus{
 .w-\[2rem\]{
   width: 2rem;
 }
+.w-\[65\%\]{
+  width: 65%;
+}
+.w-\[35\%\]{
+  width: 35%;
+}
 .w-\[3rem\]{
   width: 3rem;
 }
@@ -1347,8 +1350,17 @@ button:focus, input:focus{
 .content-end{
   align-content: flex-end;
 }
+.items-end{
+  align-items: flex-end;
+}
 .items-center{
   align-items: center;
+}
+.items-baseline{
+  align-items: baseline;
+}
+.items-stretch{
+  align-items: stretch;
 }
 .justify-end{
   justify-content: flex-end;
@@ -1358,6 +1370,9 @@ button:focus, input:focus{
 }
 .justify-between{
   justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-around;
 }
 .justify-evenly{
   justify-content: space-evenly;
@@ -1388,6 +1403,9 @@ button:focus, input:focus{
 }
 .gap-4{
   gap: 1rem;
+}
+.gap-20{
+  gap: 5rem;
 }
 .self-end{
   align-self: flex-end;
@@ -2171,10 +2189,6 @@ input[type="number"] {
     position: relative;
   }
 
-  .sm\:z-0{
-    z-index: 0;
-  }
-
   .sm\:m-12{
     margin: 3rem;
   }
@@ -2527,20 +2541,12 @@ input[type="number"] {
     height: 13rem;
   }
 
-  .lg\:w-\[20rem\]{
-    width: 20rem;
-  }
-
   .lg\:w-full{
     width: 100%;
   }
 
   .lg\:w-\[15rem\]{
     width: 15rem;
-  }
-
-  .lg\:p-6{
-    padding: 1.5rem;
   }
 
   .lg\:px-\[5rem\]{
@@ -2561,16 +2567,8 @@ input[type="number"] {
 
 @media (min-width: 1280px){
 
-  .xl\:top-\[-5\%\]{
-    top: -5%;
-  }
-
   .xl\:mt-28{
     margin-top: 7rem;
-  }
-
-  .xl\:w-\[23rem\]{
-    width: 23rem;
   }
 
   .xl\:max-w-\[20rem\]{
@@ -2579,10 +2577,6 @@ input[type="number"] {
 
   .xl\:max-w-\[19rem\]{
     max-width: 19rem;
-  }
-
-  .xl\:p-12{
-    padding: 3rem;
   }
 
   .xl\:py-2{
@@ -2595,9 +2589,9 @@ input[type="number"] {
     padding-right: 1.25rem;
   }
 
-  .xl\:text-xl{
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+  .xl\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 
   .xl\:text-4xl{
@@ -2628,10 +2622,6 @@ input[type="number"] {
 
   .\32xl\:h-\[15rem\]{
     height: 15rem;
-  }
-
-  .\32xl\:w-\[28rem\]{
-    width: 28rem;
   }
 
   .\32xl\:w-\[17rem\]{
