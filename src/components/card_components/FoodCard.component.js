@@ -40,7 +40,9 @@ const FoodCard = ({ event }) => {
 					<span className="prev-price">₱123</span>
 				</div>
 				<div className="food-name-con">
-					<h1 className="order-2 md:order-1 font-semibold text-xl">Vegetable Salad</h1>
+					<h1 className="order-2 md:order-1 font-semibold text-base md:text-lg 2xl:text-xl">
+						Vegetable Salad
+					</h1>
 					<h3 className="order-1 md:order-2 font-semibold">₱105</h3>
 				</div>
 				<div className="mt-1">
@@ -48,7 +50,7 @@ const FoodCard = ({ event }) => {
 				</div>
 				<div className="des flex justify-between items-center mt-2">
 					<div className="des-info">
-						<span className="text-sm">Salad, Vegetables</span>
+						<span className="text-xs md:text-sm">Salad, Vegetables</span>
 					</div>
 					<div className="heart" ref={heartBtn} onClick={heartClick}>
 						<i className="bi bi-suit-heart mt-1 text-black"></i>
