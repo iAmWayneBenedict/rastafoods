@@ -698,9 +698,6 @@ button:focus, input:focus{
 .bottom-\[3rem\]{
   bottom: 3rem;
 }
-.right-\[10\%\]{
-  right: 10%;
-}
 .left-\[50\%\]{
   left: 50%;
 }
@@ -830,6 +827,18 @@ button:focus, input:focus{
 .mx-3{
   margin-left: 0.75rem;
   margin-right: 0.75rem;
+}
+.my-3{
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+.my-1{
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+.mx-1{
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
 }
 .mr-0{
   margin-right: 0px;
@@ -1069,11 +1078,17 @@ button:focus, input:focus{
 .h-4{
   height: 1rem;
 }
+.h-16{
+  height: 4rem;
+}
 .h-\[15px\]{
   height: 15px;
 }
 .h-\[5rem\]{
   height: 5rem;
+}
+.h-\[4rem\]{
+  height: 4rem;
 }
 .h-\[2\.5rem\]{
   height: 2.5rem;
@@ -1178,11 +1193,23 @@ button:focus, input:focus{
 .w-3{
   width: 0.75rem;
 }
+.w-32{
+  width: 8rem;
+}
+.w-16{
+  width: 4rem;
+}
 .w-\[25px\]{
   width: 25px;
 }
-.w-\[30rem\]{
-  width: 30rem;
+.w-\[2rem\]{
+  width: 2rem;
+}
+.w-\[65\%\]{
+  width: 65%;
+}
+.w-\[35\%\]{
+  width: 35%;
 }
 .w-\[3rem\]{
   width: 3rem;
@@ -1202,6 +1229,9 @@ button:focus, input:focus{
 .min-w-fit{
   min-width: -moz-fit-content;
   min-width: fit-content;
+}
+.min-w-\[4rem\]{
+  min-width: 4rem;
 }
 .min-w-\[40\%\]{
   min-width: 40%;
@@ -1320,8 +1350,17 @@ button:focus, input:focus{
 .content-end{
   align-content: flex-end;
 }
+.items-end{
+  align-items: flex-end;
+}
 .items-center{
   align-items: center;
+}
+.items-baseline{
+  align-items: baseline;
+}
+.items-stretch{
+  align-items: stretch;
 }
 .justify-end{
   justify-content: flex-end;
@@ -1331,6 +1370,9 @@ button:focus, input:focus{
 }
 .justify-between{
   justify-content: space-between;
+}
+.justify-around{
+  justify-content: space-around;
 }
 .justify-evenly{
   justify-content: space-evenly;
@@ -1361,6 +1403,9 @@ button:focus, input:focus{
 }
 .gap-4{
   gap: 1rem;
+}
+.gap-20{
+  gap: 5rem;
 }
 .self-end{
   align-self: flex-end;
@@ -1432,6 +1477,10 @@ button:focus, input:focus{
   border-top-width: 2px;
   border-bottom-width: 2px;
 }
+.border-y{
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+}
 .border-t-2{
   border-top-width: 2px;
 }
@@ -1470,6 +1519,14 @@ button:focus, input:focus{
 .border-gray-400{
   --tw-border-opacity: 1;
   border-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+.border-black{
+  --tw-border-opacity: 1;
+  border-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+.border-gray-700{
+  --tw-border-opacity: 1;
+  border-color: rgb(55 65 81 / var(--tw-border-opacity));
 }
 .bg-gray-600{
   --tw-bg-opacity: 1;
@@ -1855,6 +1912,10 @@ button:focus, input:focus{
   --tw-text-opacity: 1;
   color: rgb(220 38 38 / var(--tw-text-opacity));
 }
+.text-gray-600{
+  --tw-text-opacity: 1;
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+}
 .underline{
   text-decoration-line: underline;
 }
@@ -1878,6 +1939,9 @@ button:focus, input:focus{
 }
 .opacity-0{
   opacity: 0;
+}
+.opacity-25{
+  opacity: 0.25;
 }
 .shadow-lg{
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -2128,10 +2192,6 @@ input[type="number"] {
     position: relative;
   }
 
-  .sm\:z-0{
-    z-index: 0;
-  }
-
   .sm\:m-12{
     margin: 3rem;
   }
@@ -2255,6 +2315,11 @@ input[type="number"] {
   .sm\:text-base{
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .sm\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
   }
 
   .sm\:text-2xl{
@@ -2527,6 +2592,11 @@ input[type="number"] {
     padding-right: 1.25rem;
   }
 
+  .xl\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
   .xl\:text-4xl{
     font-size: 2.25rem;
     line-height: 2.5rem;
@@ -2583,6 +2653,21 @@ input[type="number"] {
   .\32xl\:text-base{
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .\32xl\:text-sm{
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .\32xl\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  .\32xl\:text-xl{
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .\32xl\:text-5xl{

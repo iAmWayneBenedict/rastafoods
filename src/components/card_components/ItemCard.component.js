@@ -88,7 +88,7 @@ const ItemCard = ({ data }) => {
 							<div className="item-counter flex">
 								<button
 									type="button"
-									className="w-8 h-8 bg-gray-300 rounded"
+									className="w-8 h-8 bg-gray-200 rounded"
 									onClick={() => setItemCounter(itemCounter - 1)}
 								>
 									<i className="bi bi-dash-lg"></i>
