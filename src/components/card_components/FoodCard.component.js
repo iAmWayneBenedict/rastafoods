@@ -8,7 +8,6 @@ const FoodCard = ({ event }) => {
 	const foodCard = useRef();
 	const closeClass = event ? "closed" : "open";
 	const heartClick = () => {
-		// console.log();
 		heartBtn.current.firstElementChild.classList.toggle("bi-suit-heart");
 		heartBtn.current.firstElementChild.classList.toggle("bi-suit-heart-fill");
 		heartBtn.current.firstElementChild.classList.toggle("text-primary");
@@ -41,17 +40,15 @@ const FoodCard = ({ event }) => {
 					<span className="prev-price">₱123</span>
 				</div>
 				<div className="food-name-con">
-					<h1 className="order-2 md:order-1 font-semibold text-sm sm:text-base">
-						Vegetable Salad
-					</h1>
-					<h3 className="order-1 md:order-2 font-semibold text-sm sm:text-base">₱105</h3>
+					<h1 className="order-2 md:order-1 font-semibold text-xl">Vegetable Salad</h1>
+					<h3 className="order-1 md:order-2 font-semibold">₱105</h3>
 				</div>
 				<div className="mt-1">
 					<Rating />
 				</div>
 				<div className="des flex justify-between items-center mt-2">
 					<div className="des-info">
-						<span className="text-xs">Salad, Vegetables</span>
+						<span className="text-sm">Salad, Vegetables</span>
 					</div>
 					<div className="heart" ref={heartBtn} onClick={heartClick}>
 						<i className="bi bi-suit-heart mt-1 text-black"></i>

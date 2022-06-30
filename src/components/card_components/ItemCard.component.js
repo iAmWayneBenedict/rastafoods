@@ -16,9 +16,15 @@ const ItemCard = ({ data }) => {
 	}, [itemCounter]);
 	const itemCard = useRef();
 	useEffect(() => {
+		if (itemCard.current === null) {
+			return;
+		}
 		setConHeight(itemCard.current.clientHeight - 120);
 	}, []);
 	window.onresize = () => {
+		if (itemCard.current === null) {
+			return;
+		}
 		setConHeight(itemCard.current.clientHeight - 120);
 	};
 

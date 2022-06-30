@@ -48,11 +48,14 @@ const SectionContainer = ({ data }) => {
 		<div className="my-20">
 			<h1 className="font-bold text-xl my-10">{title}</h1>
 			<div className="flex flex-wrap gap-3 sm:gap-5">
-				{isShops &&
-					[...Array(10)].map((k, val) => {
-						if (val < 8) return <StoreCard event={false} key={val} />;
-						return <StoreCard event={true} key={val} />;
-					})}
+				{isShops && (
+					<div className="flex gap-3 md:gap-5 overflow-x-scroll w-full">
+						{[...Array(10)].map((k, val) => {
+							if (val < 8) return <StoreCard event={false} key={val} />;
+							return <StoreCard event={true} key={val} />;
+						})}
+					</div>
+				)}
 
 				{isCuisines && (
 					<div className="flex gap-3 overflow-x-scroll w-full">
@@ -62,11 +65,14 @@ const SectionContainer = ({ data }) => {
 					</div>
 				)}
 
-				{isFoods &&
-					[...Array(10)].map((k, val) => {
-						if (val < 8) return <FoodCard key={val} />;
-						return <FoodCard key={val} />;
-					})}
+				{isFoods && (
+					<div className="flex gap-3 overflow-x-scroll w-full">
+						{[...Array(10)].map((k, val) => {
+							if (val < 8) return <FoodCard key={val} />;
+							return <FoodCard key={val} />;
+						})}
+					</div>
+				)}
 			</div>
 		</div>
 	);
