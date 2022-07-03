@@ -840,6 +840,10 @@ button:focus, input:focus{
   margin-left: 0.25rem;
   margin-right: 0.25rem;
 }
+.mx-24{
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
 .mr-0{
   margin-right: 0px;
 }
@@ -1204,12 +1208,6 @@ button:focus, input:focus{
 }
 .w-\[2rem\]{
   width: 2rem;
-}
-.w-\[65\%\]{
-  width: 65%;
-}
-.w-\[35\%\]{
-  width: 35%;
 }
 .w-\[3rem\]{
   width: 3rem;
@@ -2196,6 +2194,11 @@ input[type="number"] {
     margin: 3rem;
   }
 
+  .sm\:mx-3{
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+  }
+
   .sm\:mb-4{
     margin-bottom: 1rem;
   }
@@ -2376,8 +2379,21 @@ input[type="number"] {
     margin-right: 2.5rem;
   }
 
+  .md\:mx-5{
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+  }
+
   .md\:ml-8{
     margin-left: 2rem;
+  }
+
+  .md\:mt-32{
+    margin-top: 8rem;
+  }
+
+  .md\:mt-20{
+    margin-top: 5rem;
   }
 
   .md\:mt-0{
@@ -2414,6 +2430,14 @@ input[type="number"] {
 
   .md\:w-\[30\%\]{
     width: 30%;
+  }
+
+  .md\:w-\[55\%\]{
+    width: 55%;
+  }
+
+  .md\:w-\[45\%\]{
+    width: 45%;
   }
 
   .md\:w-\[50rem\]{
@@ -2468,12 +2492,12 @@ input[type="number"] {
     justify-content: space-between;
   }
 
-  .md\:gap-10{
-    gap: 2.5rem;
-  }
-
   .md\:gap-5{
     gap: 1.25rem;
+  }
+
+  .md\:gap-10{
+    gap: 2.5rem;
   }
 
   .md\:p-10{
@@ -2492,6 +2516,11 @@ input[type="number"] {
   .md\:py-\[\.35rem\]{
     padding-top: .35rem;
     padding-bottom: .35rem;
+  }
+
+  .md\:px-5{
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
   }
 
   .md\:pl-5{
@@ -2540,8 +2569,21 @@ input[type="number"] {
     margin-right: 2rem;
   }
 
+  .lg\:mx-8{
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
   .lg\:h-\[13rem\]{
     height: 13rem;
+  }
+
+  .lg\:w-\[65\%\]{
+    width: 65%;
+  }
+
+  .lg\:w-\[35\%\]{
+    width: 35%;
   }
 
   .lg\:w-full{
@@ -2552,6 +2594,10 @@ input[type="number"] {
     width: 15rem;
   }
 
+  .lg\:gap-10{
+    gap: 2.5rem;
+  }
+
   .lg\:px-\[5rem\]{
     padding-left: 5rem;
     padding-right: 5rem;
@@ -2560,6 +2606,11 @@ input[type="number"] {
   .lg\:px-4{
     padding-left: 1rem;
     padding-right: 1rem;
+  }
+
+  .lg\:text-lg{
+    font-size: 1.125rem;
+    line-height: 1.75rem;
   }
 
   .lg\:text-4xl{
@@ -2613,6 +2664,11 @@ input[type="number"] {
   .\32xl\:mx-\[10rem\]{
     margin-left: 10rem;
     margin-right: 10rem;
+  }
+
+  .\32xl\:mx-24{
+    margin-left: 6rem;
+    margin-right: 6rem;
   }
 
   .\32xl\:mt-32{
