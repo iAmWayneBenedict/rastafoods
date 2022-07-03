@@ -13,11 +13,11 @@ const CartCard = ({ callback, edit, data }) => {
 		if (itemCounter > 20) setItemCounter(20);
 	}, [itemCounter]);
 	return (
-		<div className="px-5 py-2 flex items-center">
+		<div className="px-2 md:px-5 py-2 flex items-center">
 			<div className={`mr-5 ${editClass}`}>
 				<input
 					type="checkbox"
-					className="accent-primary"
+					className="accent-primary cursor-pointer"
 					value={data}
 					onChange={() => callback(data)}
 				/>

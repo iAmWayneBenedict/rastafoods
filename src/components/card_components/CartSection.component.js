@@ -30,17 +30,19 @@ const CartSection = () => {
 		if (deleteBtn.current === undefined || deleteBtn.current === null) return;
 		if (!editData.length) {
 			deleteBtn.current.classList.add("opacity-25");
+			deleteBtn.current.setAttribute("disabled", true);
 		} else {
 			deleteBtn.current.classList.remove("opacity-25");
+			deleteBtn.current.removeAttribute("disabled");
 		}
 	}, [editData, isEdit]);
 	const deleteItems = (event) => {
 		console.log(event.target.classList);
 	};
 	return (
-		<div className="flex mt-32 gap-10 items-stretch">
-			<div className="left w-[65%]">
-				<h1 className="title font-semibold text-lg xl:text-2xl mb-5">Your Cart</h1>
+		<div className="flex flex-col md:flex-row mt-24 md:mt-32 gap-10 sm:gap-5 md:gap-5 lg:gap-10 items-stretch mx-2 sm:mx-3 md:mx-5 lg:mx-8 2xl:mx-24">
+			<div className="left w-full md:w-[55%] lg:w-[65%]">
+				<h1 className="title font-semibold text-xl xl:text-2xl mb-5">Your Cart</h1>
 				<main>
 					<div className="flex w-full justify-between mb-3">
 						<h4 className="text-sm font-semibold my-2">2 items</h4>
@@ -70,7 +72,7 @@ const CartSection = () => {
 					</div>
 				</main>
 			</div>
-			<div className="right mt-20 w-[35%] flex flex-col justify-between">
+			<div className="right md:mt-20 w-full md:w-[45%] lg:w-[35%] flex flex-col justify-between">
 				<div className="payment flex flex-col mt-3">
 					<div className="subtotal flex justify-between my-1">
 						<div className="title font-semibold text-xs 2xl:text-sm text-gray-600">
@@ -92,7 +94,7 @@ const CartSection = () => {
 				<div className="flex justify-center">
 					<button
 						type="button"
-						className="bg-primary mt-5 w-full py-2 rounded-md font-semibold text-white"
+						className="bg-primary mt-5 w-full py-2 rounded-md text-base lg:text-lg font-semibold text-white"
 					>
 						Place Order
 					</button>
