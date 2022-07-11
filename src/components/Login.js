@@ -52,6 +52,7 @@ const Login = () => {
 						>
 							Sign in
 						</button>
+						{/* test */}
 						<span className="text-sm text-center mt-3">
 							Don't have an account?{" "}
 							<Link to={"/"} className="text-primary font-medium">
