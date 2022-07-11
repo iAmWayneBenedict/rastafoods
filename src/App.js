@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import CartSection from "./components/card_components/CartSection.component";
 
 const App = () => {
+	// test
 	// custom hook useScroll
 	let { scrolledOverHundred, scrolledOverTen } = useScroll();
 	return (
