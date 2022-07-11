@@ -35,6 +35,28 @@ html {
 	text-decoration-color: rgb(255, 37, 37);
 }
 
+.input-field:focus ~ label {
+	color: rgb(255, 37, 37);
+	font-weight: 600;
+}
+
+.input-field:focus ~ span > i {
+	color: black !important;
+}
+
+.border-primary {
+	border-color: rgb(255, 37, 37);
+}
+
+label {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
 @layer components {
 	.line {
 		@apply w-1/2 h-[2px] bg-gray-600 transition-all duration-500 ease-in-out;
@@ -60,6 +82,14 @@ html {
 	}
 	.closed {
 		@apply pointer-events-none;
+	}
+
+	.error {
+		@apply text-red-500 bg-red-100;
+	}
+
+	.success {
+		@apply text-green-500 bg-green-100;
 	}
 
 	.link-animator {
