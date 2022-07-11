@@ -36,21 +36,22 @@ const NavBar = ({ hasScrolled }) => {
 					RastaFoods
 				</Link>
 				<div className="center-element w-fit hidden md:flex">
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
-						Home
-					</Link>
-					<Link to={"/stores"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
-						Stores
-					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
-						Delivery
-					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
-						Contact
-					</Link>
-					<Link to={"/"} className="px-2 lg:px-4 font-medium text-sm 2xl:text-base">
-						About
-					</Link>
+					{[
+						["Home", "/"],
+						["Stores", "/stores"],
+						["Delivery", "/"],
+						["Contact", "/"],
+						["About", "/"],
+					].map(([title, link]) => {
+						return (
+							<Link
+								to={link}
+								className="px-2 lg:px-4 font-medium text-sm 2xl:text-base"
+							>
+								{title}
+							</Link>
+						);
+					})}
 				</div>
 				<div className="">
 					<Link to={"/cart"}>
