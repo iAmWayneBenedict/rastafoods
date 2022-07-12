@@ -47,6 +47,7 @@ const NavBar = ({ hasScrolled }) => {
 							<Link
 								to={link}
 								className="px-2 lg:px-4 font-medium text-sm 2xl:text-base"
+								key={title}
 							>
 								{title}
 							</Link>

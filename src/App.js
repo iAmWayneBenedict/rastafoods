@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import Stores from "./components/Stores";
 import ScrollToTop from "./components/ScrollToTop";
-import useScroll from "./components/custom_hooks/useScroll";
+import useScroll from "./custom_hooks/useScroll";
 import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CartSection from "./components/card_components/CartSection.component";

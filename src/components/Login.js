@@ -52,7 +52,6 @@ const Login = () => {
 						>
 							Sign in
 						</button>
-						{/* test */}
 						<span className="text-sm text-center mt-3">
 							Don't have an account?{" "}
 							<Link to={"/"} className="text-primary font-medium">
@@ -63,27 +62,24 @@ const Login = () => {
 							or Sign in with
 						</span>
 						<div className="flex justify-evenly">
-							<button className="w-[2rem] sm:w-[3rem] rounded-md">
-								<img
-									src="/img/search.png"
-									className="w-full h-full object-contain"
-									alt=""
-								/>
-							</button>
-							<button className="w-[2rem] sm:w-[3rem] rounded-md">
-								<img
-									src="/img/facebook.png"
-									className="w-full h-full object-contain"
-									alt=""
-								/>
-							</button>
-							<button className="w-[2rem] sm:w-[3rem] rounded-md">
-								<img
-									src="/img/twitter.png"
-									className="w-full h-full object-contain"
-									alt=""
-								/>
-							</button>
+							{[
+								["social-google-btn", "/img/search.png"],
+								["social-facebook-btn", "/img/facebook.png"],
+								["social-twitter-btn", "/img/twitter.png"],
+							].map(([socialsClass, src]) => {
+								return (
+									<button
+										className={`${socialsClass} w-[2rem] sm:w-[3rem] rounded-md`}
+										key={socialsClass}
+									>
+										<img
+											src={src}
+											className="w-full h-full object-contain"
+											alt=""
+										/>
+									</button>
+								);
+							})}
 						</div>
 					</div>
 				</form>
