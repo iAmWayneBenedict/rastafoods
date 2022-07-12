@@ -2,6 +2,8 @@ import SectionContainer from "./section_components/SectionContainer";
 import { useEffect, useState } from "react";
 import ItemCard from "./card_components/ItemCard.component";
 import { useParams } from "react-router-dom";
+import Preloader from "./preloader_component/Preloader.component";
+import usePreloader from "../custom_hooks/usePreloader";
 
 const Stores = () => {
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
@@ -54,62 +56,73 @@ const Stores = () => {
 			],
 		},
 	];
-
+	let loaderValue = usePreloader();
 	return (
-		<div>
-			<div className="md:mx-10 mt-28">
-				<div className="banner w-full h-[5rem] bg-gray-400 flex items-center justify-center mb-20">
-					<p className="text-sm">Banner</p>
-				</div>
-				<div className="filter flex flex-col gap-10">
-					<div className="inline-flex gap-1 sm:gap-3">
-						<input
-							type="email"
-							id="email"
-							className="border border-gray-500 text-gray-900 text-sm rounded-lg block w-full sm:w-[20rem] p-2.5 focus:outline-none focus:border"
-							placeholder="Search"
-						/>
-						<button
-							type="submit"
-							className="text-white bg-primary focus:outline-none font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center"
-						>
-							Search
-						</button>
+		<>
+			<Preloader loaderValue={loaderValue} />
+			{loaderValue === 2 && (
+				<div>
+					<div className="md:mx-10 mt-28">
+						<div className="banner w-full h-[5rem] bg-gray-400 flex items-center justify-center mb-20">
+							<p className="text-sm">Banner</p>
+						</div>
+						<div className="filter flex flex-col gap-10">
+							<div className="inline-flex gap-1 sm:gap-3">
+								<input
+									type="email"
+									id="email"
+									className="border border-gray-500 text-gray-900 text-sm rounded-lg block w-full sm:w-[20rem] p-2.5 focus:outline-none focus:border"
+									placeholder="Search"
+								/>
+								<button
+									type="submit"
+									className="text-white bg-primary focus:outline-none font-medium rounded-lg text-sm w-fit sm:w-auto px-5 py-2.5 text-center"
+								>
+									Search
+								</button>
+							</div>
+							<button className="filter inline-flex gap-1 align-middle">
+								<h6 className="font-semibold text-primary underline sm:text-base text-xs flex items-center">
+									Filter
+								</h6>
+								<i className="bi bi-chevron-down text-primary font-semibold sm:text-base text-xs flex items-center mt-[2px]"></i>
+							</button>
+						</div>
+						<div className="shops">
+							{data.shops.map(({ title }, key) => {
+								return (
+									<SectionContainer
+										data={{ title, key, section: "shops" }}
+										key={key}
+									/>
+								);
+							})}
+						</div>
+						<div className="cuisines">
+							{data.cuisines.map(({ title }, key) => {
+								return (
+									<SectionContainer
+										data={{ title, key, section: "cuisines" }}
+										key={key}
+									/>
+								);
+							})}
+						</div>
+						<div className="foods">
+							{data.foods.map(({ title }, key) => {
+								return (
+									<SectionContainer
+										data={{ title, key, section: "foods" }}
+										key={key}
+									/>
+								);
+							})}
+						</div>
 					</div>
-					<button className="filter inline-flex gap-1 align-middle">
-						<h6 className="font-semibold text-primary underline sm:text-base text-xs flex items-center">
-							Filter
-						</h6>
-						<i className="bi bi-chevron-down text-primary font-semibold sm:text-base text-xs flex items-center mt-[2px]"></i>
-					</button>
+					{itemPopUpStatus && <ItemCard data={addOnData} />}
 				</div>
-				<div className="shops">
-					{data.shops.map(({ title }, key) => {
-						return (
-							<SectionContainer data={{ title, key, section: "shops" }} key={key} />
-						);
-					})}
-				</div>
-				<div className="cuisines">
-					{data.cuisines.map(({ title }, key) => {
-						return (
-							<SectionContainer
-								data={{ title, key, section: "cuisines" }}
-								key={key}
-							/>
-						);
-					})}
-				</div>
-				<div className="foods">
-					{data.foods.map(({ title }, key) => {
-						return (
-							<SectionContainer data={{ title, key, section: "foods" }} key={key} />
-						);
-					})}
-				</div>
-			</div>
-			{itemPopUpStatus && <ItemCard data={addOnData} />}
-		</div>
+			)}
+		</>
 	);
 };
 

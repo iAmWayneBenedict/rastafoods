@@ -19,9 +19,13 @@ const Footer = () => {
 							["bi bi-twitter", "/"],
 							["bi bi-google", "/"],
 							["bi bi-instagram", "/"],
-						].map(([icon, link]) => {
+						].map(([icon, link], itr) => {
 							return (
-								<Link to={link} className="bg-zinc-700 text-slate-50 px-4 py-2">
+								<Link
+									to={link}
+									className="bg-zinc-700 text-slate-50 px-4 py-2"
+									key={itr}
+								>
 									<i className={icon}></i>
 								</Link>
 							);
@@ -38,7 +42,7 @@ const Footer = () => {
 							["Combo Meals", "/"],
 						].map(([title, link]) => {
 							return (
-								<Link to={link} className="w-fit text-sm">
+								<Link to={link} className="w-fit text-sm" key={title}>
 									{title}
 								</Link>
 							);
@@ -53,7 +57,7 @@ const Footer = () => {
 							["About", "/"],
 						].map(([title, link]) => {
 							return (
-								<Link to={link} className="w-fit text-sm">
+								<Link to={link} className="w-fit text-sm" key={title}>
 									{title}
 								</Link>
 							);
