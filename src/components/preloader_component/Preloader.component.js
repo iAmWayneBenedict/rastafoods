@@ -11,7 +11,7 @@ const Preloader = ({ loaderValue }) => {
 			}, 150);
 		}
 	}, [loader]);
-	// test
+
 	return (
 		<div
 			className={`navbar-preloader-container ${
