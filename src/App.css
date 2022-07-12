@@ -57,6 +57,15 @@ label {
 	user-select: none;
 }
 
+.navbar-preloader-container.active-preloader {
+	transition: all 5s ease-out;
+	width: 90% !important;
+}
+.navbar-preloader-container.done-preloader {
+	transition: none !important;
+	width: 100% !important;
+}
+
 @layer components {
 	.line {
 		@apply w-1/2 h-[2px] bg-gray-600 transition-all duration-500 ease-in-out;

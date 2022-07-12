@@ -719,6 +719,18 @@ button:focus, input:focus{
 .right-4{
   right: 1rem;
 }
+.top-28{
+  top: 7rem;
+}
+.top-16{
+  top: 4rem;
+}
+.top-12{
+  top: 3rem;
+}
+.top-11{
+  top: 2.75rem;
+}
 .right-\[5\%\]{
   right: 5%;
 }
@@ -1245,6 +1257,9 @@ button:focus, input:focus{
 .w-16{
   width: 4rem;
 }
+.w-0{
+  width: 0px;
+}
 .w-\[30rem\]{
   width: 30rem;
 }
@@ -1692,6 +1707,10 @@ button:focus, input:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(254 226 226 / var(--tw-bg-opacity));
 }
+.bg-red-600{
+  --tw-bg-opacity: 1;
+  background-color: rgb(220 38 38 / var(--tw-bg-opacity));
+}
 .bg-opacity-\[\.75\]{
   --tw-bg-opacity: .75;
 }
@@ -2069,15 +2088,15 @@ button:focus, input:focus{
 .filter{
   filter: var(--tw-filter);
 }
-.transition-all{
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
 .transition{
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+.transition-all{
+  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -2211,6 +2230,15 @@ label {
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	user-select: none;
+}
+
+.navbar-preloader-container.active-preloader {
+	transition: all 5s ease-out;
+	width: 90% !important;
+}
+.navbar-preloader-container.done-preloader {
+	transition: none !important;
+	width: 100% !important;
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -2484,12 +2512,12 @@ input[type="number"] {
     justify-content: center;
   }
 
-  .sm\:gap-3{
-    gap: 0.75rem;
-  }
-
   .sm\:gap-5{
     gap: 1.25rem;
+  }
+
+  .sm\:gap-3{
+    gap: 0.75rem;
   }
 
   .sm\:rounded-xl{
@@ -2569,26 +2597,26 @@ input[type="number"] {
     margin-right: 0px;
   }
 
-  .md\:mx-10{
-    margin-left: 2.5rem;
-    margin-right: 2.5rem;
-  }
-
   .md\:mx-5{
     margin-left: 1.25rem;
     margin-right: 1.25rem;
+  }
+
+  .md\:mx-10{
+    margin-left: 2.5rem;
+    margin-right: 2.5rem;
   }
 
   .md\:mt-32{
     margin-top: 8rem;
   }
 
-  .md\:ml-8{
-    margin-left: 2rem;
-  }
-
   .md\:mt-20{
     margin-top: 5rem;
+  }
+
+  .md\:ml-8{
+    margin-left: 2rem;
   }
 
   .md\:mt-0{
@@ -2759,18 +2787,22 @@ input[type="number"] {
     margin-right: 5rem;
   }
 
-  .lg\:mx-\[2rem\]{
+  .lg\:mx-8{
     margin-left: 2rem;
     margin-right: 2rem;
   }
 
-  .lg\:mx-8{
+  .lg\:mx-\[2rem\]{
     margin-left: 2rem;
     margin-right: 2rem;
   }
 
   .lg\:mt-40{
     margin-top: 10rem;
+  }
+
+  .lg\:h-\[3px\]{
+    height: 3px;
   }
 
   .lg\:h-\[13rem\]{
@@ -2860,6 +2892,10 @@ input[type="number"] {
 
 @media (min-width: 1536px){
 
+  .\32xl\:top-16{
+    top: 4rem;
+  }
+
   .\32xl\:mx-\[10rem\]{
     margin-left: 10rem;
     margin-right: 10rem;
@@ -2900,16 +2936,6 @@ input[type="number"] {
     padding-bottom: 1rem;
   }
 
-  .\32xl\:text-2xl{
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .\32xl\:text-base{
-    font-size: 1rem;
-    line-height: 1.5rem;
-  }
-
   .\32xl\:text-sm{
     font-size: 0.875rem;
     line-height: 1.25rem;
@@ -2923,6 +2949,16 @@ input[type="number"] {
   .\32xl\:text-xl{
     font-size: 1.25rem;
     line-height: 1.75rem;
+  }
+
+  .\32xl\:text-2xl{
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .\32xl\:text-base{
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   .\32xl\:text-5xl{
