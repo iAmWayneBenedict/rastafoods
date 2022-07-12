@@ -7,10 +7,12 @@ import NavBar from "./components/Navbar";
 import Footer from "./components/Footer";
 import CartSection from "./components/card_components/CartSection.component";
 import Login from "./components/Login";
+import Signup from "./components/Signup";
 
 const App = () => {
 	// custom hook useScroll
 	let { scrolledOverHundred, scrolledOverTen } = useScroll();
+
 	return (
 		<div className="App font-sans 2xl:mx-[10rem] lg:mx-[5rem] md:mx-0 px-5 relative">
 			<Router>
@@ -24,6 +26,7 @@ const App = () => {
 					<Route path="/stores/:store/:food" element={<Stores />} />
 					<Route path="/cart" element={<CartSection />} />
 					<Route path="/login" element={<Login />}></Route>
+					<Route path="/signup" element={<Signup />}></Route>
 				</Routes>
 				{/* Footer */}
 				<Footer />

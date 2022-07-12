@@ -1,7 +1,7 @@
 import { Link, useSearchParams } from "react-router-dom";
 import InputField from "./form_components/InputField.component";
 
-const Login = () => {
+const Signup = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	let searchValues = Object.fromEntries([...searchParams]);
 	console.log(searchValues);
@@ -17,13 +17,31 @@ const Login = () => {
 						<div className="flex flex-col gap-10">
 							<InputField
 								type="text"
+								id="first-name"
+								name="first-name"
+								label="First Name"
+								placeholder="Manuel"
+								icon="bi bi-person"
+							/>
+
+							<InputField
+								type="text"
+								id="last-name"
+								name="last-name"
+								label="Last Name"
+								placeholder="Roxas"
+								icon="bi bi-person"
+							/>
+
+							<InputField
+								type="text"
 								id="email"
 								name="email"
 								label="Email"
 								placeholder="example@gmail.com"
 								icon="bi bi-envelope"
 							/>
-
+							{/*
 							<InputField
 								type="password"
 								id="password"
@@ -32,11 +50,17 @@ const Login = () => {
 								placeholder="●●●●●●●●●●"
 								icon="bi bi-lock"
 							/>
+
+							<InputField
+								type="password"
+								id="confirm-password"
+								name="confirm-password"
+								label="Confirm Password"
+								placeholder="●●●●●●●●●●"
+								icon="bi bi-lock"
+							/> */}
 						</div>
-						<div className="flex justify-between mt-2">
-							<Link to={"/"} className="text-gray-800 text-sm">
-								Forgot Password
-							</Link>
+						{/* <div className="flex justify-between mt-2">
 							<div>
 								<input
 									type="checkbox"
@@ -48,21 +72,21 @@ const Login = () => {
 									Show Password
 								</label>
 							</div>
-						</div>
+						</div> */}
 						<button
 							type="submit"
 							className="mt-10 bg-primary text-white text-sm md:text-base font-semibold py-3 rounded-md"
 						>
-							Sign in
+							Next
 						</button>
 						<span className="text-sm text-center mt-3">
 							Don't have an account?
-							<Link to={"/signup"} className="ml-2 text-primary font-medium">
-								Sign up
+							<Link to={"/"} className="ml-2 text-primary font-medium">
+								Sign in
 							</Link>
 						</span>
 						<span className="text-sm text-center my-10 text-slate-700 relative after:absolute before:absolute after:left-0 after:top-1/2 after:-translate-y-1/2 after:w-1/3 after:h-[1px] after:bg-slate-400 before:right-0 before:top-1/2 before:-translate-y-1/2 before:w-1/3 before:h-[1px] before:bg-slate-400">
-							or Sign in with
+							or Sign up with
 						</span>
 						<div className="flex justify-evenly">
 							{[
@@ -91,4 +115,4 @@ const Login = () => {
 	);
 };
 
-export default Login;
+export default Signup;

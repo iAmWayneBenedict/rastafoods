@@ -1248,11 +1248,14 @@ button:focus, input:focus{
 .w-\[30rem\]{
   width: 30rem;
 }
-.w-\[2rem\]{
-  width: 2rem;
+.w-\[2\.5rem\]{
+  width: 2.5rem;
 }
 .w-\[25px\]{
   width: 25px;
+}
+.w-\[2rem\]{
+  width: 2rem;
 }
 .w-\[3rem\]{
   width: 3rem;
@@ -1457,6 +1460,12 @@ button:focus, input:focus{
 }
 .gap-20{
   gap: 5rem;
+}
+.gap-24{
+  gap: 6rem;
+}
+.gap-32{
+  gap: 8rem;
 }
 .self-end{
   align-self: flex-end;
