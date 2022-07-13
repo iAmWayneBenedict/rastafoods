@@ -4,6 +4,7 @@ import ItemCard from "./card_components/ItemCard.component";
 import { useParams } from "react-router-dom";
 import Preloader from "./preloader_component/Preloader.component";
 import usePreloader from "../custom_hooks/usePreloader";
+import Footer from "./Footer";
 
 const Stores = () => {
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
@@ -120,6 +121,7 @@ const Stores = () => {
 						</div>
 					</div>
 					{itemPopUpStatus && <ItemCard data={addOnData} />}
+					<Footer />
 				</div>
 			)}
 		</>
