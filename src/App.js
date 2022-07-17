@@ -7,6 +7,7 @@ import NavBar from "./components/Navbar";
 import CartSection from "./components/CartSection";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import StoreProfile from "./components/StoreProfile";
 
 const App = () => {
 	// custom hook useScroll
@@ -26,8 +27,9 @@ const App = () => {
 						<Route path="/stores" element={<Stores />} />
 						<Route path="/stores/:store/:food" element={<Stores />} />
 						<Route path="/cart" element={<CartSection />} />
-						<Route path="/login" element={<Login />}></Route>
-						<Route path="/signup" element={<Signup />}></Route>
+						<Route path="/login" element={<Login />} />
+						<Route path="/signup" element={<Signup />} />
+						<Route path="/:store-profile" element={<StoreProfile />} />
 					</Routes>
 				</Router>
 			</div>

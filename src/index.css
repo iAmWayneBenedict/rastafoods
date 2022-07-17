@@ -601,6 +601,37 @@ Ensure the default browser behavior of the `hidden` attribute.
     max-width: 20rem;
   }
 }
+.food-card-container2 {
+		/* md:min-w-[12rem] min-w-[9.15rem] w-full sm:w-[45%] */
+		position: relative;
+		min-height: 14.25rem;
+		width: 100%;
+		min-width: 9.15rem;
+		cursor: pointer;
+		border-radius: 0.5rem;
+	}
+@media (min-width: 640px){
+
+  .food-card-container2{
+    width: 45%;
+  }
+}
+@media (min-width: 768px){
+
+  .food-card-container2{
+    width: 30%;
+  }
+
+  .food-card-container2{
+    min-width: 12rem;
+  }
+}
+@media (min-width: 1280px){
+
+  .food-card-container2{
+    max-width: 20rem;
+  }
+}
 .prev-price{
   order: 1;
   font-size: 0.75rem;
@@ -633,6 +664,15 @@ Ensure the default browser behavior of the `hidden` attribute.
   .food-name-con{
     justify-content: space-between;
   }
+}
+.banner-default{
+  display: flex;
+  height: 25rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
 button:focus, input:focus{
   outline: 2px solid transparent;
@@ -731,6 +771,9 @@ button:focus, input:focus{
 .top-11{
   top: 2.75rem;
 }
+.top-full{
+  top: 100%;
+}
 .right-\[5\%\]{
   right: 5%;
 }
@@ -739,6 +782,9 @@ button:focus, input:focus{
 }
 .bottom-\[3rem\]{
   bottom: 3rem;
+}
+.top-\[60\%\]{
+  top: 60%;
 }
 .left-\[50\%\]{
   left: 50%;
@@ -1045,6 +1091,9 @@ button:focus, input:focus{
 .mt-44{
   margin-top: 11rem;
 }
+.mt-8{
+  margin-top: 2rem;
+}
 .mt-\[2px\]{
   margin-top: 2px;
 }
@@ -1077,6 +1126,9 @@ button:focus, input:focus{
 }
 .h-20{
   height: 5rem;
+}
+.h-\[25rem\]{
+  height: 25rem;
 }
 .h-32{
   height: 8rem;
@@ -1141,6 +1193,12 @@ button:focus, input:focus{
 }
 .h-\[15px\]{
   height: 15px;
+}
+.h-\[18rem\]{
+  height: 18rem;
+}
+.h-\[10rem\]{
+  height: 10rem;
 }
 .h-\[5rem\]{
   height: 5rem;
@@ -1269,6 +1327,9 @@ button:focus, input:focus{
 .w-\[25px\]{
   width: 25px;
 }
+.w-\[10rem\]{
+  width: 10rem;
+}
 .w-\[2rem\]{
   width: 2rem;
 }
@@ -1360,6 +1421,10 @@ button:focus, input:focus{
 }
 .translate-x-5{
   --tw-translate-x: 1.25rem;
+  transform: var(--tw-transform);
+}
+.-translate-x-1\/2{
+  --tw-translate-x: -50%;
   transform: var(--tw-transform);
 }
 .-translate-y-1\/2{
@@ -1607,6 +1672,10 @@ button:focus, input:focus{
   --tw-border-opacity: 1;
   border-color: rgb(15 23 42 / var(--tw-border-opacity));
 }
+.border-red-600{
+  --tw-border-opacity: 1;
+  border-color: rgb(220 38 38 / var(--tw-border-opacity));
+}
 .bg-gray-600{
   --tw-bg-opacity: 1;
   background-color: rgb(75 85 99 / var(--tw-bg-opacity));
@@ -1619,13 +1688,13 @@ button:focus, input:focus{
   --tw-bg-opacity: 1;
   background-color: rgb(134 239 172 / var(--tw-bg-opacity));
 }
-.bg-white{
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
 .bg-gray-400{
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
+}
+.bg-white{
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 .bg-gray-200{
   --tw-bg-opacity: 1;
