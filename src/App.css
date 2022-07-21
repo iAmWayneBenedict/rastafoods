@@ -120,7 +120,7 @@ label {
 
 	.food-card-container2 {
 		/* md:min-w-[12rem] min-w-[9.15rem] w-full sm:w-[45%] */
-		@apply md:min-w-[12rem] min-w-[9.15rem] w-full sm:w-[45%] md:w-[30%]  xl:max-w-[20rem] rounded-lg  min-h-[14.25rem] relative cursor-pointer;
+		@apply xl:w-[24%] md:w-[32%] w-full sm:w-[46%] rounded-lg  min-h-[14.25rem] relative cursor-pointer;
 	}
 
 	.prev-price {
