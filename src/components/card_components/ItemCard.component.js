@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from "../rating/Rating.component";
 import AddOnSection from "../shop_components/AddOnSection.component";
 
-const ItemCard = ({ data, currentLocation }) => {
+const ItemCard = ({ data, currentLocation = "/stores" }) => {
 	const [conHeight, setConHeight] = useState(0);
 	const [itemCounter, setItemCounter] = useState(1);
 	const heartBtn = (event) => {
@@ -27,7 +27,7 @@ const ItemCard = ({ data, currentLocation }) => {
 		}
 		setConHeight(itemCard.current.clientHeight - 120);
 	};
-	let myLink = currentLocation === "my" ? "/my/store" : "";
+	let myLink = currentLocation === "/my" ? "/my/store" : currentLocation;
 
 	return (
 		<div

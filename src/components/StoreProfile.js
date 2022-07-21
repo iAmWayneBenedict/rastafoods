@@ -10,7 +10,15 @@ import ItemCard from "./card_components/ItemCard.component";
 const StoreProfile = () => {
 	let loaderValue = usePreloader();
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
+	const [currentLocation, setCurrentLocation] = useState(false);
 	const params = useParams();
+	useEffect(() => {
+		if (window.location.pathname.split("/")[1] === "my") {
+			setCurrentLocation("/my");
+		} else {
+			setCurrentLocation("/stores");
+		}
+	}, []);
 	useEffect(() => {
 		if (params.hasOwnProperty("food")) {
 			setItemPopUpStatus(true);
@@ -96,17 +104,19 @@ const StoreProfile = () => {
 							<SectionComponent
 								title={"Discover Interesting Cousines"}
 								isCuisines={true}
-								currentLocation="my"
+								currentLocation={currentLocation}
 							/>
 
 							<SectionComponent
 								title={"Discover New Foods"}
 								isFoods={true}
-								currentLocation="my"
+								currentLocation={currentLocation}
 							/>
 						</div>
 					</div>
-					{itemPopUpStatus && <ItemCard data={addOnData} currentLocation="my" />}
+					{itemPopUpStatus && (
+						<ItemCard data={addOnData} currentLocation={currentLocation} />
+					)}
 					<Footer />
 				</>
 			)}

@@ -29,8 +29,6 @@ const SectionComponent = ({ title, isCuisines, isShops, isFoods, currentLocation
 			src: "/img/halo halo.png",
 		},
 	};
-
-	let myLink = currentLocation === "my" ? "/my" : "/stores";
 	return (
 		<div className="my-20">
 			<h1 className="font-bold text-xl my-10">{title}</h1>
@@ -53,8 +51,8 @@ const SectionComponent = ({ title, isCuisines, isShops, isFoods, currentLocation
 				{isFoods && (
 					<div className="flex flex-wrap gap-3 w-full">
 						{[...Array(10)].map((k, val) => {
-							if (val < 8) return <FoodCard2 key={val} myLink={myLink} />;
-							return <FoodCard2 key={val} myLink={myLink} />;
+							if (val < 8) return <FoodCard2 key={val} myLink={currentLocation} />;
+							return <FoodCard2 key={val} myLink={currentLocation} />;
 						})}
 					</div>
 				)}

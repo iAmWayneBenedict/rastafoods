@@ -4,7 +4,6 @@ import Rating from "../rating/Rating.component";
 import EventCard from "./EventCard.component";
 
 const FoodCard2 = ({ event, myLink }) => {
-	console.log(myLink);
 	const heartBtn = useRef();
 	const foodCard = useRef();
 	const closeClass = event ? "closed" : "open";
