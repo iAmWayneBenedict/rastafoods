@@ -8,6 +8,7 @@ import CartSection from "./components/CartSection";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import StoreProfile from "./components/StoreProfile";
+import EditProfile from "./components/EditProfile";
 
 const App = () => {
 	// custom hook useScroll
@@ -32,6 +33,7 @@ const App = () => {
 						<Route path="/signup" element={<Signup />} />
 						<Route path="/my/:store_profile" element={<StoreProfile />} />
 						<Route path="/my/:store_profile/:food" element={<StoreProfile />} />
+						<Route path="/my/:store_profile/edit-profile" element={<EditProfile />} />
 					</Routes>
 				</Router>
 			</div>

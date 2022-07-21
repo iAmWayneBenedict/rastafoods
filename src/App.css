@@ -135,6 +135,10 @@ label {
 		@apply w-full h-[25rem] bg-gray-400 flex items-center justify-center;
 	}
 
+	.aside-link-active {
+		@apply font-semibold;
+	}
+
 	button,
 	input {
 		@apply focus:outline-none;
