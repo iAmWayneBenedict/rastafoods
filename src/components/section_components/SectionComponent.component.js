@@ -2,7 +2,7 @@ import CuisineCard from "../card_components/CuisineCard.component";
 import FoodCard2 from "../card_components/FoodCard2.component";
 import StoreCard from "../card_components/StoreCard.component";
 
-const SectionComponent = ({ title, isCuisines, isShops, isFoods }) => {
+const SectionComponent = ({ title, isCuisines, isShops, isFoods, currentLocation = "" }) => {
 	const cardData = {
 		burger: {
 			name: "Burgers",
@@ -29,6 +29,8 @@ const SectionComponent = ({ title, isCuisines, isShops, isFoods }) => {
 			src: "/img/halo halo.png",
 		},
 	};
+
+	let myLink = currentLocation === "my" ? "/my" : "/stores";
 	return (
 		<div className="my-20">
 			<h1 className="font-bold text-xl my-10">{title}</h1>
@@ -51,8 +53,8 @@ const SectionComponent = ({ title, isCuisines, isShops, isFoods }) => {
 				{isFoods && (
 					<div className="flex flex-wrap gap-3 w-full">
 						{[...Array(10)].map((k, val) => {
-							if (val < 8) return <FoodCard2 key={val} />;
-							return <FoodCard2 key={val} />;
+							if (val < 8) return <FoodCard2 key={val} myLink={myLink} />;
+							return <FoodCard2 key={val} myLink={myLink} />;
 						})}
 					</div>
 				)}

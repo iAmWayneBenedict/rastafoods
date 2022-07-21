@@ -1,12 +1,54 @@
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import usePreloader from "../custom_hooks/usePreloader";
 import BannerContainer from "./banner_components/BannerContainer.component";
 import Footer from "./Footer";
 import Preloader from "./preloader_component/Preloader.component";
 import SectionComponent from "./section_components/SectionComponent.component";
+import ItemCard from "./card_components/ItemCard.component";
 
 const StoreProfile = () => {
 	let loaderValue = usePreloader();
+	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
+	const params = useParams();
+	useEffect(() => {
+		if (params.hasOwnProperty("food")) {
+			setItemPopUpStatus(true);
+		} else {
+			setItemPopUpStatus(false);
+		}
+	}, [params]);
+
+	const addOnData = [
+		{
+			title: "Add On",
+			required: false,
+			data: [
+				{ name: "Checkbox 1", additionalPrice: 150 },
+				{ name: "Checkbox 2", additionalPrice: 150 },
+				{ name: "Checkbox 3", additionalPrice: 150 },
+			],
+		},
+		{
+			title: "Additional Add On",
+			required: false,
+			data: [
+				{ name: "Checkbox 1", additionalPrice: 150 },
+				{ name: "Checkbox 2", additionalPrice: 150 },
+				{ name: "Checkbox 3", additionalPrice: 150 },
+			],
+		},
+		{
+			title: "Free Add On",
+			required: true,
+			data: [
+				{ name: "Checkbox 1", additionalPrice: 150 },
+				{ name: "Checkbox 2", additionalPrice: 150 },
+				{ name: "Checkbox 3", additionalPrice: 150 },
+			],
+		},
+	];
+
 	return (
 		<div>
 			<Preloader loaderValue={loaderValue} />
@@ -54,11 +96,17 @@ const StoreProfile = () => {
 							<SectionComponent
 								title={"Discover Interesting Cousines"}
 								isCuisines={true}
+								currentLocation="my"
 							/>
 
-							<SectionComponent title={"Discover New Foods"} isFoods={true} />
+							<SectionComponent
+								title={"Discover New Foods"}
+								isFoods={true}
+								currentLocation="my"
+							/>
 						</div>
 					</div>
+					{itemPopUpStatus && <ItemCard data={addOnData} currentLocation="my" />}
 					<Footer />
 				</>
 			)}
