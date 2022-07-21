@@ -669,6 +669,9 @@ Ensure the default browser behavior of the `hidden` attribute.
   --tw-bg-opacity: 1;
   background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }
+.aside-link-active{
+  font-weight: 600;
+}
 button:focus, input:focus{
   outline: 2px solid transparent;
   outline-offset: 2px;
@@ -926,6 +929,18 @@ button:focus, input:focus{
 .mx-24{
   margin-left: 6rem;
   margin-right: 6rem;
+}
+.mx-40{
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+.mx-32{
+  margin-left: 8rem;
+  margin-right: 8rem;
+}
+.mx-12{
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 .mr-0{
   margin-right: 0px;
@@ -1186,6 +1201,9 @@ button:focus, input:focus{
 .h-auto{
   height: auto;
 }
+.h-3\/4{
+  height: 75%;
+}
 .h-\[15px\]{
   height: 15px;
 }
@@ -1370,6 +1388,9 @@ button:focus, input:focus{
 }
 .max-w-xs{
   max-width: 20rem;
+}
+.max-w-\[25rem\]{
+  max-width: 25rem;
 }
 .max-w-\[30rem\]{
   max-width: 30rem;
@@ -2111,6 +2132,15 @@ button:focus, input:focus{
 }
 .opacity-25{
   opacity: 0.25;
+}
+.opacity-50{
+  opacity: 0.5;
+}
+.opacity-70{
+  opacity: 0.7;
+}
+.opacity-80{
+  opacity: 0.8;
 }
 .shadow-lg{
   --tw-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
@@ -2923,6 +2953,11 @@ input[type="number"] {
 }
 
 @media (min-width: 1280px){
+
+  .xl\:mx-40{
+    margin-left: 10rem;
+    margin-right: 10rem;
+  }
 
   .xl\:mt-28{
     margin-top: 7rem;
