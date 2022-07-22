@@ -34,6 +34,8 @@ const App = () => {
 						<Route path="/my/:store_profile" element={<StoreProfile />} />
 						<Route path="/my/:store_profile/:food" element={<StoreProfile />} />
 						<Route path="/my/:store_profile/edit-profile" element={<EditProfile />} />
+						<Route path="/my/:store_profile/edit-password" element={<EditProfile />} />
+						<Route path="/my/:store_profile/edit-email" element={<EditProfile />} />
 					</Routes>
 				</Router>
 			</div>

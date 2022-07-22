@@ -172,7 +172,7 @@ input[type="number"] {
 	height: 2px;
 	width: 100%;
 	background-color: red;
-	transition: all 0.2s ease;
+	transition: all 0.3s ease;
 }
 
 .link-animator::before {
@@ -180,7 +180,7 @@ input[type="number"] {
 }
 
 .link-animator::after {
-	transition: all 0.2s ease 0.15s;
+	transition: all 0.3s ease 0.3s;
 }
 
 .link-animator:hover::before {

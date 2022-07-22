@@ -51,43 +51,43 @@ const Signup = () => {
 											placeholder="example@gmail.com"
 											icon="bi bi-envelope"
 										/>
-										{/*
-							<InputField
-								type="password"
-								id="password"
-								name="password"
-								label="Password"
-								placeholder="●●●●●●●●●●"
-								icon="bi bi-lock"
-							/>
 
-							<InputField
-								type="password"
-								id="confirm-password"
-								name="confirm-password"
-								label="Confirm Password"
-								placeholder="●●●●●●●●●●"
-								icon="bi bi-lock"
-							/> */}
+										<InputField
+											type="password"
+											id="password"
+											name="password"
+											label="Password"
+											placeholder="●●●●●●●●●●"
+											icon="bi bi-lock"
+										/>
+
+										<InputField
+											type="password"
+											id="confirm-password"
+											name="confirm-password"
+											label="Confirm Password"
+											placeholder="●●●●●●●●●●"
+											icon="bi bi-lock"
+										/>
 									</div>
-									{/* <div className="flex justify-between mt-2">
-							<div>
-								<input
-									type="checkbox"
-									name="show-password"
-									id="show-password"
-									className="accent-primary select-none"
-								/>
-								<label htmlFor="show-password" className="text-sm ml-2">
-									Show Password
-								</label>
-							</div>
-						</div> */}
+									<div className="flex justify-between mt-2">
+										<div>
+											<input
+												type="checkbox"
+												name="show-password"
+												id="show-password"
+												className="accent-primary select-none"
+											/>
+											<label htmlFor="show-password" className="text-sm ml-2">
+												Show Password
+											</label>
+										</div>
+									</div>
 									<button
 										type="submit"
 										className="mt-10 bg-primary text-white text-sm md:text-base font-semibold py-3 rounded-md"
 									>
-										Next
+										Submit
 									</button>
 									<span className="text-sm text-center mt-3">
 										Don't have an account?
