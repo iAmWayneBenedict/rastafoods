@@ -11,6 +11,7 @@ const EditProfile = () => {
 	let preloaderValue = usePreloader();
 	const [currentParam, setCurrentParam] = useState();
 	const paramsArr = window.location.pathname.split("/");
+
 	useEffect(() => {
 		setCurrentParam(paramsArr[paramsArr.length - 1]);
 	}, [paramsArr]);
@@ -19,7 +20,7 @@ const EditProfile = () => {
 			<Preloader loaderValue={preloaderValue} />
 			{preloaderValue === 2 && (
 				<div>
-					<div className="md:mx-10 mt-28 flex xl:mx-40 mb-96">
+					<div className="md:mx-0 mt-28 flex 2xl:mx-40 mb-96 flex-col md:flex-row">
 						{currentParam === "edit-profile" && (
 							<>
 								<AsideNavProfile currentParam={currentParam} />

@@ -136,7 +136,7 @@ label {
 	}
 
 	.aside-link-active {
-		@apply font-semibold;
+		@apply font-bold;
 	}
 
 	button,
@@ -159,37 +159,6 @@ input[type="number"] {
 .close-btn i {
 	-webkit-text-stroke: 1px;
 }
-.link-animator {
-	position: relative;
-	overflow-x: hidden !important;
-}
-.link-animator::after,
-.link-animator::before {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: -100%;
-	height: 2px;
-	width: 100%;
-	background-color: red;
-	transition: all 0.3s ease;
-}
-
-.link-animator::before {
-	left: 0%;
-}
-
-.link-animator::after {
-	transition: all 0.3s ease 0.3s;
-}
-
-.link-animator:hover::before {
-	left: 100%;
-}
-
-.link-animator:hover::after {
-	left: 0%;
-}
 
 .closed {
 	opacity: 0.5;
@@ -201,4 +170,30 @@ input[type="number"] {
 
 .bi-suit-heart::before {
 	font-weight: bold !important;
+}
+
+@layer utilities {
+	.link-animator {
+		@apply relative overflow-x-hidden;
+	}
+	.link-animator::after,
+	.link-animator::before {
+		@apply absolute content-[''] bottom-0 left-[-100%] h-[2px] w-full bg-red-500 transition-all duration-300 ease-in-out;
+	}
+
+	.link-animator::before {
+		@apply left-0;
+	}
+
+	.link-animator::after {
+		@apply transition-all ease-in-out duration-300 delay-300;
+	}
+
+	.link-animator:hover::before {
+		@apply left-full;
+	}
+
+	.link-animator:hover::after {
+		@apply left-0;
+	}
 }

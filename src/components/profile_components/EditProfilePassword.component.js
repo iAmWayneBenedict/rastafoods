@@ -2,7 +2,7 @@ import InputField from "../form_components/InputField.component";
 
 const EditProfilePassword = () => {
 	return (
-		<div className="mx-12 max-w-[40rem] w-full">
+		<div className="md:mx-5 lg:mx-12 max-w-[40rem] w-full">
 			<div>
 				<h1 className="text-3xl font-semibold">Edit Password</h1>
 				<p className="text-sm max-w-[25rem] mt-3">

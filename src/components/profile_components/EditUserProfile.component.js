@@ -3,7 +3,7 @@ import SelectField from "../form_components/SelectField.component";
 
 const EditUserProfile = () => {
 	return (
-		<div className="mx-12 max-w-[40rem] w-full">
+		<div className="md:mx-5 lg:mx-12 max-w-[40rem] w-full">
 			<div>
 				<h1 className="text-3xl font-semibold">Edit Profile</h1>
 				<p className="text-sm max-w-[25rem] mt-3">
@@ -12,7 +12,7 @@ const EditUserProfile = () => {
 				</p>
 			</div>
 			<div className="mt-10 flex items-center gap-5">
-				<div className="w-20 h-20">
+				<div className="w-16 h-16 md:w-20 md:h-20">
 					<img
 						className="w-full h-full object-cover"
 						src="/img/sample-Profile.svg"
@@ -21,7 +21,7 @@ const EditUserProfile = () => {
 				</div>
 				<div>
 					<label htmlFor="change-profile" className="cursor-pointer">
-						<p className="link-animator">Change Profile</p>
+						<p className="link-animator text-sm">Change Profile</p>
 					</label>
 					<input type="file" id="change-profile" hidden />
 				</div>
