@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import usePreloader from "../custom_hooks/usePreloader";
 import BannerContainer from "./banner_components/BannerContainer.component";
 import Footer from "./Footer";
@@ -12,6 +12,16 @@ const StoreProfile = () => {
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
 	const [currentLocation, setCurrentLocation] = useState(false);
 	const params = useParams();
+
+	const { food } = params;
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if (!/\d+/.test(food) && food !== undefined) {
+			navigate(-1);
+		}
+	}, [food, navigate]);
+
 	useEffect(() => {
 		if (window.location.pathname.split("/")[1] === "my") {
 			setCurrentLocation("/my");
@@ -92,7 +102,7 @@ const StoreProfile = () => {
 									<p className="link-animator">jollibee@jollibee.com</p>
 								</Link>
 								<Link
-									to={"/"}
+									to={"/my/store/edit-profile"}
 									className="border border-red-600 rounded-md py-2 px-4 mt-16 text-sm font-semibold"
 								>
 									Change Profile <i className="bi bi-arrow-right ml-2"></i>

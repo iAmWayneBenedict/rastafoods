@@ -1,6 +1,6 @@
 const InputField = ({ type, id, name, placeholder, label, icon }) => {
 	return (
-		<div className="relative flex">
+		<div className="relative flex w-full">
 			<input
 				type={type}
 				id={id}
