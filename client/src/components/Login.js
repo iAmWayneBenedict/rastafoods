@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
@@ -7,7 +8,13 @@ import Preloader from "./preloader_component/Preloader.component";
 const Login = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	let searchValues = Object.fromEntries([...searchParams]);
-	console.log(searchValues);
+	// console.log(searchValues);
+	useEffect(() => {
+		let hasSessionUser = !!sessionStorage.getItem("user_token");
+		if (hasSessionUser) {
+			console.log(hasSessionUser);
+		}
+	}, []);
 	let loaderValue = usePreloader();
 	return (
 		<>

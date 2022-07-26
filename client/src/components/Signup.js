@@ -20,7 +20,11 @@ const Signup = () => {
 		formData.append("dateNow", Date.now());
 		try {
 			let resultRequest = await result(Object.fromEntries(formData.entries()));
-			console.log(resultRequest.status);
+
+			if (resultRequest.status === 200) {
+				console.log(resultRequest);
+				sessionStorage.setItem("user_token", resultRequest.data.token);
+			}
 		} catch (error) {
 			errorHandler.current.textContent = JSON.parse(error.response.request.response).error;
 			errorHandler.current.classList.remove("hidden");
