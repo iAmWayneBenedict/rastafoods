@@ -3,11 +3,34 @@ import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
 import InputField from "./form_components/InputField.component";
 import Preloader from "./preloader_component/Preloader.component";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { useRef } from "react";
+
+const result = async (data) => {
+	return await axios.post("http://localhost:8000/api/users", data);
+};
 
 const Signup = () => {
+	const errorHandler = useRef();
+	const submitSignupForm = async (event) => {
+		event.preventDefault();
+
+		let formData = new FormData(event.target);
+		formData.append("dateNow", Date.now());
+		try {
+			let resultRequest = await result(Object.fromEntries(formData.entries()));
+			console.log(resultRequest.status);
+		} catch (error) {
+			errorHandler.current.textContent = JSON.parse(error.response.request.response).error;
+			errorHandler.current.classList.remove("hidden");
+		}
+		// let resultData = await resultRequest
+		// ((res) => console.log(res.data));
+	};
 	const [searchParams, setSearchParams] = useSearchParams();
-	let searchValues = Object.fromEntries([...searchParams]);
-	console.log(searchValues);
+	// let searchValues = Object.fromEntries([...searchParams]);
+	// console.log(searchValues);
 	let loaderValues = usePreloader();
 	return (
 		<>
@@ -19,16 +42,23 @@ const Signup = () => {
 							<div className="title text-primary font-bold text-lg mb-10">
 								RastaFoods
 							</div>
-							<div className="error text-sm font-semibold py-2 text-center rounded-md hidden">
+							<div
+								ref={errorHandler}
+								className="error text-sm font-semibold py-2 text-center rounded-md hidden"
+							>
 								Incorrect email or password
 							</div>
-							<form action="" className="w-full flex mt-10">
+							<form
+								action=""
+								onSubmit={submitSignupForm}
+								className="w-full flex mt-10"
+							>
 								<div className="relative flex flex-col w-full">
 									<div className="flex flex-col gap-10">
 										<InputField
 											type="text"
 											id="first-name"
-											name="first-name"
+											name="firstName"
 											label="First Name"
 											placeholder="Manuel"
 											icon="bi bi-person"
@@ -37,7 +67,7 @@ const Signup = () => {
 										<InputField
 											type="text"
 											id="last-name"
-											name="last-name"
+											name="lastName"
 											label="Last Name"
 											placeholder="Roxas"
 											icon="bi bi-person"
@@ -64,7 +94,7 @@ const Signup = () => {
 										<InputField
 											type="password"
 											id="confirm-password"
-											name="confirm-password"
+											name="confirmPassword"
 											label="Confirm Password"
 											placeholder="●●●●●●●●●●"
 											icon="bi bi-lock"
