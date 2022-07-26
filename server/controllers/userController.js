@@ -1,5 +1,6 @@
 const { ObjectId } = require("mongodb");
 const Users = require("../models/users");
+const createUserToken = require("../tokens/createUserToken");
 
 const getAllUsers = (req, res) => {
 	Users.find()
@@ -27,19 +28,16 @@ const getUser = (req, res) => {
 	}
 };
 
-const addUser = (req, res) => {
+const addUser = async (req, res) => {
 	const user = req.body;
+	try {
+		const { email, name, _id, createdAt, updatedAt } = await Users.signup(user);
 
-	const users = new Users(user);
-
-	users
-		.save()
-		.then((result) => {
-			res.status(201).json(result);
-		})
-		.catch((err) => {
-			res.status(500).json({ error: "Could not fetch data" });
-		});
+		const token = createUserToken(_id);
+		res.status(200).json({ data: { email, name, _id, createdAt, updatedAt }, token });
+	} catch (err) {
+		res.status(400).json({ error: err.message });
+	}
 };
 
 const deleteUser = (req, res) => {
@@ -55,6 +53,10 @@ const deleteUser = (req, res) => {
 	} else {
 		res.status(500).json({ error: "Could not fetch data" });
 	}
+};
+
+const loginUser = (req, res) => {
+	res.json({ msg: "Login" });
 };
 
 module.exports = {

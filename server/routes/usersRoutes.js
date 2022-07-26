@@ -8,4 +8,6 @@ router.route("/").get(getAllUsers).post(addUser);
 
 router.route("/:id").get(getUser).delete(deleteUser);
 
+router.route("/signup").post(addUser);
+
 module.exports = router;
