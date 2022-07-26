@@ -10,6 +10,10 @@ const usersSchema = new Schema(
 			required: true,
 			unique: true,
 		},
+		username: {
+			type: String,
+			required: true,
+		},
 		password: {
 			type: String,
 			required: true,
@@ -31,20 +35,23 @@ const usersSchema = new Schema(
 
 // statics
 usersSchema.statics.signup = async function (user) {
-	const { email, password } = user;
+	const { email, password, username } = user;
 	const { firstName, lastName } = user.name;
-	const exists = await this.findOne({ email });
+	const emailExists = await this.findOne({ email });
+	const userNameExists = await this.findOne({ username });
+	if (!email || !password || !firstName || !lastName || !username) {
+		throw Error("All fields must be filled");
+	}
 
-	if (exists) {
+	if (emailExists) {
 		throw Error("Email already exist");
 	}
-
-	if (password < 8) {
-		throw Error("Password length must be greater than 8");
+	if (userNameExists) {
+		throw Error("UserName already exist");
 	}
 
-	if (!email || !password || !firstName || !lastName) {
-		throw Error("All fields must be filled");
+	if (password.length < 8) {
+		throw Error("Password must be at least 8 characters");
 	}
 
 	if (!validator.isEmail(email)) {

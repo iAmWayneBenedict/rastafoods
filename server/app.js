@@ -1,9 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userRoutes = require("./routes/usersRoutes");
+const cors = require("cors");
 const app = express();
+app.use(cors());
 require("dotenv").config();
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 // db connection
 

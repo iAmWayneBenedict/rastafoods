@@ -29,14 +29,27 @@ const getUser = (req, res) => {
 };
 
 const addUser = async (req, res) => {
-	const user = req.body;
-	try {
-		const { email, name, _id, createdAt, updatedAt } = await Users.signup(user);
+	const { firstName, lastName, email, password, confirmPassword, dateNow } = req.body;
+	if (password !== confirmPassword) {
+		res.status(400).json({ error: "Password not matched" });
+	} else {
+		const user = {
+			email,
+			name: {
+				firstName,
+				lastName,
+			},
+			username: `@${firstName.toLowerCase()}${lastName.toLowerCase()}${dateNow}`,
+			password,
+		};
+		try {
+			const { email, name, _id, createdAt, updatedAt } = await Users.signup(user);
 
-		const token = createUserToken(_id);
-		res.status(200).json({ data: { email, name, _id, createdAt, updatedAt }, token });
-	} catch (err) {
-		res.status(400).json({ error: err.message });
+			const token = createUserToken(_id);
+			res.status(200).json({ data: { email, name, _id, createdAt, updatedAt }, token });
+		} catch (err) {
+			res.status(400).json({ error: err.message });
+		}
 	}
 };
 
