@@ -39,6 +39,7 @@ usersSchema.statics.signup = async function (user) {
 	const { firstName, lastName } = user.name;
 	const emailExists = await this.findOne({ email });
 	const userNameExists = await this.findOne({ username });
+
 	if (!email || !password || !firstName || !lastName || !username) {
 		throw Error("All fields must be filled");
 	}
@@ -68,6 +69,30 @@ usersSchema.statics.signup = async function (user) {
 	const newUser = await this.create(user);
 
 	return newUser;
+};
+
+usersSchema.statics.login = async function (email, password) {
+	if (!email || !password) {
+		throw Error("All fields must be filed");
+	}
+
+	if (password.length < 8) {
+		throw Error("Password must be at least 8 characters");
+	}
+
+	const user = await this.findOne({ email });
+
+	if (!user) {
+		throw Error("Incorrect email or password");
+	}
+
+	const isPasswordMatched = await bcrypt.compare(password, user.password);
+
+	if (!isPasswordMatched) {
+		throw Error("Incorrect email or password");
+	}
+
+	return user;
 };
 
 const Users = mongoose.model("Users", usersSchema);

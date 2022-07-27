@@ -1,32 +1,61 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
 import InputField from "./form_components/InputField.component";
 import Preloader from "./preloader_component/Preloader.component";
 import axios from "axios";
+
 const BASE_URl = "http://localhost:8000/api/users";
-const getCurrentUserRequest = async (action = "", identifier) => {
+
+const getCurrentUserRequest = async (action, identifier) => {
 	return await axios.get(`${BASE_URl}${action}/${identifier}`);
+};
+
+const postRequest = async (data) => {
+	return await axios.post("http://localhost:8000/api/users/login", data);
 };
 
 const Login = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const errorHandler = useRef();
+
 	let searchValues = Object.fromEntries([...searchParams]);
 	// console.log(searchValues);
+
 	useEffect(() => {
 		let hasSessionUser = !!localStorage.getItem("user_token");
-		async function getUserInfo(hasSessionUser) {
+		const getUserInfo = async (hasSessionUser) => {
 			if (hasSessionUser) {
 				let response = await getCurrentUserRequest(
 					"/token",
 					localStorage.getItem("user_token")
 				);
 				console.log(response);
+			} else {
+				console.log("No user");
 			}
-		}
+		};
 		getUserInfo(hasSessionUser);
 	}, []);
+
+	const submitLogin = async (event) => {
+		event.preventDefault();
+
+		const formData = new FormData(event.target);
+		try {
+			let response = await postRequest(Object.fromEntries(formData.entries()));
+			if (response.status === 200) {
+				localStorage.setItem("user_token", response.data.token);
+			}
+		} catch (error) {
+			if (error.response.status === 400) {
+				errorHandler.current.textContent = error.response.data.error;
+				errorHandler.current.classList.remove("hidden");
+			}
+		}
+	};
+
 	let loaderValue = usePreloader();
 	return (
 		<>
@@ -38,10 +67,13 @@ const Login = () => {
 							<div className="title text-primary font-bold text-lg mb-10">
 								RastaFoods
 							</div>
-							<div className="error text-sm font-semibold py-2 text-center rounded-md hidden">
+							<div
+								ref={errorHandler}
+								className="error text-sm font-semibold py-2 text-center rounded-md hidden"
+							>
 								Incorrect email or password
 							</div>
-							<form action="" className="w-full flex mt-10">
+							<form onSubmit={submitLogin} action="" className="w-full flex mt-10">
 								<div className="relative flex flex-col w-full">
 									<div className="flex flex-col gap-10">
 										<InputField

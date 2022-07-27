@@ -8,6 +8,10 @@ const getAllUsers = (req, res) => {
 	Users.find()
 		.sort({ name: 1 })
 		.then((result) => {
+			result.map((obj) => {
+				obj.password = "";
+				return obj;
+			});
 			res.status(200).json(result);
 		})
 		.catch((err) => {
@@ -16,11 +20,11 @@ const getAllUsers = (req, res) => {
 };
 
 const getUserById = (req, res) => {
-	console.log(req.params.id);
 	if (ObjectId.isValid(req.params.id)) {
 		Users.findById(ObjectId(req.params.id))
-			.then((doc) => {
-				res.status(200).json(doc);
+			.then((result) => {
+				let { name, email, username } = result;
+				res.status(200).json({ name, email, username });
 			})
 			.catch((err) => {
 				console.log("Could not fetch data" + err);
@@ -102,8 +106,16 @@ const deleteUserByToken = (req, res) => {
 	}
 };
 
-const loginUser = (req, res) => {
-	res.json({ msg: "Login" });
+const loginUser = async (req, res) => {
+	const { email: userEmail, password } = req.body;
+	try {
+		const { email, name, _id } = await Users.login(userEmail, password);
+
+		const token = createUserToken(_id);
+		res.status(200).json({ data: { email, name, _id }, token });
+	} catch (err) {
+		res.status(400).json({ error: err.message });
+	}
 };
 
 module.exports = {
@@ -113,4 +125,5 @@ module.exports = {
 	addUser,
 	deleteUserById,
 	deleteUserByToken,
+	loginUser,
 };
