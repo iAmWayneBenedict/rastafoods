@@ -1,36 +1,34 @@
 import { Link, useSearchParams } from "react-router-dom";
+import axios from "axios";
 import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
 import InputField from "./form_components/InputField.component";
 import Preloader from "./preloader_component/Preloader.component";
-import { useQuery } from "react-query";
-import axios from "axios";
 import { useRef } from "react";
 
-const result = async (data) => {
+const postRequest = async (data) => {
 	return await axios.post("http://localhost:8000/api/users", data);
 };
 
 const Signup = () => {
 	const errorHandler = useRef();
+
 	const submitSignupForm = async (event) => {
 		event.preventDefault();
 
 		let formData = new FormData(event.target);
 		formData.append("dateNow", Date.now());
 		try {
-			let resultRequest = await result(Object.fromEntries(formData.entries()));
-
-			if (resultRequest.status === 200) {
-				console.log(resultRequest);
-				sessionStorage.setItem("user_token", resultRequest.data.token);
+			let response = await postRequest(Object.fromEntries(formData.entries()));
+			if (response.status === 200) {
+				sessionStorage.setItem("user_token", response.data.token);
 			}
 		} catch (error) {
-			errorHandler.current.textContent = JSON.parse(error.response.request.response).error;
-			errorHandler.current.classList.remove("hidden");
+			if (error.response.status === 400) {
+				errorHandler.current.textContent = error.response.data.error;
+				errorHandler.current.classList.remove("hidden");
+			}
 		}
-		// let resultData = await resultRequest
-		// ((res) => console.log(res.data));
 	};
 	const [searchParams, setSearchParams] = useSearchParams();
 	// let searchValues = Object.fromEntries([...searchParams]);
