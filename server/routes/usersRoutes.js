@@ -2,11 +2,20 @@ const express = require("express");
 const router = express.Router();
 
 // user controller
-const { getAllUsers, getUser, addUser, deleteUser } = require("../controllers/userController");
+const {
+	getAllUsers,
+	getUserById,
+	getUserByToken,
+	addUser,
+	deleteUserById,
+	deleteUserByToken,
+} = require("../controllers/userController");
 
 router.route("/").get(getAllUsers).post(addUser);
 
-router.route("/:id").get(getUser).delete(deleteUser);
+router.route("/:id").get(getUserById).delete(deleteUserById);
+
+router.route("/token/:token").get(getUserByToken).delete(deleteUserByToken);
 
 router.route("/signup").post(addUser);
 

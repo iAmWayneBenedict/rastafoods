@@ -21,7 +21,7 @@ const Signup = () => {
 		try {
 			let response = await postRequest(Object.fromEntries(formData.entries()));
 			if (response.status === 200) {
-				sessionStorage.setItem("user_token", response.data.token);
+				localStorage.setItem("user_token", response.data.token);
 			}
 		} catch (error) {
 			if (error.response.status === 400) {

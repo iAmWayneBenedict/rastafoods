@@ -1,6 +1,8 @@
 const { ObjectId } = require("mongodb");
 const Users = require("../models/users");
 const createUserToken = require("../tokens/createUserToken");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 const getAllUsers = (req, res) => {
 	Users.find()
@@ -13,12 +15,29 @@ const getAllUsers = (req, res) => {
 		});
 };
 
-const getUser = (req, res) => {
+const getUserById = (req, res) => {
 	console.log(req.params.id);
 	if (ObjectId.isValid(req.params.id)) {
 		Users.findById(ObjectId(req.params.id))
 			.then((doc) => {
 				res.status(200).json(doc);
+			})
+			.catch((err) => {
+				console.log("Could not fetch data" + err);
+			});
+	} else {
+		res.status(500).json({ error: "Could not fetch data" });
+	}
+};
+
+const getUserByToken = (req, res) => {
+	let decoded = jwt.verify(req.params.token, process.env.SECRET_KEY);
+
+	if (ObjectId.isValid(decoded._id)) {
+		Users.findOne({ _id: decoded._id })
+			.then((result) => {
+				let { name, email, username } = result;
+				res.status(200).json({ name, email, username });
 			})
 			.catch((err) => {
 				console.log("Could not fetch data" + err);
@@ -53,10 +72,25 @@ const addUser = async (req, res) => {
 	}
 };
 
-const deleteUser = (req, res) => {
+const deleteUserById = (req, res) => {
 	console.log(req.params.id);
 	if (ObjectId.isValid(req.params.id)) {
 		Users.findByIdAndDelete(ObjectId(req.params.id))
+			.then((doc) => {
+				res.status(200).json(doc);
+			})
+			.catch((err) => {
+				console.log("Could not fetch data" + err);
+			});
+	} else {
+		res.status(500).json({ error: "Could not fetch data" });
+	}
+};
+
+const deleteUserByToken = (req, res) => {
+	console.log(req.params.id);
+	if (ObjectId.isValid(req.params.id)) {
+		Users.findOneAndDelete(ObjectId(req.params.id))
 			.then((doc) => {
 				res.status(200).json(doc);
 			})
@@ -74,7 +108,9 @@ const loginUser = (req, res) => {
 
 module.exports = {
 	getAllUsers,
-	getUser,
+	getUserById,
+	getUserByToken,
 	addUser,
-	deleteUser,
+	deleteUserById,
+	deleteUserByToken,
 };
