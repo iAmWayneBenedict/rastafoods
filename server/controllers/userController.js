@@ -1,11 +1,17 @@
 const { ObjectId } = require("mongodb");
 const Users = require("../models/users");
 const createUserToken = require("../tokens/createUserToken");
+require("dotenv").config();
+const jwt = require("jsonwebtoken");
 
 const getAllUsers = (req, res) => {
 	Users.find()
 		.sort({ name: 1 })
 		.then((result) => {
+			result.map((obj) => {
+				obj.password = "";
+				return obj;
+			});
 			res.status(200).json(result);
 		})
 		.catch((err) => {
@@ -13,12 +19,29 @@ const getAllUsers = (req, res) => {
 		});
 };
 
-const getUser = (req, res) => {
-	console.log(req.params.id);
+const getUserById = (req, res) => {
 	if (ObjectId.isValid(req.params.id)) {
 		Users.findById(ObjectId(req.params.id))
-			.then((doc) => {
-				res.status(200).json(doc);
+			.then((result) => {
+				let { name, email, username } = result;
+				res.status(200).json({ name, email, username });
+			})
+			.catch((err) => {
+				console.log("Could not fetch data" + err);
+			});
+	} else {
+		res.status(500).json({ error: "Could not fetch data" });
+	}
+};
+
+const getUserByToken = (req, res) => {
+	let decoded = jwt.verify(req.params.token, process.env.SECRET_KEY);
+
+	if (ObjectId.isValid(decoded._id)) {
+		Users.findOne({ _id: decoded._id })
+			.then((result) => {
+				let { name, email, username } = result;
+				res.status(200).json({ name, email, username });
 			})
 			.catch((err) => {
 				console.log("Could not fetch data" + err);
@@ -53,7 +76,7 @@ const addUser = async (req, res) => {
 	}
 };
 
-const deleteUser = (req, res) => {
+const deleteUserById = (req, res) => {
 	console.log(req.params.id);
 	if (ObjectId.isValid(req.params.id)) {
 		Users.findByIdAndDelete(ObjectId(req.params.id))
@@ -68,13 +91,39 @@ const deleteUser = (req, res) => {
 	}
 };
 
-const loginUser = (req, res) => {
-	res.json({ msg: "Login" });
+const deleteUserByToken = (req, res) => {
+	console.log(req.params.id);
+	if (ObjectId.isValid(req.params.id)) {
+		Users.findOneAndDelete(ObjectId(req.params.id))
+			.then((doc) => {
+				res.status(200).json(doc);
+			})
+			.catch((err) => {
+				console.log("Could not fetch data" + err);
+			});
+	} else {
+		res.status(500).json({ error: "Could not fetch data" });
+	}
+};
+
+const loginUser = async (req, res) => {
+	const { email: userEmail, password } = req.body;
+	try {
+		const { email, name, _id } = await Users.login(userEmail, password);
+
+		const token = createUserToken(_id);
+		res.status(200).json({ data: { email, name, _id }, token });
+	} catch (err) {
+		res.status(400).json({ error: err.message });
+	}
 };
 
 module.exports = {
 	getAllUsers,
-	getUser,
+	getUserById,
+	getUserByToken,
 	addUser,
-	deleteUser,
+	deleteUserById,
+	deleteUserByToken,
+	loginUser,
 };
