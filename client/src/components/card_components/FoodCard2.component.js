@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Rating from "../rating/Rating.component";
 import EventCard from "./EventCard.component";
 
-const FoodCard2 = ({ event, myLink }) => {
+const FoodCard2 = ({ event, myLink, store }) => {
 	const heartBtn = useRef();
 	const foodCard = useRef();
 	const closeClass = event ? "closed" : "open";
@@ -20,7 +20,7 @@ const FoodCard2 = ({ event, myLink }) => {
 	};
 	return (
 		<Link
-			to={`${myLink}/1`}
+			to={`${myLink}/${store}/1`}
 			onClick={foodCardClicked}
 			ref={foodCard}
 			className={`${closeClass} food-card-container2`}

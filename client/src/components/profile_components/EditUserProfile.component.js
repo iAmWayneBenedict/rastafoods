@@ -1,7 +1,96 @@
 import InputField from "../form_components/InputField.component";
 import SelectField from "../form_components/SelectField.component";
+import { useEffect, useState } from "react";
+import { regions, provinces, cities, barangays } from "select-philippines-address";
+import axios from "axios";
 
-const EditUserProfile = () => {
+const BASE_URl = "http://localhost:8000/api/users";
+
+const getCurrentUserRequest = async (action, identifier) => {
+	return await axios.get(`${BASE_URl}${action}/${identifier}`);
+};
+
+const getAddressRequest = async (url) => {
+	return await axios.get(url);
+};
+
+const postRequest = async (data) => {
+	return await axios.post("http://localhost:8000/api/users/login", data);
+};
+
+const getRegion = async () => {
+	return await regions();
+};
+
+const getProvince = async (code) => {
+	return await provinces(code);
+};
+
+const getCity = async (code) => {
+	return await cities(code);
+};
+
+const getBarangay = async (code) => {
+	return await barangays(code);
+};
+
+const EditUserProfile = ({ userData }) => {
+	const [regions, setRegions] = useState();
+	const [regionCode, setRegionCode] = useState("0");
+
+	const [provinces, setProvinces] = useState();
+	const [provinceCode, setProvinceCode] = useState("0");
+
+	const [cities, setCities] = useState();
+	const [cityCode, setCityCode] = useState("0");
+
+	const [barangays, setBarangays] = useState();
+	const [barangayCode, setBarangayCode] = useState("0");
+
+	useEffect(() => {
+		async function getRegion1() {
+			setRegions(await getRegion());
+		}
+		getRegion1();
+	}, []);
+
+	useEffect(() => {
+		const getProvinceByRegion = async (code) => {
+			let responseProvinces = await getProvince(code);
+			setProvinces(responseProvinces);
+		};
+		getProvinceByRegion(regionCode);
+	}, [regionCode]);
+
+	useEffect(() => {
+		const getCityByProvince = async (code) => {
+			let responseCities = await getCity(code);
+			setCities(responseCities);
+		};
+		getCityByProvince(provinceCode);
+	}, [provinceCode]);
+
+	useEffect(() => {
+		const getBarangayByProvince = async (code) => {
+			let responseBarangays = await getBarangay(code);
+			setBarangays(responseBarangays);
+		};
+		getBarangayByProvince(cityCode);
+	}, [cityCode]);
+
+	const callback = ([location, code]) => {
+		if (location === "region") {
+			setRegionCode(code);
+		}
+		if (location === "province") {
+			setProvinceCode(code);
+		}
+
+		if (location === "city") {
+			setCityCode(code);
+		}
+	};
+
 	return (
 		<div className="mx-12 max-w-[40rem] w-full">
 			<div>
@@ -31,21 +120,30 @@ const EditUserProfile = () => {
 					<div className="flex gap-3 w-full">
 						<InputField
 							type="text"
-							id="name"
-							name="name"
-							label="Name"
-							placeholder="Jollibee"
+							id="firstName"
+							name="firstName"
+							label="First Name"
 							icon=""
+							value={userData.name.firstName}
 						/>
 						<InputField
 							type="text"
-							id="username"
-							name="username"
-							label="Username"
-							placeholder="@jollibee"
+							id="lastName"
+							name="lastName"
+							label="Last Name"
 							icon=""
+							value={userData.name.lastName}
 						/>
 					</div>
+					<InputField
+						type="text"
+						id="username"
+						name="username"
+						label="Username"
+						placeholder="@jollibee"
+						icon=""
+						value={userData.username}
+					/>
 					<InputField
 						type="text"
 						id="contact"
@@ -54,14 +152,31 @@ const EditUserProfile = () => {
 						placeholder="8700"
 						icon=""
 					/>
+					<SelectField
+						id="region"
+						name="region"
+						label="Region"
+						placeholder="-- Region --"
+						data={regions}
+						callback={callback}
+					/>
 					<div className="flex gap-3 w-full">
 						<SelectField
-							id="city"
+							id="province"
 							name="province"
 							label="Province"
 							placeholder="-- Province --"
+							data={provinces}
+							callback={callback}
 						/>
-						<SelectField id="city" name="city" label="City" placeholder="-- City --" />
+						<SelectField
+							id="city"
+							name="city"
+							label="City"
+							placeholder="-- City --"
+							data={cities}
+							callback={callback}
+						/>
 					</div>
 					<div className="flex gap-3 w-full">
 						<SelectField
@@ -69,7 +184,8 @@ const EditUserProfile = () => {
 							name="barangay"
 							label="Barangay"
 							placeholder="-- Barangay --"
-							data={[]}
+							data={barangays}
+							callback={callback}
 						/>
 						<InputField
 							type="text"

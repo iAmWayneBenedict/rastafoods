@@ -1,14 +1,65 @@
-const SelectField = ({ id, name, label, placeholder, data }) => {
+import { useState } from "react";
+
+const SelectField = ({ id, name, label, placeholder, data, callback }) => {
+	const callbackFunction = (event) => {
+		callback([id, event.target.value]);
+	};
 	return (
 		<div className="relative flex w-full">
 			<select
 				name={name}
 				id={id}
+				// disabled={disabled}
+				onChange={callbackFunction}
 				className="input-field appearance-none w-full border border-slate-900 rounded-md text-sm md:text-base pl-5 pr-8 py-3 focus:border-red-500 transition-colors ease-in-out bg-white"
 			>
 				<option>{placeholder}</option>
-				<option>Option 2</option>
-				<option>Option 3</option>
+
+				{!!data &&
+					id === "region" &&
+					data.map((value) => {
+						return (
+							<option
+								key={value.psgc_code + value.region_name}
+								value={value.region_code}
+							>
+								{value.region_name}
+							</option>
+						);
+					})}
+				{!!data &&
+					id === "province" &&
+					data.map((value) => {
+						return (
+							<option
+								key={value.psgc_code + value.province_name}
+								value={value.province_code}
+							>
+								{value.province_name}
+							</option>
+						);
+					})}
+				{!!data &&
+					id === "city" &&
+					data.map((value) => {
+						return (
+							<option key={value.psgc_code + value.city_name} value={value.city_code}>
+								{value.city_name}
+							</option>
+						);
+					})}
+				{!!data &&
+					id === "barangay" &&
+					data.map((value) => {
+						return (
+							<option
+								key={value.psgc_code + value.barangay_name}
+								value={value.barangay_code}
+							>
+								{value.barangay_name}
+							</option>
+						);
+					})}
 			</select>
 			<label
 				htmlFor={id}

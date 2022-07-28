@@ -1,4 +1,7 @@
-const InputField = ({ type, id, name, placeholder, label, icon }) => {
+const InputField = ({ type, id, name, placeholder, label, icon, value }) => {
+	const inputChangeHandler = (event) => {
+		console.log(event);
+	};
 	return (
 		<div className="relative flex w-full">
 			<input
@@ -6,6 +9,8 @@ const InputField = ({ type, id, name, placeholder, label, icon }) => {
 				id={id}
 				name={name}
 				placeholder={placeholder}
+				value={value}
+				onChange={inputChangeHandler}
 				className="input-field w-full border border-slate-900 rounded-md text-sm md:text-base pl-5 pr-12 py-3 focus:border-red-500 transition-colors ease-in-out"
 			/>
 			<label

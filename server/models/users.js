@@ -10,6 +10,9 @@ const usersSchema = new Schema(
 			required: true,
 			unique: true,
 		},
+		contact: {
+			type: Number,
+		},
 		username: {
 			type: String,
 			required: true,
@@ -27,6 +30,20 @@ const usersSchema = new Schema(
 			lastName: {
 				type: String,
 				required: true,
+			},
+		},
+		address: {
+			province: {
+				type: String,
+			},
+			city: {
+				type: String,
+			},
+			barangay: {
+				type: String,
+			},
+			street: {
+				type: String,
 			},
 		},
 	},
