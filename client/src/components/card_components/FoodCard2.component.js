@@ -20,7 +20,7 @@ const FoodCard2 = ({ event, myLink }) => {
 	};
 	return (
 		<Link
-			to={`${myLink}/store/1`}
+			to={`${myLink}/1`}
 			onClick={foodCardClicked}
 			ref={foodCard}
 			className={`${closeClass} food-card-container2`}

@@ -26,8 +26,9 @@ const App = () => {
 					<ScrollToTop hasScrolled={scrolledOverHundred} />
 					<Routes>
 						<Route path="/" element={<Home />} />
-						<Route path="/stores" element={<Stores />} />
-						<Route path="/stores/:store/:food" element={<Stores />} />
+						<Route path="/stores/discover" element={<Stores />} />
+						<Route path="/stores/discover/:store/:food" element={<Stores />} />
+						<Route path="/stores/:store/:food" element={<StoreProfile />} />
 						<Route path="/stores/:store" element={<StoreProfile />} />
 						<Route path="/cart" element={<CartSection />} />
 						<Route path="/login" element={<Login />} />

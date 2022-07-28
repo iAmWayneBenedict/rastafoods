@@ -38,7 +38,7 @@ const NavBar = ({ hasScrolled }) => {
 				<div className="center-element w-fit hidden md:flex">
 					{[
 						["Home", "/"],
-						["Stores", "/stores"],
+						["Stores", "/stores/discover"],
 						["Delivery", "/"],
 						["Contact", "/"],
 						["About", "/"],

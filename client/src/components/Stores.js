@@ -120,7 +120,7 @@ const Stores = () => {
 							})}
 						</div>
 					</div>
-					{itemPopUpStatus && <ItemCard data={addOnData} />}
+					{itemPopUpStatus && <ItemCard data={addOnData} currentLocation="/discover" />}
 					<Footer />
 				</div>
 			)}

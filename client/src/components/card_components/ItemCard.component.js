@@ -28,6 +28,13 @@ const ItemCard = ({ data, currentLocation = "/stores" }) => {
 		setConHeight(itemCard.current.clientHeight - 120);
 	};
 	let myLink = currentLocation === "/my" ? "/my/store" : currentLocation;
+	if (currentLocation === "/my") {
+		myLink = "/my/store";
+	} else if (currentLocation === "/discover") {
+		myLink = "/stores/discover";
+	} else {
+		myLink = currentLocation;
+	}
 
 	return (
 		<div

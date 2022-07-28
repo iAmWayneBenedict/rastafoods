@@ -13,7 +13,7 @@ const StoreProfile = () => {
 	const [currentLocation, setCurrentLocation] = useState(false);
 	const params = useParams();
 
-	const { food } = params;
+	const { store, food } = params;
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -26,7 +26,7 @@ const StoreProfile = () => {
 		if (window.location.pathname.split("/")[1] === "my") {
 			setCurrentLocation("/my");
 		} else {
-			setCurrentLocation("/stores");
+			setCurrentLocation("/stores/" + store);
 		}
 	}, []);
 	useEffect(() => {
