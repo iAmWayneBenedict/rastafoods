@@ -91,6 +91,12 @@ const EditUserProfile = ({ userData }) => {
 		}
 	};
 
+	const submitUserProfile = (event) => {
+		event.preventDefault();
+		let formData = new FormData(event.target);
+		console.log(Object.fromEntries(formData.entries()));
+	};
+
 	return (
 		<div className="mx-12 max-w-[40rem] w-full">
 			<div>
@@ -115,7 +121,7 @@ const EditUserProfile = ({ userData }) => {
 					<input type="file" id="change-profile" hidden />
 				</div>
 			</div>
-			<form action="">
+			<form onSubmit={submitUserProfile} action="">
 				<div className="flex flex-col gap-8 mt-12 w-full">
 					<div className="flex gap-3 w-full">
 						<InputField
@@ -197,7 +203,7 @@ const EditUserProfile = ({ userData }) => {
 						/>
 					</div>
 				</div>
-				<div className="mt-14 flex gap-5 pointer-events-none opacity-60">
+				<div className="mt-14 flex gap-5 opacity-60">
 					<button className="">Cancel</button>
 					<button className="bg-gray-400 text-white rounded-md font-semibold px-5 py-2">
 						Done

@@ -2,7 +2,13 @@ import { useState } from "react";
 
 const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 	const callbackFunction = (event) => {
-		callback([id, event.target.value]);
+		let value = Array.from(event.target.children)
+			.map((el) => {
+				if (el.selected) return el.dataset.value;
+				return false;
+			})
+			.filter((val) => val !== false);
+		callback([id, value[0]]);
 	};
 	return (
 		<div className="relative flex w-full">
@@ -20,8 +26,9 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 					data.map((value) => {
 						return (
 							<option
+								value={value.region_name}
 								key={value.psgc_code + value.region_name}
-								value={value.region_code}
+								data-value={value.region_code}
 							>
 								{value.region_name}
 							</option>
@@ -32,8 +39,9 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 					data.map((value) => {
 						return (
 							<option
+								value={value.province_name}
 								key={value.psgc_code + value.province_name}
-								value={value.province_code}
+								data-value={value.province_code}
 							>
 								{value.province_name}
 							</option>
@@ -43,7 +51,11 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 					id === "city" &&
 					data.map((value) => {
 						return (
-							<option key={value.psgc_code + value.city_name} value={value.city_code}>
+							<option
+								value={value.city_name}
+								key={value.psgc_code + value.city_name}
+								data-value={value.city_code}
+							>
 								{value.city_name}
 							</option>
 						);
@@ -53,10 +65,11 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 					data.map((value) => {
 						return (
 							<option
-								key={value.psgc_code + value.barangay_name}
-								value={value.barangay_code}
+								value={value.brgy_name}
+								key={value.psgc_code + value.brgy_name}
+								data-value={value.barangay_code}
 							>
-								{value.barangay_name}
+								{value.brgy_name}
 							</option>
 						);
 					})}
