@@ -38,7 +38,7 @@ const StoreCard = ({ event }) => {
 			<p className="text-xs md:text-sm mt-2 mb-3 sm:mb-5">
 				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto, magni!
 			</p>
-			<Link to={"/"} className="card-link w-fit">
+			<Link to={"/stores/store/"} className="card-link w-fit">
 				<p className="link-animator w-fit">Visit Store</p>
 			</Link>
 		</div>

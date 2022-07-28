@@ -2,7 +2,7 @@ import CuisineCard from "../card_components/CuisineCard.component";
 import FoodCard2 from "../card_components/FoodCard2.component";
 import StoreCard from "../card_components/StoreCard.component";
 
-const SectionComponent = ({ title, isCuisines, isShops, isFoods, currentLocation = "" }) => {
+const SectionComponent = ({ title, isCuisines, isShops, isFoods, currentLocation = "", store }) => {
 	const cardData = {
 		burger: {
 			name: "Burgers",
@@ -44,15 +44,18 @@ const SectionComponent = ({ title, isCuisines, isShops, isFoods, currentLocation
 				{isCuisines && (
 					<div className="flex gap-3 overflow-x-scroll w-full">
 						{Object.entries(cardData).map(([key, value]) => {
-							return <CuisineCard data={value} key={key} />;
+							return <CuisineCard data={value} key={key} store={store} />;
 						})}
 					</div>
 				)}
 				{isFoods && (
 					<div className="flex flex-wrap gap-3 w-full">
 						{[...Array(10)].map((k, val) => {
-							if (val < 8) return <FoodCard2 key={val} myLink={currentLocation} />;
-							return <FoodCard2 key={val} myLink={currentLocation} />;
+							if (val < 8)
+								return (
+									<FoodCard2 key={val} myLink={currentLocation} store={store} />
+								);
+							return <FoodCard2 key={val} myLink={currentLocation} store={store} />;
 						})}
 					</div>
 				)}

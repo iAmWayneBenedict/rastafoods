@@ -1,14 +1,78 @@
-const SelectField = ({ id, name, label, placeholder, data }) => {
+import { useState } from "react";
+
+const SelectField = ({ id, name, label, placeholder, data, callback }) => {
+	const callbackFunction = (event) => {
+		let value = Array.from(event.target.children)
+			.map((el) => {
+				if (el.selected) return el.dataset.value;
+				return false;
+			})
+			.filter((val) => val !== false);
+		callback([id, value[0]]);
+	};
 	return (
 		<div className="relative flex w-full">
 			<select
 				name={name}
 				id={id}
+				// disabled={disabled}
+				onChange={callbackFunction}
 				className="input-field appearance-none w-full border border-slate-900 rounded-md text-sm md:text-base pl-5 pr-8 py-3 focus:border-red-500 transition-colors ease-in-out bg-white"
 			>
 				<option>{placeholder}</option>
-				<option>Option 2</option>
-				<option>Option 3</option>
+
+				{!!data &&
+					id === "region" &&
+					data.map((value) => {
+						return (
+							<option
+								value={value.region_name}
+								key={value.psgc_code + value.region_name}
+								data-value={value.region_code}
+							>
+								{value.region_name}
+							</option>
+						);
+					})}
+				{!!data &&
+					id === "province" &&
+					data.map((value) => {
+						return (
+							<option
+								value={value.province_name}
+								key={value.psgc_code + value.province_name}
+								data-value={value.province_code}
+							>
+								{value.province_name}
+							</option>
+						);
+					})}
+				{!!data &&
+					id === "city" &&
+					data.map((value) => {
+						return (
+							<option
+								value={value.city_name}
+								key={value.psgc_code + value.city_name}
+								data-value={value.city_code}
+							>
+								{value.city_name}
+							</option>
+						);
+					})}
+				{!!data &&
+					id === "barangay" &&
+					data.map((value) => {
+						return (
+							<option
+								value={value.brgy_name}
+								key={value.psgc_code + value.brgy_name}
+								data-value={value.barangay_code}
+							>
+								{value.brgy_name}
+							</option>
+						);
+					})}
 			</select>
 			<label
 				htmlFor={id}

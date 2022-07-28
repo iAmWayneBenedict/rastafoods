@@ -7,13 +7,13 @@ import Preloader from "./preloader_component/Preloader.component";
 import SectionComponent from "./section_components/SectionComponent.component";
 import ItemCard from "./card_components/ItemCard.component";
 
-const StoreProfile = () => {
+const StoreProfile = ({ isOwner = false }) => {
 	let loaderValue = usePreloader();
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
-	const [currentLocation, setCurrentLocation] = useState(false);
+	const [currentLocation, setCurrentLocation] = useState(null);
 	const params = useParams();
 
-	const { food } = params;
+	const { store, food } = params;
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -66,7 +66,6 @@ const StoreProfile = () => {
 			],
 		},
 	];
-
 	return (
 		<div>
 			<Preloader loaderValue={loaderValue} />
@@ -101,31 +100,39 @@ const StoreProfile = () => {
 								<Link to={"/"} className="mt-6">
 									<p className="link-animator">jollibee@jollibee.com</p>
 								</Link>
-								<Link
-									to={"/my/store/edit-profile"}
-									className="border border-red-600 rounded-md py-2 px-4 mt-16 text-sm font-semibold"
-								>
-									Change Profile <i className="bi bi-arrow-right ml-2"></i>
-								</Link>
-							</div>
 
+								{true && (
+									<Link
+										to={"/my/store/edit-profile"}
+										className="border border-red-600 rounded-md py-2 px-4 mt-16 text-sm font-semibold"
+									>
+										Dashboard <i className="bi bi-arrow-right ml-2"></i>
+									</Link>
+								)}
+							</div>
 							<BannerContainer />
 
 							<SectionComponent
 								title={"Discover Interesting Cousines"}
 								isCuisines={true}
 								currentLocation={currentLocation}
+								store={store}
 							/>
 
 							<SectionComponent
 								title={"Discover New Foods"}
 								isFoods={true}
 								currentLocation={currentLocation}
+								store={store}
 							/>
 						</div>
 					</div>
 					{itemPopUpStatus && (
-						<ItemCard data={addOnData} currentLocation={currentLocation} />
+						<ItemCard
+							data={addOnData}
+							currentLocation={currentLocation}
+							store={store}
+						/>
 					)}
 					<Footer />
 				</>

@@ -6,14 +6,42 @@ import AsideNavProfile from "./profile_components/AsideNavProfile.component";
 import EditProfileEmail from "./profile_components/EditProfileEmail.component";
 import EditProfilePassword from "./profile_components/EditProfilePassword.component";
 import EditUserProfile from "./profile_components/EditUserProfile.component";
+import axios from "axios";
+
+const BASE_URl = "http://localhost:8000/api/users";
+
+const getCurrentUserRequest = async (action, identifier) => {
+	return await axios.get(`${BASE_URl}${action}/${identifier}`);
+};
+
+const postRequest = async (data) => {
+	return await axios.post("http://localhost:8000/api/users/login", data);
+};
 
 const EditProfile = () => {
 	let preloaderValue = usePreloader();
 	const [currentParam, setCurrentParam] = useState();
+	const [userData, setUserData] = useState({});
 	const paramsArr = window.location.pathname.split("/");
 	useEffect(() => {
 		setCurrentParam(paramsArr[paramsArr.length - 1]);
 	}, [paramsArr]);
+
+	useEffect(() => {
+		let hasSessionUser = !!localStorage.getItem("user_token");
+		const getUserInfo = async (hasSessionUser) => {
+			if (hasSessionUser) {
+				let response = await getCurrentUserRequest(
+					"/token",
+					localStorage.getItem("user_token")
+				);
+				setUserData(response.data);
+			} else {
+				console.log("No user");
+			}
+		};
+		getUserInfo(hasSessionUser);
+	}, []);
 	return (
 		<>
 			<Preloader loaderValue={preloaderValue} />
@@ -23,7 +51,7 @@ const EditProfile = () => {
 						{currentParam === "edit-profile" && (
 							<>
 								<AsideNavProfile currentParam={currentParam} />
-								<EditUserProfile />
+								<EditUserProfile userData={userData} />
 							</>
 						)}
 
