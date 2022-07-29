@@ -33,11 +33,29 @@ const usersSchema = new Schema(
 			},
 		},
 		address: {
+			region: {
+				name: {
+					type: String,
+				},
+				code: {
+					type: String,
+				},
+			},
 			province: {
-				type: String,
+				name: {
+					type: String,
+				},
+				code: {
+					type: String,
+				},
 			},
 			city: {
-				type: String,
+				name: {
+					type: String,
+				},
+				code: {
+					type: String,
+				},
 			},
 			barangay: {
 				type: String,

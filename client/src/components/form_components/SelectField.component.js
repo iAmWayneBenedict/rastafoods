@@ -1,6 +1,20 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-const SelectField = ({ id, name, label, placeholder, data, callback }) => {
+const SelectField = ({
+	id,
+	name,
+	label,
+	placeholder,
+	options,
+	code = "",
+	callback,
+	reference,
+	data,
+}) => {
+	const [selectValue, setSelectValue] = useState(data);
+	const [selectCode, setSelectCode] = useState(code);
+
+	const selectInput = useRef();
 	const callbackFunction = (event) => {
 		let value = Array.from(event.target.children)
 			.map((el) => {
@@ -8,8 +22,12 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 				return false;
 			})
 			.filter((val) => val !== false);
+		setSelectValue(event.target.value);
 		callback([id, value[0]]);
 	};
+	useEffect(() => {
+		callback([id, selectCode]);
+	}, [selectCode]);
 	return (
 		<div className="relative flex w-full">
 			<select
@@ -17,13 +35,16 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 				id={id}
 				// disabled={disabled}
 				onChange={callbackFunction}
+				required
+				ref={selectInput}
+				value={selectValue || ""}
 				className="input-field appearance-none w-full border border-slate-900 rounded-md text-sm md:text-base pl-5 pr-8 py-3 focus:border-red-500 transition-colors ease-in-out bg-white"
 			>
-				<option>{placeholder}</option>
+				<option value="">{placeholder}</option>
 
-				{!!data &&
+				{!!options &&
 					id === "region" &&
-					data.map((value) => {
+					options.map((value) => {
 						return (
 							<option
 								value={value.region_name}
@@ -34,9 +55,9 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 							</option>
 						);
 					})}
-				{!!data &&
+				{!!options &&
 					id === "province" &&
-					data.map((value) => {
+					options.map((value) => {
 						return (
 							<option
 								value={value.province_name}
@@ -47,9 +68,9 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 							</option>
 						);
 					})}
-				{!!data &&
+				{!!options &&
 					id === "city" &&
-					data.map((value) => {
+					options.map((value) => {
 						return (
 							<option
 								value={value.city_name}
@@ -60,9 +81,9 @@ const SelectField = ({ id, name, label, placeholder, data, callback }) => {
 							</option>
 						);
 					})}
-				{!!data &&
+				{!!options &&
 					id === "barangay" &&
-					data.map((value) => {
+					options.map((value) => {
 						return (
 							<option
 								value={value.brgy_name}

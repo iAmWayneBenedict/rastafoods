@@ -1,13 +1,13 @@
 import InputField from "../form_components/InputField.component";
 import SelectField from "../form_components/SelectField.component";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { regions, provinces, cities, barangays } from "select-philippines-address";
 import axios from "axios";
 
 const BASE_URl = "http://localhost:8000/api/users";
 
-const getCurrentUserRequest = async (action, identifier) => {
-	return await axios.get(`${BASE_URl}${action}/${identifier}`);
+const updateUserData = async (action, identifier, value) => {
+	return await axios.put(`${BASE_URl}${action}/${identifier}/edit-profile`, value);
 };
 
 const getAddressRequest = async (url) => {
@@ -18,23 +18,29 @@ const postRequest = async (data) => {
 	return await axios.post("http://localhost:8000/api/users/login", data);
 };
 
+// get all regions
 const getRegion = async () => {
 	return await regions();
 };
 
+// get the province by region
 const getProvince = async (code) => {
 	return await provinces(code);
 };
 
+// get the city by province
 const getCity = async (code) => {
 	return await cities(code);
 };
 
+// get the barangay by city
 const getBarangay = async (code) => {
 	return await barangays(code);
 };
 
 const EditUserProfile = ({ userData }) => {
+	// [regions, provinces, cities and barangays] are stored with the values relative to them
+	// [regionCode, provinceCode, cityCode] were filled with the codes based on the user input
 	const [regions, setRegions] = useState();
 	const [regionCode, setRegionCode] = useState("0");
 
@@ -45,7 +51,9 @@ const EditUserProfile = ({ userData }) => {
 	const [cityCode, setCityCode] = useState("0");
 
 	const [barangays, setBarangays] = useState();
-	const [barangayCode, setBarangayCode] = useState("0");
+
+	const inputs = useRef();
+	const selects = useRef();
 
 	useEffect(() => {
 		async function getRegion1() {
@@ -53,7 +61,6 @@ const EditUserProfile = ({ userData }) => {
 		}
 		getRegion1();
 	}, []);
-
 	useEffect(() => {
 		const getProvinceByRegion = async (code) => {
 			let responseProvinces = await getProvince(code);
@@ -91,10 +98,18 @@ const EditUserProfile = ({ userData }) => {
 		}
 	};
 
-	const submitUserProfile = (event) => {
+	const submitUserProfile = async (event) => {
 		event.preventDefault();
 		let formData = new FormData(event.target);
-		console.log(Object.fromEntries(formData.entries()));
+		formData.append("regionCode", regionCode);
+		formData.append("provinceCode", provinceCode);
+		formData.append("cityCode", cityCode);
+		let result = await updateUserData(
+			"/token",
+			localStorage.getItem("user_token"),
+			Object.fromEntries(formData.entries())
+		);
+		console.log(result);
 	};
 
 	return (
@@ -130,7 +145,7 @@ const EditUserProfile = ({ userData }) => {
 							name="firstName"
 							label="First Name"
 							icon=""
-							value={userData.name.firstName}
+							value={userData.name.firstName || ""}
 						/>
 						<InputField
 							type="text"
@@ -138,7 +153,7 @@ const EditUserProfile = ({ userData }) => {
 							name="lastName"
 							label="Last Name"
 							icon=""
-							value={userData.name.lastName}
+							value={userData.name.lastName || ""}
 						/>
 					</div>
 					<InputField
@@ -148,22 +163,25 @@ const EditUserProfile = ({ userData }) => {
 						label="Username"
 						placeholder="@jollibee"
 						icon=""
-						value={userData.username}
+						value={userData.username || ""}
 					/>
 					<InputField
-						type="text"
+						type="number"
 						id="contact"
 						name="contact"
 						label="Contact"
 						placeholder="8700"
 						icon=""
+						value={userData.contact || ""}
 					/>
 					<SelectField
 						id="region"
 						name="region"
 						label="Region"
-						placeholder="-- Region --"
-						data={regions}
+						placeholder={"-- Region --"}
+						options={regions || []}
+						code={userData.address.region.code}
+						data={userData.address.region.name}
 						callback={callback}
 					/>
 					<div className="flex gap-3 w-full">
@@ -172,7 +190,9 @@ const EditUserProfile = ({ userData }) => {
 							name="province"
 							label="Province"
 							placeholder="-- Province --"
-							data={provinces}
+							code={userData.address.province.code}
+							data={userData.address.province.name}
+							options={provinces || []}
 							callback={callback}
 						/>
 						<SelectField
@@ -180,7 +200,9 @@ const EditUserProfile = ({ userData }) => {
 							name="city"
 							label="City"
 							placeholder="-- City --"
-							data={cities}
+							code={userData.address.city.code}
+							data={userData.address.city.name}
+							options={cities || []}
 							callback={callback}
 						/>
 					</div>
@@ -190,7 +212,8 @@ const EditUserProfile = ({ userData }) => {
 							name="barangay"
 							label="Barangay"
 							placeholder="-- Barangay --"
-							data={barangays}
+							data={userData.address.barangay}
+							options={barangays || []}
 							callback={callback}
 						/>
 						<InputField
@@ -200,6 +223,7 @@ const EditUserProfile = ({ userData }) => {
 							label="Street"
 							placeholder="Zone 4"
 							icon=""
+							value={userData.address.street || ""}
 						/>
 					</div>
 				</div>

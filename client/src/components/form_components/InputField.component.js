@@ -1,4 +1,4 @@
-const InputField = ({ type, id, name, placeholder, label, icon, value }) => {
+const InputField = ({ type, id, name, placeholder, label, icon, value, reference }) => {
 	const inputChangeHandler = (event) => {
 		console.log(event);
 	};
@@ -11,6 +11,8 @@ const InputField = ({ type, id, name, placeholder, label, icon, value }) => {
 				placeholder={placeholder}
 				value={value}
 				onChange={inputChangeHandler}
+				ref={reference}
+				required
 				className="input-field w-full border border-slate-900 rounded-md text-sm md:text-base pl-5 pr-12 py-3 focus:border-red-500 transition-colors ease-in-out"
 			/>
 			<label
