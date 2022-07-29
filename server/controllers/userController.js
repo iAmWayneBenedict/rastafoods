@@ -38,10 +38,10 @@ const getUserByToken = (req, res) => {
 	let decoded = jwt.verify(req.params.token, process.env.SECRET_KEY);
 
 	if (ObjectId.isValid(decoded._id)) {
-		Users.findOne({ _id: decoded._id })
+		Users.findById({ _id: decoded._id })
 			.then((result) => {
-				let { name, email, username } = result;
-				res.status(200).json({ name, email, username });
+				let { name, email, username, address, contact } = result;
+				res.status(200).json({ name, email, username, address, contact });
 			})
 			.catch((err) => {
 				console.log("Could not fetch data" + err);
@@ -73,6 +73,46 @@ const addUser = async (req, res) => {
 		} catch (err) {
 			res.status(400).json({ error: err.message });
 		}
+	}
+};
+
+const updateUser = (req, res) => {
+	let decoded = jwt.verify(req.params.token, process.env.SECRET_KEY);
+	let data = req.body;
+	const user = {
+		name: {
+			firstName: data.firstName,
+			lastName: data.lastName,
+		},
+		username: data.username,
+		contact: data.contact,
+		address: {
+			region: {
+				name: data.region,
+				code: data.regionCode,
+			},
+			province: {
+				name: data.province,
+				code: data.provinceCode,
+			},
+			city: {
+				name: data.city,
+				code: data.cityCode,
+			},
+			barangay: data.barangay,
+			street: data.street,
+		},
+	};
+	if (ObjectId.isValid(decoded._id)) {
+		Users.findByIdAndUpdate({ _id: decoded._id }, user)
+			.then((result) => {
+				res.status(200).json(result);
+			})
+			.catch((err) => {
+				console.log("Could not fetch data" + err);
+			});
+	} else {
+		res.status(500).json({ error: "Could not fetch data" });
 	}
 };
 
@@ -126,4 +166,5 @@ module.exports = {
 	deleteUserById,
 	deleteUserByToken,
 	loginUser,
+	updateUser,
 };
