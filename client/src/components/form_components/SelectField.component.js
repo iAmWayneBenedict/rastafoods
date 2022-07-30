@@ -1,16 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const SelectField = ({
-	id,
-	name,
-	label,
-	placeholder,
-	options,
-	code = "",
-	callback,
-	reference,
-	data,
-}) => {
+const SelectField = ({ id, name, label, placeholder, options, code = "", callback, data }) => {
 	const [selectValue, setSelectValue] = useState(data);
 	const [selectCode, setSelectCode] = useState(code);
 
@@ -23,11 +13,11 @@ const SelectField = ({
 			})
 			.filter((val) => val !== false);
 		setSelectValue(event.target.value);
-		callback([id, value[0]]);
 	};
 	useEffect(() => {
 		callback([id, selectCode]);
 	}, [selectCode]);
+	console.log(options);
 	return (
 		<div className="relative flex w-full">
 			<select
@@ -42,7 +32,7 @@ const SelectField = ({
 			>
 				<option value="">{placeholder}</option>
 
-				{!!options &&
+				{options &&
 					id === "region" &&
 					options.map((value) => {
 						return (
@@ -55,7 +45,7 @@ const SelectField = ({
 							</option>
 						);
 					})}
-				{!!options &&
+				{options &&
 					id === "province" &&
 					options.map((value) => {
 						return (
@@ -68,7 +58,7 @@ const SelectField = ({
 							</option>
 						);
 					})}
-				{!!options &&
+				{options &&
 					id === "city" &&
 					options.map((value) => {
 						return (
@@ -81,7 +71,7 @@ const SelectField = ({
 							</option>
 						);
 					})}
-				{!!options &&
+				{options &&
 					id === "barangay" &&
 					options.map((value) => {
 						return (
