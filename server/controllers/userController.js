@@ -3,6 +3,7 @@ const Users = require("../models/users");
 const createUserToken = require("../tokens/createUserToken");
 require("dotenv").config();
 const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const getAllUsers = (req, res) => {
 	Users.find()
@@ -116,6 +117,47 @@ const updateUser = (req, res) => {
 	}
 };
 
+const updateUserPassword = (req, res) => {
+	let decoded = jwt.verify(req.params.token, process.env.SECRET_KEY);
+	let data = req.body;
+	// console.log(data);
+
+	if (ObjectId.isValid(decoded._id)) {
+		Users.findById(decoded._id).then(async (result) => {
+			// console.log(result);
+			if (
+				data.currentPassword.length < 8 ||
+				data.newPassword.length < 8 ||
+				data.confirmPassword.length < 8
+			) {
+				res.status(400).json({ error: "Password must be at least 8 characters" });
+			} else {
+				const isPasswordMatched = await bcrypt.compare(
+					data.currentPassword,
+					result.password
+				);
+				if (!isPasswordMatched) {
+					res.status(400).json({ error: "Current password not match" });
+				} else if (data.newPassword !== data.confirmPassword) {
+					res.status(400).json({ error: "New password not match" });
+				} else {
+					const salt = await bcrypt.genSalt(10);
+					data.newPassword = await bcrypt.hash(data.confirmPassword, salt);
+					Users.findByIdAndUpdate({ _id: decoded._id }, { password: data.newPassword })
+						.then((result) => {
+							res.status(200).json({ success: "Password successfully updated" });
+						})
+						.catch((err) => {
+							console.log("Could not fetch data" + err);
+						});
+				}
+			}
+		});
+	} else {
+		res.status(500).json({ error: "Could not fetch data" });
+	}
+};
+
 const deleteUserById = (req, res) => {
 	console.log(req.params.id);
 	if (ObjectId.isValid(req.params.id)) {
@@ -167,4 +209,5 @@ module.exports = {
 	deleteUserByToken,
 	loginUser,
 	updateUser,
+	updateUserPassword,
 };

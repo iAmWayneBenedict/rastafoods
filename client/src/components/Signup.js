@@ -4,7 +4,7 @@ import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
 import InputField from "./form_components/InputField.component";
 import Preloader from "./preloader_component/Preloader.component";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const postRequest = async (data) => {
 	return await axios.post("http://localhost:8000/api/users", data);
@@ -12,6 +12,7 @@ const postRequest = async (data) => {
 
 const Signup = () => {
 	const errorHandler = useRef();
+	const [showPassword, setShowPassword] = useState("password");
 
 	const submitSignupForm = async (event) => {
 		event.preventDefault();
@@ -34,6 +35,14 @@ const Signup = () => {
 	// let searchValues = Object.fromEntries([...searchParams]);
 	// console.log(searchValues);
 	let loaderValues = usePreloader();
+
+	const onShowPassword = (event) => {
+		if (event.target.checked) {
+			setShowPassword("text");
+		} else {
+			setShowPassword("password");
+		}
+	};
 	return (
 		<>
 			<Preloader loaderValue={loaderValues} />
@@ -85,7 +94,7 @@ const Signup = () => {
 										/>
 
 										<InputField
-											type="password"
+											type={showPassword}
 											id="password"
 											name="password"
 											label="Password"
@@ -94,7 +103,7 @@ const Signup = () => {
 										/>
 
 										<InputField
-											type="password"
+											type={showPassword}
 											id="confirm-password"
 											name="confirmPassword"
 											label="Confirm Password"
@@ -108,6 +117,7 @@ const Signup = () => {
 												type="checkbox"
 												name="show-password"
 												id="show-password"
+												onChange={onShowPassword}
 												className="accent-primary select-none"
 											/>
 											<label htmlFor="show-password" className="text-sm ml-2">

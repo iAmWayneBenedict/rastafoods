@@ -1,6 +1,6 @@
 const InputField = ({ type, id, name, placeholder, label, icon, value, reference }) => {
 	const inputChangeHandler = (event) => {
-		console.log(event);
+		// console.log(event);
 	};
 	return (
 		<div className="relative flex w-full">

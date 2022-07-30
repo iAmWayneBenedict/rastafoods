@@ -1,6 +1,6 @@
 import InputField from "../form_components/InputField.component";
 import SelectField from "../form_components/SelectField.component";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { regions, provinces, cities, barangays } from "select-philippines-address";
 import axios from "axios";
 
@@ -51,9 +51,6 @@ const EditUserProfile = ({ userData }) => {
 	const [cityCode, setCityCode] = useState("0");
 
 	const [barangays, setBarangays] = useState();
-
-	const inputs = useRef();
-	const selects = useRef();
 
 	useEffect(() => {
 		async function getRegion1() {

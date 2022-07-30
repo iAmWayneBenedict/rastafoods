@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
@@ -18,6 +18,7 @@ const postRequest = async (data) => {
 
 const Login = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
+	const [showPassword, setShowPassword] = useState("password");
 	const errorHandler = useRef();
 
 	let searchValues = Object.fromEntries([...searchParams]);
@@ -56,6 +57,14 @@ const Login = () => {
 		}
 	};
 
+	const onShowPassword = (event) => {
+		if (event.target.checked) {
+			setShowPassword("text");
+		} else {
+			setShowPassword("password");
+		}
+	};
+
 	let loaderValue = usePreloader();
 	return (
 		<>
@@ -86,7 +95,7 @@ const Login = () => {
 										/>
 
 										<InputField
-											type="password"
+											type={showPassword}
 											id="password"
 											name="password"
 											label="Password"
@@ -103,6 +112,7 @@ const Login = () => {
 												type="checkbox"
 												name="show-password"
 												id="show-password"
+												onChange={onShowPassword}
 												className="accent-primary select-none"
 											/>
 											<label htmlFor="show-password" className="text-sm ml-2">
