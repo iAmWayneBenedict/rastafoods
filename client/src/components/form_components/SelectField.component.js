@@ -12,12 +12,13 @@ const SelectField = ({ id, name, label, placeholder, options, code = "", callbac
 				return false;
 			})
 			.filter((val) => val !== false);
+        setSelectCode(value[0]);
 		setSelectValue(event.target.value);
 	};
 	useEffect(() => {
 		callback([id, selectCode]);
 	}, [selectCode]);
-	console.log(options);
+
 	return (
 		<div className="relative flex w-full">
 			<select
