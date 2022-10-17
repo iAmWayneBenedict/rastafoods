@@ -83,6 +83,7 @@ const EditUserProfile = ({ userData }) => {
 	}, [cityCode]);
 
 	const callback = ([location, code]) => {
+
 		if (location === "region") {
 			setRegionCode(code);
 		}
