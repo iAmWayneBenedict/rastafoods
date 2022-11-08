@@ -15,6 +15,42 @@ const App = () => {
 	// custom hook useScroll
 	let { scrolledOverHundred, scrolledOverTen } = useScroll();
 
+	var data = {
+		service_id: "rastafoods",
+		template_id: "template_vhbhleh",
+		user_id: "NLgTP_T5nZsIbaw1a",
+		template_params: {
+			message: "Wayne",
+		},
+	};
+	// fetch("https://api.emailjs.com/api/v1.0/email/send", {
+	// 	method: "POST",
+	// 	headers: { "Content-Type": "application/json" },
+	// 	body: JSON.stringify(data),
+	// })
+	// 	.then((res) => {
+	// 		console.log("Request complete! response:", res);
+	// 	})
+	// 	.catch((err) => {
+	// 		console.log(err);
+	// 	});
+
+	// async function sendmail() {
+	// 	try {
+	// 		let send = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+	// 			type: "POST",
+	// 			data: JSON.stringify(data),
+	// 			contentType: "application/json",
+	// 		});
+
+	// 		console.log(await send.json());
+	// 	} catch (err) {
+	// 		console.log(err);
+	// 	}
+	// }
+
+	// sendmail();
+
 	return (
 		<div className="App relative">
 			<div className="font-sans 2xl:mx-[10rem] lg:mx-[5rem] md:mx-0 px-5 ">

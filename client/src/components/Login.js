@@ -22,7 +22,6 @@ const Login = () => {
 	const errorHandler = useRef();
 
 	let searchValues = Object.fromEntries([...searchParams]);
-	// console.log(searchValues);
 
 	useEffect(() => {
 		let hasSessionUser = !!localStorage.getItem("user_token");
@@ -32,12 +31,11 @@ const Login = () => {
 					"/token",
 					localStorage.getItem("user_token")
 				);
-				console.log(response);
 			} else {
 				console.log("No user");
 			}
 		};
-		getUserInfo(hasSessionUser);
+		getUserInfo(hasSessionUser).then();
 	}, []);
 
 	const submitLogin = async (event) => {
@@ -78,9 +76,9 @@ const Login = () => {
 							</div>
 							<div
 								ref={errorHandler}
-								className="error text-sm font-semibold py-2 text-center rounded-md hidden"
+                                className={`${searchValues.register ? "success" : 'error hidden'} text-sm font-semibold py-2 text-center rounded-md`}
 							>
-								Incorrect email or password
+								{searchValues.register && "Successfully Registered! Please Login"}
 							</div>
 							<form onSubmit={submitLogin} action="" className="w-full flex mt-10">
 								<div className="relative flex flex-col w-full">
