@@ -5,16 +5,8 @@ import Footer from "./Footer";
 import InputField from "./form_components/InputField.component";
 import Preloader from "./preloader_component/Preloader.component";
 import axios from "axios";
-
-const BASE_URl = "http://localhost:8000/api/users";
-
-const getCurrentUserRequest = async (action, identifier) => {
-	return await axios.get(`${BASE_URl}${action}/${identifier}`);
-};
-
-const postRequest = async (data) => {
-	return await axios.post("http://localhost:8000/api/users/login", data);
-};
+import { useMutation, useQuery } from "@tanstack/react-query";
+import { fetchUserByToken, loginPostRequest } from "../api/userApi";
 
 const Login = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
@@ -23,29 +15,32 @@ const Login = () => {
 
 	let searchValues = Object.fromEntries([...searchParams]);
 
-	useEffect(() => {
-		let hasSessionUser = !!localStorage.getItem("user_token");
-		const getUserInfo = async (hasSessionUser) => {
-			if (hasSessionUser) {
-				let response = await getCurrentUserRequest(
-					"/token",
-					localStorage.getItem("user_token")
-				);
-			} else {
-				console.log("No user");
-			}
-		};
-		getUserInfo(hasSessionUser).then();
-	}, []);
+	let tokenData = localStorage.getItem("user_token").replaceAll('"', "");
+
+	const getQuery = useQuery({
+		queryKey: ["currentUser"],
+		queryFn: async () => await fetchUserByToken(tokenData),
+	});
+
+	const mutation = useMutation({
+		mutationFn: (todo) => {
+			return loginPostRequest(todo).then((res) => res);
+		},
+	});
 
 	const submitLogin = async (event) => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
+
 		try {
-			let response = await postRequest(Object.fromEntries(formData.entries()));
+			const response = await mutation.mutateAsync(Object.fromEntries(formData.entries()));
 			if (response.status === 200) {
-				localStorage.setItem("user_token", response.data.token);
+				localStorage.setItem("user_token", JSON.stringify(response.data.tokenData.token));
+				localStorage.setItem(
+					"user_token_started",
+					JSON.stringify(response.data.tokenData.startedAt)
+				);
 			}
 		} catch (error) {
 			if (error.response.status === 400) {
@@ -53,6 +48,11 @@ const Login = () => {
 				errorHandler.current.classList.remove("hidden");
 			}
 		}
+		// if (mutation.isSuccess) {
+		// 	console.log(mutation.data);
+		// 	localStorage.setItem("user_token", JSON.stringify(mutation.data.data.tokenData));
+		// }
+		// console.log(mutation);
 	};
 
 	const onShowPassword = (event) => {
@@ -76,7 +76,9 @@ const Login = () => {
 							</div>
 							<div
 								ref={errorHandler}
-                                className={`${searchValues.register ? "success" : 'error hidden'} text-sm font-semibold py-2 text-center rounded-md`}
+								className={`${
+									searchValues.register ? "success" : "error hidden"
+								} text-sm font-semibold py-2 text-center rounded-md`}
 							>
 								{searchValues.register && "Successfully Registered! Please Login"}
 							</div>

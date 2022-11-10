@@ -1,4 +1,11 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+	useQuery,
+	useMutation,
+	useQueryClient,
+	QueryClient,
+	QueryClientProvider,
+} from "@tanstack/react-query";
 
 import Home from "./components/Home";
 import Stores from "./components/Stores";
@@ -14,6 +21,9 @@ import EditProfile from "./components/EditProfile";
 const App = () => {
 	// custom hook useScroll
 	let { scrolledOverHundred, scrolledOverTen } = useScroll();
+
+	// create client
+	let queryClient = new QueryClient();
 
 	var data = {
 		service_id: "rastafoods",
@@ -52,33 +62,35 @@ const App = () => {
 	// sendmail();
 
 	return (
-		<div className="App relative">
-			<div className="font-sans 2xl:mx-[10rem] lg:mx-[5rem] md:mx-0 px-5 ">
-				<Router>
-					{/* Navigation bar */}
-					<NavBar hasScrolled={scrolledOverTen} />
+		<QueryClientProvider client={queryClient}>
+			<div className="App relative">
+				<div className="font-sans 2xl:mx-[10rem] lg:mx-[5rem] md:mx-0 px-5 ">
+					<Router>
+						{/* Navigation bar */}
+						<NavBar hasScrolled={scrolledOverTen} />
 
-					{/* Scroll To Top */}
-					<ScrollToTop hasScrolled={scrolledOverHundred} />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/stores/discover" element={<Stores />} />
-						<Route path="/stores/discover/:store/:food" element={<Stores />} />
-						<Route path="/stores/:store/:food" element={<StoreProfile />} />
-						<Route path="/stores/:store" element={<StoreProfile />} />
-						<Route path="/cart" element={<CartSection />} />
-						<Route path="/login" element={<Login />} />
-						<Route path="/signup" element={<Signup />} />
-						<Route path="/my/profile" element={<StoreProfile />} />
-						<Route path="/my/:store" element={<StoreProfile />} />
-						<Route path="/my/:store/:food" element={<StoreProfile />} />
-						<Route path="/my/:store/edit-profile" element={<EditProfile />} />
-						<Route path="/my/:store/edit-password" element={<EditProfile />} />
-						<Route path="/my/:store/edit-email" element={<EditProfile />} />
-					</Routes>
-				</Router>
+						{/* Scroll To Top */}
+						<ScrollToTop hasScrolled={scrolledOverHundred} />
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="/stores/discover" element={<Stores />} />
+							<Route path="/stores/discover/:store/:food" element={<Stores />} />
+							<Route path="/stores/:store/:food" element={<StoreProfile />} />
+							<Route path="/stores/:store" element={<StoreProfile />} />
+							<Route path="/cart" element={<CartSection />} />
+							<Route path="/login" element={<Login />} />
+							<Route path="/signup" element={<Signup />} />
+							<Route path="/my/profile" element={<StoreProfile />} />
+							<Route path="/my/:store" element={<StoreProfile />} />
+							<Route path="/my/:store/:food" element={<StoreProfile />} />
+							<Route path="/my/:store/edit-profile" element={<EditProfile />} />
+							<Route path="/my/:store/edit-password" element={<EditProfile />} />
+							<Route path="/my/:store/edit-email" element={<EditProfile />} />
+						</Routes>
+					</Router>
+				</div>
 			</div>
-		</div>
+		</QueryClientProvider>
 	);
 };
 

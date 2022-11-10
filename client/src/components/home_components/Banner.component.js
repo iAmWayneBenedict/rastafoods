@@ -1,26 +1,26 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const Banner = () => {
 	const [isMobile, setIsMobile] = useState(false);
 
-    const reSizeHandler = (event) => {
-        let windowRect = document.documentElement.getBoundingClientRect()
-        if(windowRect.width <= 640) {
-            setIsMobile(true);
-        } else {
-            setIsMobile(false);
-        }
-    }
+	const reSizeHandler = (event) => {
+		let windowRect = document.documentElement.getBoundingClientRect();
+		if (windowRect.width <= 640) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	};
 
-    useEffect(() => {
-        reSizeHandler()
-    }, [])
+	useEffect(() => {
+		reSizeHandler();
+	}, []);
 
-    window.addEventListener('resize', reSizeHandler);
+	window.addEventListener("resize", reSizeHandler);
 
 	return (
-		<div  className="flex flex-col-reverse sm:flex-row mt-20 sm:mt-10">
+		<div className="flex flex-col-reverse sm:flex-row mt-20 sm:mt-10">
 			<div className="left 2xl:mt-32 xl:mt-28 sm:mt-24 mt-10 max-w-[70%] sm:max-w-[50%] pr-10">
 				<h1 className="2xl:text-5xl lg:text-4xl text-3xl font-bold">
 					Provides the best
@@ -72,8 +72,8 @@ const Banner = () => {
 				<img
 					src={
 						isMobile
-                        ? "/img/brooke-lark-08bOYnH_r_E-unsplash_ccexpress.png"
-                        : "/img/intro.svg"
+							? "/img/brooke-lark-08bOYnH_r_E-unsplash_ccexpress.png"
+							: "/img/intro.svg"
 					}
 					alt=""
 					className="banner-img object-fit max-h-[25rem] sm:max-h-[45rem] w-full rotate-180 sm:rotate-0"
