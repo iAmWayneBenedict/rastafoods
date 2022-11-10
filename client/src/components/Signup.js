@@ -1,4 +1,4 @@
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
@@ -12,6 +12,7 @@ const postRequest = async (data) => {
 
 const Signup = () => {
 	const errorHandler = useRef();
+    const navigate = useNavigate();
 	const [showPassword, setShowPassword] = useState("password");
 
 	const submitSignupForm = async (event) => {
@@ -22,7 +23,9 @@ const Signup = () => {
 		try {
 			let response = await postRequest(Object.fromEntries(formData.entries()));
 			if (response.status === 200) {
+                console.log('Success')
 				localStorage.setItem("user_token", response.data.token);
+                navigate('/login?register=success');
 			}
 		} catch (error) {
 			if (error.response.status === 400) {

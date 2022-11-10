@@ -1,10 +1,23 @@
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
+import { useState, useEffect } from "react";
 
 const Banner = () => {
-	const isMobile = useMediaQuery({
-		query: "(min-width: 640px)",
-	});
+	const [isMobile, setIsMobile] = useState(false);
+
+	const reSizeHandler = (event) => {
+		let windowRect = document.documentElement.getBoundingClientRect();
+		if (windowRect.width <= 640) {
+			setIsMobile(true);
+		} else {
+			setIsMobile(false);
+		}
+	};
+
+	useEffect(() => {
+		reSizeHandler();
+	}, []);
+
+	window.addEventListener("resize", reSizeHandler);
 
 	return (
 		<div className="flex flex-col-reverse sm:flex-row mt-20 sm:mt-10">
@@ -59,8 +72,8 @@ const Banner = () => {
 				<img
 					src={
 						isMobile
-							? "/img/intro.svg"
-							: "/img/brooke-lark-08bOYnH_r_E-unsplash_ccexpress.png"
+							? "/img/brooke-lark-08bOYnH_r_E-unsplash_ccexpress.png"
+							: "/img/intro.svg"
 					}
 					alt=""
 					className="banner-img object-fit max-h-[25rem] sm:max-h-[45rem] w-full rotate-180 sm:rotate-0"

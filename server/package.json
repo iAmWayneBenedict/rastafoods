@@ -16,6 +16,7 @@
 		"jsonwebtoken": "^8.5.1",
 		"mongodb": "^4.8.0",
 		"mongoose": "^6.4.6",
+		"node-mailjet": "^5.1.1",
 		"nodemon": "^2.0.19",
 		"validator": "^13.7.0"
 	},

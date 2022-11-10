@@ -70,7 +70,10 @@ const addUser = async (req, res) => {
 			const { email, name, _id, createdAt, updatedAt } = await Users.signup(user);
 
 			const token = createUserToken(_id);
-			res.status(200).json({ data: { email, name, _id, createdAt, updatedAt }, token });
+			res.status(200).json({
+				data: { email, name, _id },
+				tokenData: { token, startedAt: new Date() },
+			});
 		} catch (err) {
 			res.status(400).json({ error: err.message });
 		}
@@ -194,7 +197,10 @@ const loginUser = async (req, res) => {
 		const { email, name, _id } = await Users.login(userEmail, password);
 
 		const token = createUserToken(_id);
-		res.status(200).json({ data: { email, name, _id }, token });
+		res.status(200).json({
+			data: { email, name, _id },
+			tokenData: { token, startedAt: Date.now() },
+		});
 	} catch (err) {
 		res.status(400).json({ error: err.message });
 	}
