@@ -8,7 +8,12 @@ import SectionComponent from "./section_components/SectionComponent.component";
 import ItemCard from "./card_components/ItemCard.component";
 
 const StoreProfile = ({ isOwner = false }) => {
-	let loaderValue = usePreloader();
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 500);
+	}, [isLoading]);
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
 	const [currentLocation, setCurrentLocation] = useState(null);
 	const params = useParams();
@@ -68,8 +73,8 @@ const StoreProfile = ({ isOwner = false }) => {
 	];
 	return (
 		<div>
-			<Preloader loaderValue={loaderValue} />
-			{loaderValue === 2 && (
+			<Preloader loaderValue={isLoading} />
+			{!isLoading && (
 				<>
 					<div className="md:mx-10 mt-20">
 						<div className="">

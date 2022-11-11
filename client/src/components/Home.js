@@ -7,16 +7,21 @@ import HowItWorks from "./home_components/HowItWorks.component";
 import Rider from "./home_components/RIder.component";
 import RowMenu from "./home_components/RowMenu.component";
 import Preloader from "./preloader_component/Preloader.component";
-import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
+import { useEffect, useState } from "react";
 
 const Home = () => {
-	let loaderValue = usePreloader();
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 500);
+	}, [isLoading]);
 
 	return (
 		<div>
-			<Preloader loaderValue={loaderValue} />
-			{loaderValue === 2 && (
+			<Preloader loaderValue={isLoading} />
+			{!isLoading && (
 				<div>
 					<div className="2xl:mx-[10rem] lg:mx-[2rem]">
 						{/*  Banner component */}

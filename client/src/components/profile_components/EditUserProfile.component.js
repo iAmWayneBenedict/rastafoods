@@ -83,7 +83,6 @@ const EditUserProfile = ({ userData }) => {
 	}, [cityCode]);
 
 	const callback = ([location, code]) => {
-
 		if (location === "region") {
 			setRegionCode(code);
 		}
@@ -104,7 +103,7 @@ const EditUserProfile = ({ userData }) => {
 		formData.append("cityCode", cityCode);
 		let result = await updateUserData(
 			"/token",
-			localStorage.getItem("user_token"),
+			localStorage.getItem("user_token").replace('"', ""),
 			Object.fromEntries(formData.entries())
 		);
 		console.log(result);

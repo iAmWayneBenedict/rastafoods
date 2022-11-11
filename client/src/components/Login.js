@@ -1,58 +1,56 @@
 import { useEffect, useRef, useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useSearchParams } from "react-router-dom";
 import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
 import InputField from "./form_components/InputField.component";
 import Preloader from "./preloader_component/Preloader.component";
-import axios from "axios";
-import { useMutation, useQuery } from "@tanstack/react-query";
 import { fetchUserByToken, loginPostRequest } from "../api/userApi";
 
 const Login = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [showPassword, setShowPassword] = useState("password");
+	const [data, setData] = useState(null);
+	const [isError, setIsError] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
 	const errorHandler = useRef();
+	const navigate = useNavigate();
 
 	let searchValues = Object.fromEntries([...searchParams]);
 
-	let tokenData = localStorage.getItem("user_token").replaceAll('"', "");
-
-	const getQuery = useQuery({
-		queryKey: ["currentUser"],
-		queryFn: async () => await fetchUserByToken(tokenData),
-	});
-
-	const mutation = useMutation({
-		mutationFn: (todo) => {
-			return loginPostRequest(todo).then((res) => res);
-		},
-	});
+	useEffect(() => {
+		const getUserData = async () => {
+			setIsLoading(true);
+			try {
+				let response = await fetchUserByToken();
+				setData(response.data);
+				setIsLoading(false);
+			} catch ({ response }) {
+				console.error(response.statusText);
+			}
+		};
+		getUserData();
+	}, []);
 
 	const submitLogin = async (event) => {
 		event.preventDefault();
 
 		const formData = new FormData(event.target);
 
-		try {
-			const response = await mutation.mutateAsync(Object.fromEntries(formData.entries()));
-			if (response.status === 200) {
+		const login = async (data) => {
+			try {
+				const response = await loginPostRequest(data);
 				localStorage.setItem("user_token", JSON.stringify(response.data.tokenData.token));
 				localStorage.setItem(
 					"user_token_started",
 					JSON.stringify(response.data.tokenData.startedAt)
 				);
-			}
-		} catch (error) {
-			if (error.response.status === 400) {
-				errorHandler.current.textContent = error.response.data.error;
+				navigate("/");
+			} catch ({ response }) {
+				errorHandler.current.textContent = response.data.error;
 				errorHandler.current.classList.remove("hidden");
 			}
-		}
-		// if (mutation.isSuccess) {
-		// 	console.log(mutation.data);
-		// 	localStorage.setItem("user_token", JSON.stringify(mutation.data.data.tokenData));
-		// }
-		// console.log(mutation);
+		};
+		login(Object.fromEntries(formData.entries()));
 	};
 
 	const onShowPassword = (event) => {
@@ -63,11 +61,16 @@ const Login = () => {
 		}
 	};
 
-	let loaderValue = usePreloader();
+	// const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 500);
+	}, [isLoading]);
 	return (
 		<>
-			<Preloader loaderValue={loaderValue} />
-			{loaderValue === 2 && (
+			<Preloader loaderValue={isLoading} />
+			{!isLoading && (
 				<>
 					<div className="md:mx-10 mt-24 md:mt-32 lg:mt-40 mb-80 flex flex-col gap-32 justify-center items-center">
 						<div className="login-con w-[30rem] flex flex-col">

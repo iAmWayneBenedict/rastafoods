@@ -57,13 +57,23 @@ label {
 	user-select: none;
 }
 
+.navbar-preloader-container {
+	width: 0;
+}
 .navbar-preloader-container.active-preloader {
-	transition: all 5s ease-out;
-	width: 90% !important;
+	animation: preloader 5s ease forwards;
 }
 .navbar-preloader-container.done-preloader {
-	transition: none !important;
-	width: 100% !important;
+	width: 100%;
+}
+
+@keyframes preloader {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 90%;
+	}
 }
 
 @layer components {
