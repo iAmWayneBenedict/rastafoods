@@ -60,7 +60,7 @@ const App = () => {
 	// }
 
 	// sendmail();
-
+	console.log("render");
 	return (
 		<QueryClientProvider client={queryClient}>
 			<div className="App relative">

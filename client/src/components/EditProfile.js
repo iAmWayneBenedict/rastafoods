@@ -19,7 +19,12 @@ const postRequest = async (data) => {
 };
 
 const EditProfile = () => {
-	let preloaderValue = usePreloader();
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 500);
+	}, [isLoading]);
 	const [currentParam, setCurrentParam] = useState();
 	const [userData, setUserData] = useState({});
 	const paramsArr = window.location.pathname.split("/");
@@ -33,7 +38,7 @@ const EditProfile = () => {
 			if (hasSessionUser) {
 				let response = await getCurrentUserRequest(
 					"/token",
-					localStorage.getItem("user_token")
+					localStorage.getItem("user_token").replaceAll('"', "")
 				);
 				setUserData(response.data);
 			} else {
@@ -44,8 +49,8 @@ const EditProfile = () => {
 	}, []);
 	return (
 		<>
-			<Preloader loaderValue={preloaderValue} />
-			{preloaderValue === 2 && (
+			<Preloader loaderValue={isLoading} />
+			{!isLoading && (
 				<div>
 					<div className="md:mx-10 mt-28 flex xl:mx-40 mb-96">
 						{currentParam === "edit-profile" && (

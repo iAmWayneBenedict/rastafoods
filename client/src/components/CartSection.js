@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import usePreloader from "../custom_hooks/usePreloader";
 import CartCard from "./card_components/CartCard.component";
 import Footer from "./Footer";
 import Preloader from "./preloader_component/Preloader.component";
@@ -8,22 +7,26 @@ const CartSection = () => {
 	const deleteBtn = useRef();
 	const [isEdit, setIsEdit] = useState(false);
 	const [editData, setEditData] = useState([]);
-	let hasSameEditData = false;
+	const [subtotal, setSubtotal] = useState(0);
+	const [delivery, setDelivery] = useState(150);
+
 	const pull_data = (data) => {
-		setEditData(
-			editData.filter((value) => {
-				if (value === data) {
-					hasSameEditData = true;
-					return false;
+		let hasSameData = false;
+		setEditData((prevValue) => {
+			let copyData = prevValue;
+			prevValue.map((value) => {
+				if (prevValue.indexOf(data) !== -1) {
+					copyData.splice(prevValue.indexOf(data), 1);
+					hasSameData = true;
 				}
-				return value;
-			})
-		);
-		if (hasSameEditData) {
-			hasSameEditData = false;
-			return 0;
-		}
-		setEditData((value) => [...value, data]);
+				return false;
+			});
+			if (hasSameData) {
+				return copyData;
+			} else {
+				return [...prevValue, data];
+			}
+		});
 	};
 	const edit = () => {
 		if (isEdit) setIsEdit(false);
@@ -40,14 +43,28 @@ const CartSection = () => {
 		}
 	}, [editData, isEdit]);
 	const deleteItems = (event) => {
-		console.log(event.target.classList);
+		console.log(editData);
 	};
 
-	let loaderValue = usePreloader();
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 500);
+	}, [isLoading]);
+
+	const cartCardContainer = useRef();
+	let total = 0;
+	const changeQuantity = (price) => {
+		if (price === 0) return;
+
+		total += price;
+		setSubtotal(total);
+	};
 	return (
 		<div>
-			<Preloader loaderValue={loaderValue} />
-			{loaderValue === 2 && (
+			<Preloader loaderValue={isLoading} />
+			{!isLoading && (
 				<div>
 					<div className="flex flex-col md:flex-row mt-24 md:mt-32 gap-10 sm:gap-5 md:gap-5 lg:gap-10 items-stretch mx-2 sm:mx-3 md:mx-5 lg:mx-8 2xl:mx-24">
 						<div className="left w-full md:w-[55%] lg:w-[65%]">
@@ -75,11 +92,38 @@ const CartSection = () => {
 										</button>
 									</div>
 								</div>
-								<div className="border-y border-gray-500 flex flex-col gap-2 py-5">
-									<CartCard callback={pull_data} edit={isEdit} data={1} />
-									<CartCard callback={pull_data} edit={isEdit} data={2} />
-									<CartCard callback={pull_data} edit={isEdit} data={3} />
-									<CartCard callback={pull_data} edit={isEdit} data={4} />
+								<div
+									ref={cartCardContainer}
+									className="border-y border-gray-500 flex flex-col gap-2 py-5"
+								>
+									<CartCard
+										checkedDelete={pull_data}
+										changeQuantity={changeQuantity}
+										edit={isEdit}
+										price={105}
+										data={1}
+									/>
+									<CartCard
+										checkedDelete={pull_data}
+										changeQuantity={changeQuantity}
+										edit={isEdit}
+										price={105}
+										data={2}
+									/>
+									<CartCard
+										checkedDelete={pull_data}
+										changeQuantity={changeQuantity}
+										edit={isEdit}
+										price={105}
+										data={3}
+									/>
+									<CartCard
+										checkedDelete={pull_data}
+										changeQuantity={changeQuantity}
+										edit={isEdit}
+										price={105}
+										data={4}
+									/>
 								</div>
 							</main>
 						</div>
@@ -90,7 +134,7 @@ const CartSection = () => {
 										Subtotal
 									</div>
 									<div className="price font-semibold text-sm 2xl:font-base">
-										₱105
+										₱{subtotal}
 									</div>
 								</div>
 								<div className="delivery flex justify-between my-1">
@@ -98,7 +142,7 @@ const CartSection = () => {
 										Delivery
 									</div>
 									<div className="price font-semibold text-sm 2xl:font-base">
-										₱105
+										₱{delivery}
 									</div>
 								</div>
 								<div className="total flex justify-between my-3">
@@ -106,7 +150,7 @@ const CartSection = () => {
 										Total
 									</div>
 									<div className="price font-bold text-base 2xl:text-xl">
-										₱105
+										₱{subtotal + delivery}
 									</div>
 								</div>
 							</div>

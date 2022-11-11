@@ -2211,15 +2211,15 @@ button:focus, input:focus{
 .filter{
   filter: var(--tw-filter);
 }
+.transition-all{
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 .transition{
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
   transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-.transition-all{
-  transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
 }
@@ -2355,13 +2355,23 @@ label {
 	user-select: none;
 }
 
+.navbar-preloader-container {
+	width: 0;
+}
 .navbar-preloader-container.active-preloader {
-	transition: all 5s ease-out;
-	width: 90% !important;
+	animation: preloader 5s ease forwards;
 }
 .navbar-preloader-container.done-preloader {
-	transition: none !important;
-	width: 100% !important;
+	width: 100%;
+}
+
+@keyframes preloader {
+	from {
+		width: 0%;
+	}
+	to {
+		width: 90%;
+	}
 }
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,

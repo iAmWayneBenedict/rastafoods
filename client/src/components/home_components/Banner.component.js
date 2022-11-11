@@ -33,7 +33,7 @@ const Banner = () => {
 				</p>
 
 				<Link
-					to={"/stores"}
+					to={"/stores/discover"}
 					className="bg-primary rounded-md text-white px-5 py-3 text-sm font-bold"
 				>
 					Order Now

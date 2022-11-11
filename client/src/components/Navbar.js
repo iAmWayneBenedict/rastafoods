@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 
 const NavBar = ({ hasScrolled }) => {
+	const hasActiveUser = !!localStorage.getItem("user_token");
 	const button = useRef();
 
 	// toggle hamburger
@@ -58,12 +59,14 @@ const NavBar = ({ hasScrolled }) => {
 					<Link to={"/cart"}>
 						<i className="bi bi-bag text-base md:text-lg"></i>
 					</Link>
-					<Link
-						to={"/login"}
-						className="bg-primary text-white ml-5 md:ml-8 px-3 md:px-4 py-1 md:py-[.35rem] rounded-[.35rem] font-medium text-sm 2xl:text-base"
-					>
-						Sign in
-					</Link>
+					{!hasActiveUser && (
+						<Link
+							to={"/login"}
+							className="bg-primary text-white ml-5 md:ml-8 px-3 md:px-4 py-1 md:py-[.35rem] rounded-[.35rem] font-medium text-sm 2xl:text-base"
+						>
+							Sign in
+						</Link>
+					)}
 				</div>
 			</div>
 		</nav>

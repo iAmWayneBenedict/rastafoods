@@ -7,6 +7,12 @@ import usePreloader from "../custom_hooks/usePreloader";
 import Footer from "./Footer";
 
 const Stores = () => {
+	const [isLoading, setIsLoading] = useState(true);
+	useEffect(() => {
+		setTimeout(() => {
+			setIsLoading(false);
+		}, 500);
+	}, [isLoading]);
 	const [itemPopUpStatus, setItemPopUpStatus] = useState(false);
 	const params = useParams();
 	const data = {
@@ -57,11 +63,10 @@ const Stores = () => {
 			],
 		},
 	];
-	let loaderValue = usePreloader();
 	return (
 		<>
-			<Preloader loaderValue={loaderValue} />
-			{loaderValue === 2 && (
+			<Preloader loaderValue={isLoading} />
+			{!isLoading && (
 				<div>
 					<div className="md:mx-10 mt-28">
 						<div className="banner w-full h-[5rem] bg-gray-400 flex items-center justify-center mb-20">

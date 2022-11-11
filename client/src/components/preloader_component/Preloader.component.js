@@ -4,7 +4,7 @@ const Preloader = ({ loaderValue }) => {
 	let loader = loaderValue;
 	let [loaderFinishClassList, setLoaderFinishClassList] = useState("");
 	useEffect(() => {
-		if (loader === 2) {
+		if (!loader) {
 			setLoaderFinishClassList("done-preloader");
 			setTimeout(() => {
 				setLoaderFinishClassList("");
@@ -14,9 +14,9 @@ const Preloader = ({ loaderValue }) => {
 
 	return (
 		<div
-			className={`navbar-preloader-container ${
-				loader === 1 ? "active-preloader" : ""
-			} ${loaderFinishClassList} fixed w-0 h-[2px] lg:h-[3px] bg-red-600 left-0 bottom-0 top-11 2xl:top-16`}
+			className={`navbar-preloader-container fixed h-[2px] lg:h-[3px] bg-red-600 left-0 bottom-0 top-11 2xl:top-16 ${
+				loader ? "active-preloader" : ""
+			} ${loaderFinishClassList} `}
 		></div>
 	);
 };
